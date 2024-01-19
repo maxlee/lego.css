@@ -1,13 +1,9 @@
 <p align="center">
-    <img src="">
+    <img src="/public/lego.png" width="100px">
 </p>
 <h1 align="center">lego.css</h1>
 <h4 align="center">Write CSS like LEGO</h4>
-> `lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。
-
-## 兼容性
-
-> 注明使用了哪些特征，因此不兼容的浏览器版本，提供 caniuse 截图
+<p>`lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。</p>
 
 ## 架构
 
@@ -33,24 +29,29 @@
     5. tab
     6. dialog
 5. Atomic
-   | shortcut |      mean      | desc  |
-   | :------: | :------------: | :---: |
-   |    m     |     margin     |       |
-   |    p     |    padding     |       |
-   |    w     |     width      |       |
-   |    h     |     height     |       |
-   |    nw    |   min-width    |       |
-   |    nh    |   min-height   |       |
-   |    mw    |   max-width    |       |
-   |    mh    |   max-height   |       |
-   |    t     |      top       |       |
-   |    r     |     right      |       |
-   |    b     |     bottom     |       |
-   |    l     |      left      |       |
-   |    x     | left and right |       |
-   |    y     | top and bottom |       |
-   |    d     |    display     |       |
-   |    po    |    position    |       |
+   | shortcut |       mean       | desc  |
+   | :------: | :--------------: | :---: |
+   |    m     |      margin      |       |
+   |    p     |     padding      |       |
+   |    w     |      width       |       |
+   |    h     |      height      |       |
+   |    nw    |    min-width     |       |
+   |    nh    |    min-height    |       |
+   |    mw    |    max-width     |       |
+   |    mh    |    max-height    |       |
+   |    t     |       top        |       |
+   |    r     |      right       |       |
+   |    b     |      bottom      |       |
+   |    l     |       left       |       |
+   |    x     |  left and right  |       |
+   |    y     |  top and bottom  |       |
+   |    d     |     display      |       |
+   |    po    |     position     |       |
+   |    c     |      color       |       |
+   |   h:x    |    x:hover{}     |       |
+   |   a:x    |    x:active{}    |       |
+   |   f:x    |    x:focus{}     |       |
+   |    x!    | x{...!important} |       |
     1. l-*{layout}
        1. flex
        2. grid
@@ -91,6 +92,6 @@
 
 ## 使用方式
 
-1. link
-2. import + PurgeCSS
+1. HTML\<link\> + PurgeCSS 
+2. npm/yarn + PurgeCSS
 3. UnoCSS + rules
