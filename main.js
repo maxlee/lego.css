@@ -2,7 +2,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import legoLogo from '/lego.png'
-
+import 'virtual:uno.css'
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -14,7 +14,7 @@ document.querySelector('#app').innerHTML = `
     </a>
     <h1>Hello Lego.css!</h1>
     <p class="read-the-docs">
-      Click on the Vite logo to learn more
+      Click on the logo to learn more.
     </p>
   </div>
 `

@@ -91,6 +91,6 @@
 
 ## 使用方式
 
-1. link
-2. import + PurgeCSS
+1. HTML<link> + PurgeCSS 
+2. npm/yarn + PurgeCSS
 3. UnoCSS + rules
