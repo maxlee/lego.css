@@ -1,13 +1,9 @@
 <p align="center">
-    <img src="">
+    <img src="/public/lego.png" width="100px">
 </p>
 <h1 align="center">lego.css</h1>
 <h4 align="center">Write CSS like LEGO</h4>
-> `lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。
-
-## 兼容性
-
-> 注明使用了哪些特征，因此不兼容的浏览器版本，提供 caniuse 截图
+<p>`lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。</p>
 
 ## 架构
 
