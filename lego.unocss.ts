@@ -4,7 +4,8 @@ import { Preset } from 'unocss'
 export const legocss: Preset = {
   name: 'legocss',
   rules: [
-    [/^m([\.\d]+)$/, ([_, num]) => ({ margin: `${num}px` })],
+    
+    [/^m([\.\d]+)(!?)$/, ([_, num, i]) => ({ margin: `${num}px ${i ? '!important' : ''}` })],
     [/^mx([\.\d]+)$/, ([_, num]) => ({ 'margin-left': `${num}px`, 'margin-right': `${num}px` })],
     [/^my([\.\d]+)$/, ([_, num]) => ({ 'margin-top': `${num}px`, 'margin-bottom': `${num}px` })],
     [/^ml([\.\d]+)$/, ([_, num]) => ({ 'margin-left': `${num}px` })],
@@ -26,9 +27,67 @@ export const legocss: Preset = {
     [/^mh([\.\d]+)$/, ([_, num]) => ({ 'max-height': `${num}px` })],
     [/^fs([\.\d]+)$/, ([_, num]) => ({ 'font-size': `${num}px` })],
     ['ma', {margin:'auto'}],
-    ['mx', {'margin-left': 'auto','margin-right': 'auto' }]
+    ['wa', {width:'auto'}],
+    ['ha', {height:'auto'}],
+    ['w%', {width:'100%'}],
+    ['h%', {height:'100%'}],
+    [/^c([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(!?)$/, ([_, color, i]) => ({ 'color': `#${color} ${i ? '!important' : ''}` })],
+    [/^bgc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'background-color': `#${color} ${i ? '!important' : ''}` })],
+    [/^bc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'border-color': `#${color} ${i ? '!important' : ''}` })],
+
   ],
-  variants: [/* ... */],
+  variants: [
+    // hover:
+    (matcher) => {
+      if (!matcher.startsWith('h:'))
+        return matcher
+      return {
+        // slice `hover:` prefix and passed to the next variants and rules
+        matcher: matcher.slice(2),
+        selector: s => `${s}:hover`,
+      }
+    },
+    // focus:
+    (matcher) => {
+      if (!matcher.startsWith('f:'))
+        return matcher
+      return {
+        // slice `focus:` prefix and passed to the next variants and rules
+        matcher: matcher.slice(2),
+        selector: s => `${s}:focus`,
+      }
+    },
+    // active:
+    (matcher) => {
+      if (!matcher.startsWith('a:'))
+        return matcher
+      return {
+        // slice `active:` prefix and passed to the next variants and rules
+        matcher: matcher.slice(2),
+        selector: s => `${s}:active`,
+      }
+    },
+    // important:
+    (matcher) => {
+      const flag = matcher.endsWith('!')
+      const config = {
+        important: false
+      }
+      const isImportant = flag ? !config.important : config.important
+      return {
+        matcher: flag ? matcher.substring(0, matcher.length - 1) : matcher,
+        body: (body) => {
+          body.forEach((v) => {
+            if (v[1]) {
+              v[1] += isImportant ? ' !important' : ''
+            }
+          })
+          return body
+        },
+      }
+    }
+
+  ],
   shortcuts: [
   ]
 }

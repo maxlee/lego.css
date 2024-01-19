@@ -33,24 +33,29 @@
     5. tab
     6. dialog
 5. Atomic
-   | shortcut |      mean      | desc  |
-   | :------: | :------------: | :---: |
-   |    m     |     margin     |       |
-   |    p     |    padding     |       |
-   |    w     |     width      |       |
-   |    h     |     height     |       |
-   |    nw    |   min-width    |       |
-   |    nh    |   min-height   |       |
-   |    mw    |   max-width    |       |
-   |    mh    |   max-height   |       |
-   |    t     |      top       |       |
-   |    r     |     right      |       |
-   |    b     |     bottom     |       |
-   |    l     |      left      |       |
-   |    x     | left and right |       |
-   |    y     | top and bottom |       |
-   |    d     |    display     |       |
-   |    po    |    position    |       |
+   | shortcut |       mean       | desc  |
+   | :------: | :--------------: | :---: |
+   |    m     |      margin      |       |
+   |    p     |     padding      |       |
+   |    w     |      width       |       |
+   |    h     |      height      |       |
+   |    nw    |    min-width     |       |
+   |    nh    |    min-height    |       |
+   |    mw    |    max-width     |       |
+   |    mh    |    max-height    |       |
+   |    t     |       top        |       |
+   |    r     |      right       |       |
+   |    b     |      bottom      |       |
+   |    l     |       left       |       |
+   |    x     |  left and right  |       |
+   |    y     |  top and bottom  |       |
+   |    d     |     display      |       |
+   |    po    |     position     |       |
+   |    c     |      color       |       |
+   |   h:x    |    x:hover{}     |       |
+   |   a:x    |    x:active{}    |       |
+   |   f:x    |    x:focus{}     |       |
+   |    x!    | x{...!important} |       |
     1. l-*{layout}
        1. flex
        2. grid
@@ -91,6 +96,6 @@
 
 ## 使用方式
 
-1. HTML<link> + PurgeCSS 
+1. HTML\<link\> + PurgeCSS 
 2. npm/yarn + PurgeCSS
 3. UnoCSS + rules
