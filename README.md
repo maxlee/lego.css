@@ -5,6 +5,11 @@
 <h4 align="center">Write CSS like LEGO</h4>
 <p>`lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。</p>
 
+## Todo
+- [ ] lego.layout.css
+- [ ] lego.color.css
+- [ ] lego.base.css
+
 ## 架构
 
 1. Naming
@@ -31,27 +36,27 @@
 5. Atomic
    | shortcut |       mean       | desc  |
    | :------: | :--------------: | :---: |
-   |    m     |      margin      |       |
-   |    p     |     padding      |       |
-   |    w     |      width       |       |
-   |    h     |      height      |       |
-   |    nw    |    min-width     |       |
-   |    nh    |    min-height    |       |
-   |    mw    |    max-width     |       |
-   |    mh    |    max-height    |       |
-   |    t     |       top        |       |
-   |    r     |      right       |       |
-   |    b     |      bottom      |       |
-   |    l     |       left       |       |
+   |    m     |      margin      |   ✓   |
+   |    p     |     padding      |   ✓   |
+   |    w     |      width       |   ✓   |
+   |    h     |      height      |   ✓   |
+   |    nw    |    min-width     |   ✓   |
+   |    nh    |    min-height    |   ✓   |
+   |    mw    |    max-width     |   ✓   |
+   |    mh    |    max-height    |   ✓   |
+   |    t     |       top        |   ✓   |
+   |    r     |      right       |   ✓   |
+   |    b     |      bottom      |   ✓   |
+   |    l     |       left       |   ✓   |
    |    x     |  left and right  |       |
    |    y     |  top and bottom  |       |
    |    d     |     display      |       |
    |    po    |     position     |       |
-   |    c     |      color       |       |
-   |   h:x    |    x:hover{}     |       |
-   |   a:x    |    x:active{}    |       |
-   |   f:x    |    x:focus{}     |       |
-   |    x!    | x{...!important} |       |
+   |    c     |      color       |   ✓   |
+   |   h:x    |    x:hover{}     |   ✓   |
+   |   a:x    |    x:active{}    |   ✓   |
+   |   f:x    |    x:focus{}     |   ✓   |
+   |    x!    | x{...!important} |   ✓   |
     1. l-*{layout}
        1. flex
        2. grid

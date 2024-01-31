@@ -19,12 +19,27 @@ export const legocss: Preset = {
     [/^pr([\.\d]+)$/, ([_, num]) => ({ 'padding-right': `${num}px` })],
     [/^pb([\.\d]+)$/, ([_, num]) => ({ 'padding-bottom': `${num}px` })],
     [/^pt([\.\d]+)$/, ([_, num]) => ({ 'padding-top': `${num}px` })],
+
     [/^w([\.\d]+)$/, ([_, num]) => ({ width: `${num}px` })],
     [/^h([\.\d]+)$/, ([_, num]) => ({ height: `${num}px` })],
     [/^nw([\.\d]+)$/, ([_, num]) => ({ 'min-width': `${num}px` })],
     [/^nh([\.\d]+)$/, ([_, num]) => ({ 'min-height': `${num}px` })],
     [/^mw([\.\d]+)$/, ([_, num]) => ({ 'max-width': `${num}px` })],
     [/^mh([\.\d]+)$/, ([_, num]) => ({ 'max-height': `${num}px` })],
+
+    [/^t([\.\d]+)(!?)$/, ([_, num, i]) => ({ top: `${num}px ${i ? '!important' : ''}` })],
+    [/^l([\.\d]+)(!?)$/, ([_, num, i]) => ({ left: `${num}px ${i ? '!important' : ''}` })],
+    [/^r([\.\d]+)(!?)$/, ([_, num, i]) => ({ right: `${num}px ${i ? '!important' : ''}` })],
+    [/^b([\.\d]+)(!?)$/, ([_, num, i]) => ({ bottom: `${num}px ${i ? '!important' : ''}` })],
+
+    [/^w([\.\d]+)vw$/, ([_, num]) => ({ width: `${num}vw` })],
+    [/^h([\.\d]+)vh$/, ([_, num]) => ({ height: `${num}vh` })],
+    [/^nw([\.\d]+)vw$/, ([_, num]) => ({ 'min-width': `${num}vw` })],
+    [/^nh([\.\d]+)vh$/, ([_, num]) => ({ 'min-height': `${num}vh` })],
+    [/^mw([\.\d]+)vw$/, ([_, num]) => ({ 'max-width': `${num}vw` })],
+    [/^mh([\.\d]+)vh$/, ([_, num]) => ({ 'max-height': `${num}vh` })],
+
+
     [/^fs([\.\d]+)$/, ([_, num]) => ({ 'font-size': `${num}px` })],
     ['ma', {margin:'auto'}],
     ['wa', {width:'auto'}],
@@ -34,7 +49,7 @@ export const legocss: Preset = {
     [/^c([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(!?)$/, ([_, color, i]) => ({ 'color': `#${color} ${i ? '!important' : ''}` })],
     [/^bgc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'background-color': `#${color} ${i ? '!important' : ''}` })],
     [/^bc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'border-color': `#${color} ${i ? '!important' : ''}` })],
-    [/^bc-(.+)$/, ([, color]) => ({ 'border-color': `#${color}` })],
+    [/^c-(.+)$/, ([, color]) => ({ 'color': `#${color}` })],
 
   ],
   variants: [
