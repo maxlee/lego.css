@@ -28,6 +28,8 @@ const propertyMap = {
     'my': ['margin-top', 'margin-bottom'],
     'px': ['padding-left', 'padding-right'],
     'py': ['padding-top', 'padding-bottom'],
+    'lt': 'letter-spacing',
+    'ws': 'word-spacing',
     // 可以在这里继续添加更多属性对应关系
 };
 
@@ -76,6 +78,14 @@ const otherRules = [
     ['ha', { height: 'auto' }],
     ['w%', { width: '100%' }],
     ['h%', { height: '100%' }],
+    ['oh', { overflow: 'hidden' }],
+    ['ov', { overflow: 'visible' }],
+    ['oxh', { 'overflow-x': 'hidden' }],
+    ['oxv', { 'overflow-x': 'visible' }],
+    ['oyh', { 'overflow-y': 'hidden' }],
+    ['oyv', { 'overflow-y': 'visible' }],
+    ['vbh', { 'visibility': 'hidden' }],
+    ['vbv', { 'visibility': 'visible' }],
 ];
 
 export const legocss = {
@@ -90,6 +100,12 @@ export const legocss = {
         [/^bc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'border-color': `#${color} ${i ? '!important' : ''}` })],
 
         // [/^c-(.+)$/, ([, color]) => ({ 'color': `#${color}` })],
+
+        [/^fw([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'font-weight': `${num} ${i ? '!important' : ''}` })],
+        [/^op([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'opacity': `${num} ${i ? '!important' : ''}` })],
+        [/^lh([\.\d]+)(px)?(!?)$/, ([_, num, unit, i]) => ({ 'line-height': `${num}${unit ? 'px' : ''} ${i ? '!important' : ''}` })],
+        [/^zi([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'z-index': `${num} ${i ? '!important' : ''}` })],
+
 
     ],
     variants: [

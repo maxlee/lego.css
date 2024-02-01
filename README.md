@@ -48,8 +48,8 @@
    |    r     |      right       |   ✓   |
    |    b     |      bottom      |   ✓   |
    |    l     |       left       |   ✓   |
-   |    x     |  left and right  |       |
-   |    y     |  top and bottom  |       |
+   |    x     |  left and right  |   ✓   |
+   |    y     |  top and bottom  |   ✓   |
    |    d     |     display      |       |
    |    po    |     position     |       |
    |    c     |      color       |   ✓   |
@@ -61,27 +61,29 @@
        1. flex
        2. grid
     2. c-*{color}
-       1. color
-       2. background-color
-       3. border-color
+       1. color ✓
+       2. background-color ✓
+       3. border-color ✓
     3. t-*{text}
         1. font
         2. font-family
-        3. font-style
+        3. font-style: normal|italic|oblique|inherit
         4. font-size
         5. font-weight
-        6. text-align
+        6. text-align: left|right|center|justify
         7. line-height
         8. justify-content
         9. letter-spacing
         10. word-spacing
         11. outline
         12. white-space
-        13. word-break
-        14. word-wrap
+        13. word-break: normal|break-all|keep-all
+        14. word-wrap: normal|break-word
+        15. text-indent
+        16. text-justify
     4. b-*{box}
-        1. display
-        2. box-sizing
+        1. display: none|block|inline|inline-block|inherit
+        2. box-sizing: content-box|border-box
         3. width
         4. height
         5. min/max-
@@ -93,18 +95,18 @@
         2. transition
         3. keyframe
     6. e-*{element}
-        1. position
-        2. float
-        3. cursor
-        4. background-size
+        1. position: absolute|fixed|relative|static
+        2. float: left|right|none|inherit
+        3. cursor: default|auto|pointer|move|text|wait|help
+        4. background-size: length|cover|contain
         5. background-position: center
         6. background-repeat: repeat-y|repeat-x|no-repeat
         7. list-style-
-        8. z-index
-        9. overflow: auto|hidden
-        10. opacity
-        11. visibility
-        12. vertical-align
+        8. z-index:
+        9. overflow: auto|hidden|scroll|visible
+        10. opacity:
+        11. visibility: hidden|visible
+        12. vertical-align: baseline|top|text-top|middle|bottom|text-bottom
      7. g-*{}
      8. o-*{}
 
@@ -113,3 +115,9 @@
 1. HTML\<link\> + PurgeCSS 
 2. npm/yarn + PurgeCSS
 3. UnoCSS + rules
+
+## font-family
+> github.com/zenozeng/fonts.css
+```
+ffhei|ffkai|ffsong|fffangsong
+```
