@@ -66,12 +66,19 @@
        3. border-color
     3. t-*{text}
         1. font
-        2. text-
-        3. line-height
-        4. justify-content
-        5. letter-spacing
-        6. word-spacing
-        7. outline
+        2. font-family
+        3. font-style
+        4. font-size
+        5. font-weight
+        6. text-align
+        7. line-height
+        8. justify-content
+        9. letter-spacing
+        10. word-spacing
+        11. outline
+        12. white-space
+        13. word-break
+        14. word-wrap
     4. b-*{box}
         1. display
         2. box-sizing
@@ -85,13 +92,19 @@
         1. animate
         2. transition
         3. keyframe
-    6. e-*{elememt}
+    6. e-*{element}
         1. position
-        2. cursor
-        3. background
-        4. list-style-
-        5. z-index
-        6. overflow
+        2. float
+        3. cursor
+        4. background-size
+        5. background-position: center
+        6. background-repeat: repeat-y|repeat-x|no-repeat
+        7. list-style-
+        8. z-index
+        9. overflow: auto|hidden
+        10. opacity
+        11. visibility
+        12. vertical-align
      7. g-*{}
      8. o-*{}
 
