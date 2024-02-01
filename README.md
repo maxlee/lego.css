@@ -5,6 +5,11 @@
 <h4 align="center">Write CSS like LEGO</h4>
 <p>`lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。</p>
 
+## Todo
+- [ ] lego.layout.css
+- [ ] lego.color.css
+- [ ] lego.base.css
+
 ## 架构
 
 1. Naming
@@ -31,27 +36,27 @@
 5. Atomic
    | shortcut |       mean       | desc  |
    | :------: | :--------------: | :---: |
-   |    m     |      margin      |       |
-   |    p     |     padding      |       |
-   |    w     |      width       |       |
-   |    h     |      height      |       |
-   |    nw    |    min-width     |       |
-   |    nh    |    min-height    |       |
-   |    mw    |    max-width     |       |
-   |    mh    |    max-height    |       |
-   |    t     |       top        |       |
-   |    r     |      right       |       |
-   |    b     |      bottom      |       |
-   |    l     |       left       |       |
+   |    m     |      margin      |   ✓   |
+   |    p     |     padding      |   ✓   |
+   |    w     |      width       |   ✓   |
+   |    h     |      height      |   ✓   |
+   |    nw    |    min-width     |   ✓   |
+   |    nh    |    min-height    |   ✓   |
+   |    mw    |    max-width     |   ✓   |
+   |    mh    |    max-height    |   ✓   |
+   |    t     |       top        |   ✓   |
+   |    r     |      right       |   ✓   |
+   |    b     |      bottom      |   ✓   |
+   |    l     |       left       |   ✓   |
    |    x     |  left and right  |       |
    |    y     |  top and bottom  |       |
    |    d     |     display      |       |
    |    po    |     position     |       |
-   |    c     |      color       |       |
-   |   h:x    |    x:hover{}     |       |
-   |   a:x    |    x:active{}    |       |
-   |   f:x    |    x:focus{}     |       |
-   |    x!    | x{...!important} |       |
+   |    c     |      color       |   ✓   |
+   |   h:x    |    x:hover{}     |   ✓   |
+   |   a:x    |    x:active{}    |   ✓   |
+   |   f:x    |    x:focus{}     |   ✓   |
+   |    x!    | x{...!important} |   ✓   |
     1. l-*{layout}
        1. flex
        2. grid
@@ -61,12 +66,19 @@
        3. border-color
     3. t-*{text}
         1. font
-        2. text-
-        3. line-height
-        4. justify-content
-        5. letter-spacing
-        6. word-spacing
-        7. outline
+        2. font-family
+        3. font-style
+        4. font-size
+        5. font-weight
+        6. text-align
+        7. line-height
+        8. justify-content
+        9. letter-spacing
+        10. word-spacing
+        11. outline
+        12. white-space
+        13. word-break
+        14. word-wrap
     4. b-*{box}
         1. display
         2. box-sizing
@@ -80,13 +92,19 @@
         1. animate
         2. transition
         3. keyframe
-    6. e-*{elememt}
+    6. e-*{element}
         1. position
-        2. cursor
-        3. background
-        4. list-style-
-        5. z-index
-        6. overflow
+        2. float
+        3. cursor
+        4. background-size
+        5. background-position: center
+        6. background-repeat: repeat-y|repeat-x|no-repeat
+        7. list-style-
+        8. z-index
+        9. overflow: auto|hidden
+        10. opacity
+        11. visibility
+        12. vertical-align
      7. g-*{}
      8. o-*{}
 

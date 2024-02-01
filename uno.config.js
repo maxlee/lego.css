@@ -5,7 +5,7 @@ export default defineConfig({
   // ...UnoCSS options
     presets: [
         // presetUno(),
-        // presetAttributify(),
+        presetAttributify(),
         legocss,
     ],
 })

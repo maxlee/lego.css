@@ -12,7 +12,7 @@ document.querySelector('#app').innerHTML = `
     <a href="https://legocss.dev" target="_blank">
       <img src="${legoLogo}" class="logo vanilla" alt="Legocss logo" />
     </a>
-    <h1>Hello Lego.css!</h1>
+    <h1>hello lego.css</h1>
     <p class="read-the-docs">
       Click on the logo to learn more.
     </p>
