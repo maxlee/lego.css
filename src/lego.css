@@ -1,1 +1,194 @@
-.m1{margin:1px}.m2{margin:2px}.m3{margin:3px}.m4{margin:4px}.m5{margin:5px}.m6{margin:6px}.m7{margin:7px}.m8{margin:8px}.m9{margin:9px}.m10{margin:10px}.m11{margin:11px}.m12{margin:12px}.m13{margin:13px}.m14{margin:14px}.m15{margin:15px}.m16{margin:16px}.m17{margin:17px}.m18{margin:18px}.m19{margin:19px}.m20{margin:20px}.mt1{margin-top:1px}.mt2{margin-top:2px}.mt3{margin-top:3px}.mt4{margin-top:4px}.mt5{margin-top:5px}.mt6{margin-top:6px}.mt7{margin-top:7px}.mt8{margin-top:8px}.mt9{margin-top:9px}.mt10{margin-top:10px}.mt11{margin-top:11px}.mt12{margin-top:12px}.mt13{margin-top:13px}.mt14{margin-top:14px}.mt15{margin-top:15px}.mt16{margin-top:16px}.mt17{margin-top:17px}.mt18{margin-top:18px}.mt19{margin-top:19px}.mt20{margin-top:20px}.mr1{margin-right:1px}.mr2{margin-right:2px}.mr3{margin-right:3px}.mr4{margin-right:4px}.mr5{margin-right:5px}.mr6{margin-right:6px}.mr7{margin-right:7px}.mr8{margin-right:8px}.mr9{margin-right:9px}.mr10{margin-right:10px}.mr11{margin-right:11px}.mr12{margin-right:12px}.mr13{margin-right:13px}.mr14{margin-right:14px}.mr15{margin-right:15px}.mr16{margin-right:16px}.mr17{margin-right:17px}.mr18{margin-right:18px}.mr19{margin-right:19px}.mr20{margin-right:20px}.mb1{margin-bottom:1px}.mb2{margin-bottom:2px}.mb3{margin-bottom:3px}.mb4{margin-bottom:4px}.mb5{margin-bottom:5px}.mb6{margin-bottom:6px}.mb7{margin-bottom:7px}.mb8{margin-bottom:8px}.mb9{margin-bottom:9px}.mb10{margin-bottom:10px}.mb11{margin-bottom:11px}.mb12{margin-bottom:12px}.mb13{margin-bottom:13px}.mb14{margin-bottom:14px}.mb15{margin-bottom:15px}.mb16{margin-bottom:16px}.mb17{margin-bottom:17px}.mb18{margin-bottom:18px}.mb19{margin-bottom:19px}.mb20{margin-bottom:20px}.ml1{margin-left:1px}.ml2{margin-left:2px}.ml3{margin-left:3px}.ml4{margin-left:4px}.ml5{margin-left:5px}.ml6{margin-left:6px}.ml7{margin-left:7px}.ml8{margin-left:8px}.ml9{margin-left:9px}.ml10{margin-left:10px}.ml11{margin-left:11px}.ml12{margin-left:12px}.ml13{margin-left:13px}.ml14{margin-left:14px}.ml15{margin-left:15px}.ml16{margin-left:16px}.ml17{margin-left:17px}.ml18{margin-left:18px}.ml19{margin-left:19px}.ml20{margin-left:20px}.p1{padding:1px}.p2{padding:2px}.p3{padding:3px}.p4{padding:4px}.p5{padding:5px}.p6{padding:6px}.p7{padding:7px}.p8{padding:8px}.p9{padding:9px}.p10{padding:10px}.p11{padding:11px}.p12{padding:12px}.p13{padding:13px}.p14{padding:14px}.p15{padding:15px}.p16{padding:16px}.p17{padding:17px}.p18{padding:18px}.p19{padding:19px}.p20{padding:20px}.pt1{padding-top:1px}.pt2{padding-top:2px}.pt3{padding-top:3px}.pt4{padding-top:4px}.pt5{padding-top:5px}.pt6{padding-top:6px}.pt7{padding-top:7px}.pt8{padding-top:8px}.pt9{padding-top:9px}.pt10{padding-top:10px}.pt11{padding-top:11px}.pt12{padding-top:12px}.pt13{padding-top:13px}.pt14{padding-top:14px}.pt15{padding-top:15px}.pt16{padding-top:16px}.pt17{padding-top:17px}.pt18{padding-top:18px}.pt19{padding-top:19px}.pt20{padding-top:20px}.pr1{padding-right:1px}.pr2{padding-right:2px}.pr3{padding-right:3px}.pr4{padding-right:4px}.pr5{padding-right:5px}.pr6{padding-right:6px}.pr7{padding-right:7px}.pr8{padding-right:8px}.pr9{padding-right:9px}.pr10{padding-right:10px}.pr11{padding-right:11px}.pr12{padding-right:12px}.pr13{padding-right:13px}.pr14{padding-right:14px}.pr15{padding-right:15px}.pr16{padding-right:16px}.pr17{padding-right:17px}.pr18{padding-right:18px}.pr19{padding-right:19px}.pr20{padding-right:20px}.pb1{padding-bottom:1px}.pb2{padding-bottom:2px}.pb3{padding-bottom:3px}.pb4{padding-bottom:4px}.pb5{padding-bottom:5px}.pb6{padding-bottom:6px}.pb7{padding-bottom:7px}.pb8{padding-bottom:8px}.pb9{padding-bottom:9px}.pb10{padding-bottom:10px}.pb11{padding-bottom:11px}.pb12{padding-bottom:12px}.pb13{padding-bottom:13px}.pb14{padding-bottom:14px}.pb15{padding-bottom:15px}.pb16{padding-bottom:16px}.pb17{padding-bottom:17px}.pb18{padding-bottom:18px}.pb19{padding-bottom:19px}.pb20{padding-bottom:20px}.pl1{padding-left:1px}.pl2{padding-left:2px}.pl3{padding-left:3px}.pl4{padding-left:4px}.pl5{padding-left:5px}.pl6{padding-left:6px}.pl7{padding-left:7px}.pl8{padding-left:8px}.pl9{padding-left:9px}.pl10{padding-left:10px}.pl11{padding-left:11px}.pl12{padding-left:12px}.pl13{padding-left:13px}.pl14{padding-left:14px}.pl15{padding-left:15px}.pl16{padding-left:16px}.pl17{padding-left:17px}.pl18{padding-left:18px}.pl19{padding-left:19px}.pl20{padding-left:20px}/*# sourceMappingURL=lego.css.map */
+.m1 {
+  margin: 1px;
+}
+
+.m2 {
+  margin: 2px;
+}
+
+.m3 {
+  margin: 3px;
+}
+
+.mt1 {
+  margin-top: 1px;
+}
+
+.mt2 {
+  margin-top: 2px;
+}
+
+.mt3 {
+  margin-top: 3px;
+}
+
+.mr1 {
+  margin-right: 1px;
+}
+
+.mr2 {
+  margin-right: 2px;
+}
+
+.mr3 {
+  margin-right: 3px;
+}
+
+.mb1 {
+  margin-bottom: 1px;
+}
+
+.mb2 {
+  margin-bottom: 2px;
+}
+
+.mb3 {
+  margin-bottom: 3px;
+}
+
+.ml1 {
+  margin-left: 1px;
+}
+
+.ml2 {
+  margin-left: 2px;
+}
+
+.ml3 {
+  margin-left: 3px;
+}
+
+.p1 {
+  padding: 1px;
+}
+
+.p2 {
+  padding: 2px;
+}
+
+.p3 {
+  padding: 3px;
+}
+
+.pt1 {
+  padding-top: 1px;
+}
+
+.pt2 {
+  padding-top: 2px;
+}
+
+.pt3 {
+  padding-top: 3px;
+}
+
+.pr1 {
+  padding-right: 1px;
+}
+
+.pr2 {
+  padding-right: 2px;
+}
+
+.pr3 {
+  padding-right: 3px;
+}
+
+.pb1 {
+  padding-bottom: 1px;
+}
+
+.pb2 {
+  padding-bottom: 2px;
+}
+
+.pb3 {
+  padding-bottom: 3px;
+}
+
+.pl1 {
+  padding-left: 1px;
+}
+
+.pl2 {
+  padding-left: 2px;
+}
+
+.pl3 {
+  padding-left: 3px;
+}
+
+.author-bio .photo-adam {
+  background: url("/images/avatars/adam.png") no-repeat;
+}
+.author-bio .photo-john {
+  background: url("/images/avatars/john.png") no-repeat;
+}
+.author-bio .photo-wynn {
+  background: url("/images/avatars/wynn.png") no-repeat;
+}
+
+ins {
+  border-radius: 50%;
+  border-radius: 10%;
+  border-radius: 10px;
+  border-radius: 0;
+  border-radius: 0;
+}
+
+.container {
+  font-size: 18px;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
+  line-height: 1.5;
+  color: #333;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-text-small {
+  font-size: 12px;
+}
+
+.header-text-medium {
+  font-size: 20px;
+}
+
+.header-text-big {
+  font-size: 40px;
+}
+
+ins {
+  width: calc(100% - 100px);
+  height: 100px;
+  background-color: red;
+}
+
+.ins, ins {
+  font-size: 16px;
+  font-weight: bold;
+}
+.ins:hover, ins:hover {
+  color: red;
+}
+.ins .ins-title, ins .ins-title {
+  color: blue;
+}
+body .ins, body ins {
+  color: green;
+}
+
+ins {
+  border: 1px solid #000;
+}
+
+ins::after {
+  content: "";
+  display: block;
+  clear: both;
+}/*# sourceMappingURL=lego.css.map */

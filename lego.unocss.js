@@ -104,7 +104,7 @@ export const legocss = {
         [/^fw([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'font-weight': `${num} ${i ? '!important' : ''}` })],
         [/^op([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'opacity': `${num} ${i ? '!important' : ''}` })],
         [/^lh([\.\d]+)(px)?(!?)$/, ([_, num, unit, i]) => ({ 'line-height': `${num}${unit ? 'px' : ''} ${i ? '!important' : ''}` })],
-        [/^zi([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'z-index': `${num} ${i ? '!important' : ''}` })],
+        [/^z([\.\d]+)(!?)$/, ([_, num, i]) => ({ 'z-index': `${num} ${i ? '!important' : ''}` })],
 
 
     ],

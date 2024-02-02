@@ -81,6 +81,7 @@
         14. word-wrap: normal|break-word
         15. text-indent
         16. text-justify
+        17. text-overflow: clip|ellipsis
     4. b-*{box}
         1. display: none|block|inline|inline-block|inherit
         2. box-sizing: content-box|border-box
@@ -95,7 +96,7 @@
         2. transition
         3. keyframe
     6. e-*{element}
-        1. position: absolute|fixed|relative|static
+        1. position: absolute|fixed|relative|static|sticky
         2. float: left|right|none|inherit
         3. cursor: default|auto|pointer|move|text|wait|help
         4. background-size: length|cover|contain
@@ -107,6 +108,7 @@
         10. opacity:
         11. visibility: hidden|visible
         12. vertical-align: baseline|top|text-top|middle|bottom|text-bottom
+        13. resize: none|both|horizontal|vertical
      7. g-*{}
      8. o-*{}
 

@@ -1,0 +1,14 @@
+// 函数 @function
+// unitless($number) 判断是否有单位
+@function to-rem($pixels) {
+    $rem-base: 16px;
+    @if unitless($pixels) {
+        @return ($pixels / $rem-base) * 1rem;
+    } @else {
+        @return $pixels;
+    }
+}
+
+.container {
+    font-size: to-rem(18px);
+}
