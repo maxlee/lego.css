@@ -27,3 +27,8 @@ ins {
     @include border-radius(-10);
     // @extend %clearfix;
 }
+@mixin mobile {
+    @media screen and (max-width: 640px) {
+        @content;
+    }
+}

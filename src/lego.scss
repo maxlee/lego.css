@@ -1,6 +1,7 @@
 @use "for";
 @use "mixin";
 @use "func";
+@use "color";
 body {
     font-size: 16px;
     font-family: "Arial", sans-serif;
@@ -36,43 +37,6 @@ ins {
     height: 100px;
     background-color: red;
 }
-
-// 字符串函数
-// unquote($string) 去除引号
-// quote($string) 添加引号
-// str-length($string) 获取字符串长度
-// to-upper-case($string) 转换为大写
-// to-lower-case($string) 转换为小写
-// str-slice($string, $start-at, $end-at) 截取字符串
-// str-index($string, $substring) 获取子字符串的位置
-// str-insert($string, $insert, $index) 插入字符串
-// str-join($string1, $string2) 连接字符串
-// str-replace($string, $search, $replace) 替换字符串
-// str-contains($string, $substring) 判断是否包含子字符串
-// str-starts-with($string, $substring) 判断是否以子字符串开头
-// str-ends-with($string, $substring) 判断是否以子字符串结尾
-// str-unique($string) 去重
-// str-split($string, $separator) 分割字符串
-// str-nth($string, $index) 获取指定位置的字符
-
-// 列表函数
-// length($list) 获取列表长度
-// nth($list, $index) 获取指定位置的值
-// join($list1, $list2) 连接列表
-// append($list1, $val) 添加值
-// zip($list1, $list2) 合并列表
-// index($list, $value) 获取值的位置
-// list-separator($list) 获取列表分隔符
-
-// Map 函数, 键值对, 无序, 像是 JSON
-// map-get($map, $key) 获取键值
-// map-merge($map1, $map2) 合并键值
-// map-remove($map, $key) 删除键值
-// map-keys($map) 获取键
-// map-values($map) 获取值
-// map-has-key($map, $key) 判断是否包含键
-// map-has-value($map, $value) 判断是否包含值
-// map-contains($map1, $map2) 判断是否包含键值
 
 // 反思函数
 // type-of($value) 获取值的类型
