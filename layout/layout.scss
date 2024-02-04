@@ -33,7 +33,7 @@ header {
 
     grid-area: h;
 
-    h1 {
+    .logo {
        display: block;
        width: 100px;
        height: 100px;
@@ -62,7 +62,7 @@ header {
         }
     }
     @include phone {
-        h1{
+        .logo {
             margin: 0 auto 10px;
         }
         flex-direction: column;
@@ -101,3 +101,26 @@ footer {
 
 
 // grid 二维布局，以布局为基础
+
+.product{
+    h3{
+    text-align: center;
+    }
+    > ul{
+        li{
+            width: 350px;
+            text-align: center;
+            em{
+                font-weight: 700;
+                font-style: normal;
+            }
+        }
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        img{
+            width: 100%;
+        }
+
+    }
+}
