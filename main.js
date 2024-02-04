@@ -3,6 +3,7 @@ import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import legoLogo from '/lego.png'
 import 'virtual:uno.css'
+import './src/lego.scss'
 
 document.querySelector('#app').innerHTML = `
   <div>

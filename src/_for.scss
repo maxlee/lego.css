@@ -1,0 +1,40 @@
+$maxNum: 3;
+$defaultUnit: 1px;
+
+$property:(
+    (m, margin),
+    (mt, margin-top),
+    (mr, margin-right),
+    (mb, margin-bottom),
+    (ml, margin-left),
+    (p, padding),
+    (pt, padding-top),
+    (pr, padding-right),
+    (pb, padding-bottom),
+    (pl, padding-left),
+);
+
+@for $i from 1 through length($property) {
+    
+    $name: nth(nth($property, $i), 1);
+    $fullname: nth(nth($property, $i), 2);
+
+    @for $j from 1 through $maxNum {
+        .#{$name}#{$j} {
+            #{$fullname}: $j * $defaultUnit;
+        }
+    }
+}
+
+// @each $var in <list>
+$list: adam john wynn;
+@mixin author-images {
+    @each $author in $list {
+        .photo-#{$author} {
+            background: url("/images/avatars/#{$author}.png") no-repeat;
+        }
+    }
+}
+.author-bio {
+    @include author-images;
+}

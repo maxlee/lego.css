@@ -5,111 +5,117 @@
 <h4 align="center">Write CSS like LEGO</h4>
 <p>`lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。</p>
 
-## Todo
-- [ ] lego.layout.css
-- [ ] lego.color.css
-- [ ] lego.base.css
-
 ## 架构
 
 1. Naming
-    1. BEM
+   - [ ] HTML: BEM
+   - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU?xid=VxhtmBW0
+
+    | shortcut |       mean       | desc  |
+    | :------: | :--------------: | :---: |
+    |    m     |      margin      |   ✓   |
+    |    p     |     padding      |   ✓   |
+    |    w     |      width       |   ✓   |
+    |    h     |      height      |   ✓   |
+    |    nw    |    min-width     |   ✓   |
+    |    nh    |    min-height    |   ✓   |
+    |    mw    |    max-width     |   ✓   |
+    |    mh    |    max-height    |   ✓   |
+    |    t     |       top        |   ✓   |
+    |    r     |      right       |   ✓   |
+    |    b     |      bottom      |   ✓   |
+    |    l     |       left       |   ✓   |
+    |    x     |  left and right  |   ✓   |
+    |    y     |  top and bottom  |   ✓   |
+    |    d-    |     display      |   ✓   |
+    |    p-    |     position     |   ✓   |
+    |    c     |      color       |   ✓   |
+    |   h:?    |   ?:hover{...}   |   ✓   |
+    |   a:?    |  ?:active{...}   |   ✓   |
+    |   f:?    |   ?:focus{...}   |   ✓   |
+    |    ?!    | ?{...!important} |   ✓   |
 2. Reset
-    1. Normalize.css
+   - [x] Normalize.css
 3. Base
-    1. variable
-    2. mixins
-    3. color
-    4. icon
-    5. typography
-    6. layout
-    7. button
-    8. from
-    9. table
+   - [ ] _variable
+   - [ ] _mixins
+   - [ ] _color
+   - [ ] _icon
+   - [ ] _typography
+   - [ ] _layout
+   - [ ] _button
+   - [ ] _from
+   - [ ] _table
 4. Component
-    1. accordion
-    2. breadcrumb
-    3. card
-    4. switch
-    5. tab
-    6. dialog
+   - [ ] accordion
+   - [ ] breadcrumb
+   - [ ] card
+   - [ ] switch
+   - [ ] tab
+   - [ ] dialog
 5. Atomic
-   | shortcut |       mean       | desc  |
-   | :------: | :--------------: | :---: |
-   |    m     |      margin      |   ✓   |
-   |    p     |     padding      |   ✓   |
-   |    w     |      width       |   ✓   |
-   |    h     |      height      |   ✓   |
-   |    nw    |    min-width     |   ✓   |
-   |    nh    |    min-height    |   ✓   |
-   |    mw    |    max-width     |   ✓   |
-   |    mh    |    max-height    |   ✓   |
-   |    t     |       top        |   ✓   |
-   |    r     |      right       |   ✓   |
-   |    b     |      bottom      |   ✓   |
-   |    l     |       left       |   ✓   |
-   |    x     |  left and right  |       |
-   |    y     |  top and bottom  |       |
-   |    d     |     display      |       |
-   |    po    |     position     |       |
-   |    c     |      color       |   ✓   |
-   |   h:x    |    x:hover{}     |   ✓   |
-   |   a:x    |    x:active{}    |   ✓   |
-   |   f:x    |    x:focus{}     |   ✓   |
-   |    x!    | x{...!important} |   ✓   |
-    1. l-*{layout}
-       1. flex
-       2. grid
-    2. c-*{color}
-       1. color
-       2. background-color
-       3. border-color
-    3. t-*{text}
-        1. font
-        2. font-family
-        3. font-style
-        4. font-size
-        5. font-weight
-        6. text-align
-        7. line-height
-        8. justify-content
-        9. letter-spacing
-        10. word-spacing
-        11. outline
-        12. white-space
-        13. word-break
-        14. word-wrap
-    4. b-*{box}
-        1. display
-        2. box-sizing
-        3. width
-        4. height
-        5. min/max-
-        6. padding
-        7. border
-        8. margin
-    5. a-*{animate}
-        1. animate
-        2. transition
-        3. keyframe
-    6. e-*{element}
-        1. position
-        2. float
-        3. cursor
-        4. background-size
-        5. background-position: center
-        6. background-repeat: repeat-y|repeat-x|no-repeat
-        7. list-style-
-        8. z-index
-        9. overflow: auto|hidden
-        10. opacity
-        11. visibility
-        12. vertical-align
-     7. g-*{}
-     8. o-*{}
+   1. layout
+        - [ ] flex
+        - [ ] grid
+    2. color
+        - [x] color
+        - [x] background-color
+        - [x] border-color
+    3. font/text
+        - [ ] font
+        - [ ] font-family
+        - [x] font-style: normal|italic|oblique|inherit
+        - [x] font-size
+        - [x] font-weight
+        - [x] text-align: left|right|center|justify
+        - [x] line-height
+        - [ ] justify-content
+        - [x] letter-spacing
+        - [x] word-spacing
+        - [ ] outline
+        - [ ] white-space
+        - [ ] word-break: normal|break-all|keep-all
+        - [ ] word-wrap: normal|break-word
+        - [ ] text-indent
+        - [ ] text-justify
+        - [ ] text-overflow: clip|ellipsis
+    4. box
+        - [x] display: none|block|inline|inline-block|inherit
+        - [ ] box-sizing: content-box|border-box
+        - [x] width
+        - [x] height
+        - [x] min-width/height
+        - [x] max-width/height
+        - [x] padding
+        - [ ] border-width
+        - [x] margin
+    5. animate
+        - [ ] animate
+        - [ ] transition
+        - [ ] keyframe
+    6. element
+        - [x] position: absolute|fixed|relative|static|sticky
+        - [x] float: left|right|none|inherit
+        - [x] cursor: default|auto|pointer|move|text|wait|help
+        - [ ] background-size: length|cover|contain
+        - [ ] background-position: center
+        - [ ] background-repeat: repeat-y|repeat-x|no-repeat
+        - [ ] list-style-
+        - [x] z-index
+        - [x] overflow: auto|hidden|scroll|visible
+        - [x] opacity
+        - [x] visibility: hidden|visible
+        - [x] vertical-align: baseline|top|text-top|middle|bottom|text-bottom
+        - [x] resize: none|both|horizontal|vertical
 
 ## 使用方式
 
 1. HTML\<link\> + PurgeCSS 
 2. npm/yarn + PurgeCSS
 3. UnoCSS + rules
+
+## Fonts
+> https://github.com/zenozeng/fonts.css
+```
+ffh|ffk|ffs|fffs
+```

@@ -13,5 +13,11 @@ export default defineConfig({
        target: "modules",
         outDir: "dist",
         emptyOutDir: true,
+        rollupOptions: {
+            input: {
+                index: "./index.html",
+                layout: "layout/index.html",
+            },
+        },
     },
 });

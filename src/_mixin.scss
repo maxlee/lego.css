@@ -1,0 +1,49 @@
+// 混合器 @mixin 一次声明，@include 随处使用
+// unit($number) 获取单位
+@mixin border-radius($radius:50%) {
+    @if $radius <= 0 {
+        border-radius: 0;
+    } @else if (unit($radius) == "%") {
+        border-radius: $radius;
+    } @else if (unit($radius) == "px") {
+        border-radius: $radius;
+    } @else {
+        border-radius: $radius + "px";
+    }
+}
+// length($list) 获取列表长度
+@mixin box-shadow($shadow...) {
+    @if length($shadow) == 1 {
+        box-shadow: $shadow;
+    } @else {
+        box-shadow: join($shadow, ",");
+    }
+}
+ins {
+    @include border-radius();
+    @include border-radius(10%);
+    @include border-radius(10px);
+    @include border-radius(0);
+    @include border-radius(-10);
+    // @extend %clearfix;
+}
+@mixin phone {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin pad {
+    @media screen and (min-width: 769px) and (max-width: 1023px) {
+        @content;
+    }
+}
+@mixin desktop {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}
+@mixin full {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}

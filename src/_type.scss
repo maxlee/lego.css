@@ -1,0 +1,52 @@
+// 数据类型
+// 字符串 "hello" 'hello'
+// 数字 1 2.3 12px 50% 9a
+// 颜色 #fff #ffffff rgb(255, 0, 0) rgba(255, 0, 0, 0.5) red
+// 布尔值 true false
+// 空值 null
+// 列表/数组，用逗号或者空格分割 1, 2, 3 或者 1 2 3
+// map (key1: value1, key2: value2)
+// type-of($value) 获取数据类型
+
+// 二维数组 $list: (1 2 3, 4 5 6, 7 8 9)
+// nth($list, $n) 获取列表中的第 n 个值
+
+// 字符串函数
+// unquote($string) 去除引号
+// quote($string) 添加引号
+// str-length($string) 获取字符串长度
+// to-upper-case($string) 转换为大写
+// to-lower-case($string) 转换为小写
+// str-slice($string, $start-at, $end-at) 截取字符串
+// str-index($string, $substring) 获取子字符串的位置
+// str-insert($string, $insert, $index) 插入字符串
+// str-join($string1, $string2) 连接字符串
+// str-replace($string, $search, $replace) 替换字符串
+// str-contains($string, $substring) 判断是否包含子字符串
+// str-starts-with($string, $substring) 判断是否以子字符串开头
+// str-ends-with($string, $substring) 判断是否以子字符串结尾
+// str-unique($string) 去重
+// str-split($string, $separator) 分割字符串
+// str-nth($string, $index) 获取指定位置的字符
+
+
+// 列表函数
+// length($list) 获取列表长度
+// nth($list, $index) 获取指定位置的值
+// join($list1, $list2) 连接列表
+// append($list1, $val) 添加值
+// zip($list1, $list2) 合并列表
+// index($list, $value) 获取值的位置
+// list-separator($list) 获取列表分隔符
+
+// map-get 获取 map 中的值 map-get($map, $key)
+// map-merge 合并 map map-merge($map1, $map2)
+// map-remove 移除 map 中的某个键值对 map-remove($map, $key)
+// map-keys 获取 map 中的所有键 map-keys($map)
+// map-values 获取 map 中的所有值 map-values($map)
+// map-has-key 判断 map 中是否存在某个键 map-has-key($map, $key)
+// map-has-value 判断 map 中是否存在某个值 map-has-value($map, $value)
+// map-deep-merge 深度合并 map map-deep-merge($map1, $map2)
+// map-extend 扩展 map map-extend($map1, $map2)
+// map-to-list 将 map 转换为列表 map-to-list($map)
+// list-to-map 将列表转换为 map list-to-map($list)
