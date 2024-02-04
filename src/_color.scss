@@ -1,18 +1,22 @@
-%color-red {
-    color: #e6252a;
+$color-red: #e6252a;
+$color-green: #97c430;
+$color-blue: #4fadce;
+$color-yellow: #fae32f;
+$color-orange: #fe6915;
+$color-purple: #e4599c;
+
+.is-danger {
+    background-color: $color-red;
 }
-%color-green {
-    color: #97c430;
+.is-success {
+    background-color: $color-green;
 }
-%color-blue {
-    color: #4fadce;
+.is-info {
+    background-color: $color-blue;
 }
-%color-yellow {
-    color: #fae32f;
+.is-warning {
+    background-color: $color-yellow;
 }
-%color-orange {
-    color: #fe6915;
-}
-%color-purple {
-    color: #e4599c;
+.is-primary {
+    background-color: $color-orange;
 }

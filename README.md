@@ -50,8 +50,8 @@
    |    l     |       left       |   ✓   |
    |    x     |  left and right  |   ✓   |
    |    y     |  top and bottom  |   ✓   |
-   |    d     |     display      |       |
-   |    po    |     position     |       |
+   |    d     |     display      |   ✓   |
+   |    po    |     position     |   ✓   |
    |    c     |      color       |   ✓   |
    |   h:x    |    x:hover{}     |   ✓   |
    |   a:x    |    x:active{}    |   ✓   |
@@ -67,14 +67,14 @@
     3. t-*{text}
         1. font
         2. font-family
-        3. font-style: normal|italic|oblique|inherit
-        4. font-size
-        5. font-weight
-        6. text-align: left|right|center|justify
-        7. line-height
+        3. font-style: normal|italic|oblique|inherit ✓
+        4. font-size ✓
+        5. font-weight ✓
+        6. text-align: left|right|center|justify ✓
+        7. line-height ✓
         8. justify-content
-        9. letter-spacing
-        10. word-spacing
+        9. letter-spacing ✓
+        10. word-spacing  ✓
         11. outline
         12. white-space
         13. word-break: normal|break-all|keep-all
@@ -123,3 +123,6 @@
 ```
 ffhei|ffkai|ffsong|fffangsong
 ```
+
+## 命名原则
+https://xmind.ai/share/fZ0Oh0KU?xid=VxhtmBW0

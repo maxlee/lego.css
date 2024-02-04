@@ -20,7 +20,7 @@
         "a a m m m m m m m m m m"
         "f f f f f f f f f f f f";
 
-    @include mobile {
+    @include phone {
         grid-template-areas: 
             "h h h h h h h h h h h h"
             "m m m m m m m m m m m m"
@@ -57,18 +57,18 @@ header {
             background-color: #fff;
             margin-right: 5px ;
         }
-        > li:last-child {
+        > a:last-child {
             margin-left: auto;
         }
     }
-    @include mobile {
+    @include phone {
         h1{
             margin: 0 auto 10px;
         }
         flex-direction: column;
         nav {
             justify-content: center;
-            > li:nth-child(3){
+            > a:last-child{
                 margin-left: 0
             }
         }
@@ -90,9 +90,9 @@ aside {
     grid-area: a;
 }
 footer {
-    // grid-column: span 12;
+    grid-column: span 12;
 
-    grid-area: f;
+    // grid-area: f;
     padding: 10px;
     p {
         text-align: center;
