@@ -1,4 +1,4 @@
-// lego.unocss.ts
+// lego.unocss.js
 import { Preset } from 'unocss'
 
 // 定义属性映射
@@ -39,11 +39,16 @@ const propertyMap = {
 };
 
 // 定义一个函数来生成基于属性映射的规则
+/**
+ * @param {Object} map 属性映射
+ * @param {String} defaultUnit 默认单位
+ * @returns {Array} 规则数组
+ */
 function getRules(map, defaultUnit = 'px') {
     const rules = [];
     const propsRegexPart = Object.keys(map).join('|');
     // 定义不添加默认单位的关键字列表
-    const noDefaultUnitKeys = ['lh', 'zi', 'fw'];
+    const noDefaultUnitKeys = ['lh', 'zi', 'fw', 'op'];
 
     Object.keys(map).forEach(key => {
         const property = map[key];
@@ -131,6 +136,34 @@ const otherRules = [
     ['td-u', {'text-decoration': 'underline'}],
     ['td-o', {'text-decoration': 'overline'}],
     ['td-l', {'text-decoration': 'line-through'}],
+
+    ['r-n', {'resize': 'none'}],
+    ['r-b', {'resize': 'both'}],
+    ['r-v', {'resize': 'vertical'}],
+    ['r-h', {'resize': 'horizontal'}],
+
+    ['va-b',{'vertical-align': 'baseline'}],
+    ['va-t',{'vertical-align': 'top'}],
+    ['va-m',{'vertical-align': 'middle'}],
+    ['va-b',{'vertical-align': 'bottom'}],
+    ['va-tb',{'vertical-align': 'text-bottom'}],
+
+    ['c-d',{'cursor': 'default'}],
+    ['c-p',{'cursor': 'pointer'}],
+    ['c-m',{'cursor': 'move'}],
+    ['c-t',{'cursor': 'text'}],
+    ['c-h',{'cursor': 'help'}],
+
+    ['f-l',{'float': 'left'}],
+    ['f-r',{'float': 'right'}],
+    ['f-n',{'float': 'none'}],
+
+    ['tt-t', {'text-transform': 'none'}],
+    ['tt-u', {'text-transform': 'uppercase'}],
+    ['tt-l', {'text-transform': 'lowercase'}],
+    ['tt-c', {'text-transform': 'capitalize'}],
+
+
 ];
 
 export const legocss = {

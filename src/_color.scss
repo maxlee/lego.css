@@ -6,10 +6,10 @@ $color-orange: #fe6915;
 $color-purple: #e4599c;
 
 .is-danger {
-    background-color: $color-red;
+    background-color: $color-red !important;
 }
 .is-success {
-    background-color: $color-green;
+    background-color: $color-green !important;
 }
 .is-info {
     background-color: $color-blue;
