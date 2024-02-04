@@ -10,6 +10,7 @@
 1. Naming
    - [ ] HTML: BEM
    - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU?xid=VxhtmBW0
+
     | shortcut |       mean       | desc  |
     | :------: | :--------------: | :---: |
     |    m     |      margin      |   ✓   |
@@ -26,13 +27,13 @@
     |    l     |       left       |   ✓   |
     |    x     |  left and right  |   ✓   |
     |    y     |  top and bottom  |   ✓   |
-    |    d     |     display      |   ✓   |
-    |    po    |     position     |   ✓   |
+    |    d-    |     display      |   ✓   |
+    |    p-    |     position     |   ✓   |
     |    c     |      color       |   ✓   |
-    |   h:x    |    x:hover{}     |   ✓   |
-    |   a:x    |    x:active{}    |   ✓   |
-    |   f:x    |    x:focus{}     |   ✓   |
-    |    x!    | x{...!important} |   ✓   |
+    |   h:?    |   ?:hover{...}   |   ✓   |
+    |   a:?    |  ?:active{...}   |   ✓   |
+    |   f:?    |   ?:focus{...}   |   ✓   |
+    |    ?!    | ?{...!important} |   ✓   |
 2. Reset
    - [x] Normalize.css
 3. Base
@@ -83,9 +84,10 @@
         - [ ] box-sizing: content-box|border-box
         - [x] width
         - [x] height
-        - [x] min/max
+        - [x] min-width/height
+        - [x] max-width/height
         - [x] padding
-        - [ ] border
+        - [ ] border-width
         - [x] margin
     5. animate
         - [ ] animate
