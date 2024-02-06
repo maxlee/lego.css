@@ -37,7 +37,19 @@ const propertyMap = {
     'ti': 'text-indent',
     // 可以在这里继续添加更多属性对应关系
 };
-
+// 单独处理margin属性值的函数
+function parseMarginValues(value, defaultUnit = 'px') {
+    const parts = value.split('-').map(part => {
+        const match = part.match(/(\d+)(px|em|rem|vh|vw|%)?/);
+        if (match) {
+            const num = match[1];
+            const unit = match[2] || defaultUnit; // 如果未指定单位，则使用默认单位
+            return `${num}${unit}`;
+        }
+        return '';
+    }).join(' ');
+    return parts;
+}
 // 定义一个函数来生成基于属性映射的规则
 /**
  * @param {Object} map 属性映射
@@ -55,30 +67,46 @@ function getRules(map, defaultUnit = 'px') {
         // 更新正则表达式以同时匹配单位和!important标志
         const regex = new RegExp(`^(${key})([\\.\\d]+)(vw|vh|px|em|rem|%)?(!?)$`);
 
-        const rule = [regex, ([_, prop, num, unit, important]) => {
-            // 如果num为0，或者属性在不添加默认单位的关键字列表中且没有指定单位，则不添加任何单位
+        // 特殊处理margin属性
+        if (key === 'm') {
+            const regex = new RegExp(`^m((?:\\-?\\d+(?:px|em|rem|vh|vw|%)?)+)(!?)$`);
+            rules.push([regex, match => {
+                const values = match[1];
+                const important = match[2] === '!' ? ' !important' : '';
+                const marginValue = parseMarginValues(values, defaultUnit);
+                return { [property]: `${marginValue}${important}` };
+            }]);
 
-            if (num === '0' || (noDefaultUnitKeys.includes(prop) && !unit)) {
-                unit = ''; // 不使用默认单位
-            } else {
-                unit = unit || defaultUnit; // 使用捕获的单位或默认单位
-            }
-            important = important === '!' ? ' !important' : ''; // 确定是否需要!important标志
+        } else {
+            // 省略其他属性的处理逻辑...
 
-            if (Array.isArray(property)) {
-                // 处理属性数组，生成多个CSS属性规则
+            const rule = [regex, ([_, prop, num, unit, important]) => {
+                // 如果num为0，或者属性在不添加默认单位的关键字列表中且没有指定单位，则不添加任何单位
 
-                return property.reduce((acc, current) => {
-                    acc[current] = `${num}${unit}${important}`;
-                    return acc;
-                }, {});
-            } else {
-                // 处理单个属性
-                return { [property]: `${num}${unit}${important}` };
-            }
-        }];
+                if (num === '0' || (noDefaultUnitKeys.includes(prop) && !unit)) {
+                    unit = ''; // 不使用默认单位
+                } else {
+                    unit = unit || defaultUnit; // 使用捕获的单位或默认单位
+                }
+                important = important === '!' ? ' !important' : ''; // 确定是否需要!important标志
 
-        rules.push(rule);
+                if (Array.isArray(property)) {
+                    // 处理属性数组，生成多个CSS属性规则
+
+                    return property.reduce((acc, current) => {
+                        acc[current] = `${num}${unit}${important}`;
+                        return acc;
+                    }, {});
+                } else {
+                    // 处理单个属性
+                    return { [property]: `${num}${unit}${important}` };
+                }
+            }];
+
+            rules.push(rule);
+
+        }
+
     });
 
     return rules;
