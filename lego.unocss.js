@@ -22,24 +22,6 @@ function parseBoxModelValues(values, defaultUnit, property) {
     }).join(' ');
     return { [property]: parts };
 }
-const preprocessHoverRules = (prop) => {
-    // 如果 prop 是 undefined 或者不以 'h:' 开头，直接返回 prop
-    if (!prop || !prop.startsWith('h:')) {
-        return [prop];
-    }
-
-    // 去掉 'h:' 前缀
-    const hoverProp = prop.slice(2);
-
-    // 如果 hoverProp 包含 '+'
-    if (hoverProp.includes('+')) {
-        // 使用 '+' 分割 hoverProp，然后对每个部分添加 'h:' 前缀
-        return hoverProp.split('+').map(part => `h:${part}`);
-    }
-
-    // 如果 hoverProp 不包含 '+'
-    return [`h:${hoverProp}`];
-};
 // 定义一个函数来生成基于属性映射的规则
 /**
  * @param {Object} map 属性映射
@@ -50,7 +32,6 @@ function getRules(map, defaultUnit = 'px') {
     const rules = [];
     const propsRegexPart = Object.keys(map).join('|');
     // 定义不添加默认单位的关键字列表
-    console.log("lego.unocss.js: "+propsRegexPart);
     const noDefaultUnitKeys = ['lh', 'zi', 'fw', 'op'];
 
     Object.keys(map).forEach(key => {
