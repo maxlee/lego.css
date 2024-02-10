@@ -34,8 +34,11 @@
     |         p-          |     position     |   ✓   |
     |          c          |      color       |   ✓   |
     |         h:?         |   ?:hover{...}   |   ✓   |
+    |       h:(? ?)       | ...?:hover{...}  |   ✓   |
     |         a:?         |  ?:active{...}   |   ✓   |
+    |       a:(? ?)       | ...?:active{...} |   ✓   |
     |         f:?         |   ?:focus{...}   |   ✓   |
+    |       f:(? ?)       | ...?:focus{...}  |   ✓   |
     |         ?!          | ?{...!important} |   ✓   |
 2. Reset
    - [x] Normalize.css
@@ -140,5 +143,5 @@
 ## Fonts
 > https://github.com/zenozeng/fonts.css
 ```
-ffh|ffk|ffs|fffs
+ff-h|ff-k|ff-s|ff-fs
 ```

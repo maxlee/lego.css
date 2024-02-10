@@ -1,7 +1,7 @@
 {
   "name": "lego.css",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.210.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,6 @@
   },
   "devDependencies": {
     "@esbuild/darwin-arm64": "^0.20.0",
-    "@unocss/transformer-variant-group": "^0.58.5",
     "sass": "^1.70.0",
     "unocss": "^0.58.5",
     "vite": "^5.1.0"

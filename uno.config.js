@@ -1,6 +1,6 @@
 import { defineConfig, presetAttributify, presetUno } from 'unocss'
 import {legocss} from './lego.unocss'
-import transformerVariantGroup from '@unocss/transformer-variant-group'
+import transformerVariantGroup from './src/js/transformer-variant-group'
 
 export default defineConfig({
   // ...UnoCSS options
@@ -10,6 +10,6 @@ export default defineConfig({
         legocss,
     ],
     transformers: [
-      transformerVariantGroup(),
-    ],
+      transformerVariantGroup()
+    ]
 })
