@@ -69,30 +69,30 @@
         - [x] border-color → bc
     3. font/text
         - [ ] font
-        - [ ] font-family → ff-k|h|s|fs
+        - [x] font-family → ff-k|h|s|fs
         - [x] font-style → fs-normal|italic|oblique|initial|inherit
         - [x] font-size → fs
-        - [ ] font-variant → fv-normal|small-caps|initial|inherit
+        - [x] font-variant → fv-normal|small-caps|initial|inherit
         - [x] font-weight → fw
-        - [ ] direction → dir-ltr|rtl|initial|inherit
-        - [ ] unicode-bidi → normal|embed|bidi-override|initial|inherit
+        - [x] direction → dir-ltr|rtl|initial|inherit
+        - [x] unicode-bidi → normal|embed|bidi-override|initial|inherit
         - [x] line-height → lh
         - [x] letter-spacing → ls
         - [x] word-spacing → ws
         - [x] text-align → ta-left|right|center|justify|inherit
         - [ ] text-decoration → td-text-decoration-line text-decoration-color text-decoration-style text-decoration-thickness|initial|inherit;
         - [ ] text-indent → ti
-        - [ ] text-shadow
-        - [ ] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
-        - [ ] white-space → normal|nowrap|pre|pre-line|pre-wrap|initial|inherit
+        - [ ] text-shadow → ts
+        - [x] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
+        - [x] white-space → normal|nowrap|pre|pre-line|pre-wrap|initial|inherit
         - [ ] justify-content → jc-
         - [ ] outline
-        - [ ] word-break → wb-normal|break-all|keep-all
-        - [ ] word-wrap → ww-normal|break-word
-        - [ ] text-justify → tj-auto|inter-word|inter-ideograph|inter-cluster|distribute|kashida|trim
-        - [ ] text-overflow → clip|ellipsis|string
-        - [ ] writing-mode → wm-horizontal-tb|vertical-rl|vertical-lr
-        - [ ] user-select → auto|none|text|all
+        - [x] word-break → wb-normal|break-all|keep-all
+        - [x] word-wrap → ww-normal|break-word
+        - [x] text-justify → tj-auto|inter-word|inter-ideograph|inter-cluster|distribute|kashida|trim
+        - [x] text-overflow → clip|ellipsis|string
+        - [x] writing-mode → wm-horizontal-tb|vertical-rl|vertical-lr
+        - [x] user-select → auto|none|text|all
     4. box
         - [x] display → d-none|block|inline|inline-block|inherit
         - [x] box-sizing → bs-content-box|border-box

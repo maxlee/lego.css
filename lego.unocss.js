@@ -2,6 +2,7 @@
 import { Preset } from 'unocss'
 import { propertyMap } from './src/js/propertyMap.js'
 import { otherRules } from './src/js/otherRules.js'
+import { colorRules } from './src/js/colorRules.js'
 
 // 单独处理margin/padding属性值的函数
 /**
@@ -91,11 +92,11 @@ export const legocss = {
 
         ...getRules(propertyMap),
         ...otherRules,
+        ...colorRules,
+        // 实现一个规则，当用户可以输入`ts:5-2-4-000` 来设置text-shadow的值为`5px 2px 4px #000`，其中如果第三个值为空，则默认为0, 如果第四个颜色值为空，则默认为 #000
+        [/^ts:(-?[0-9]+)-(-?[0-9]+)(?:-([0-9]+))?(?:-([0-9a-fA-F]{3,6}))?$/, ([_, x, y, blur, color]) => ({ 'text-shadow': `${x}px ${y}px ${blur ? blur + 'px' : '0'} ${color ? '#' + color : '#000'}` })],
+
         
-        // 颜色相关规则
-        [/^c([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(!?)$/, ([_, color, i]) => ({ 'color': `#${color} ${i ? '!important' : ''}` })],
-        [/^bgc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'background-color': `#${color} ${i ? '!important' : ''}` })],
-        [/^bc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'border-color': `#${color} ${i ? '!important' : ''}` })],
 
     ],
     variants: [
