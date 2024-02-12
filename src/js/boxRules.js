@@ -29,4 +29,6 @@ export const boxRules = [
     ['bds-o', {'border-style':'outset'}],
 
     ['bd-n', {'border':'0 none'}],
+
+    [/^bc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'border-color': `#${color} ${i ? '!important' : ''}` })],
 ]

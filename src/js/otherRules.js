@@ -1,9 +1,11 @@
 import {boxRules} from './boxRules';
 import {textRules} from './textRules';
+import {backgroundRules} from './backgroundRules';
 
 export const otherRules = [
     ...boxRules,
     ...textRules,
+    ...backgroundRules,
 
     ['o-h', { overflow: 'hidden' }],
     ['o-v', { overflow: 'visible' }],

@@ -115,8 +115,10 @@
         - [x] position → p-absolute|fixed|relative|static|sticky
         - [x] float → f-left|right|none|inherit
         - [x] cursor → c-default|auto|pointer|move|text|wait|help
+        - [ ] background
+        - [ ] background-attachment → ba-fixed|local|scroll
         - [ ] background-size → bs-length|cover|contain
-        - [ ] background-position → bp-center
+        - [ ] background-position → bp-center|top|right|bottom|right
         - [ ] background-repeat → br-repeat-y|repeat-x|no-repeat
         - [ ] background-image → bi[url]
         - [x] overflow → o-auto|hidden|scroll|visible
