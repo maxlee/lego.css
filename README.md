@@ -103,8 +103,8 @@
         - [x] max-width → mw
         - [x] max-height → mh
         - [x] padding → p
-        - [ ] border
-        - [ ] border-style → bds-none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit
+        - [x] border
+        - [x] border-style → bds-none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit
         - [x] border-width → bw
         - [x] margin → m
     5. animate
