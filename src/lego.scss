@@ -1,9 +1,9 @@
-@use "normalize";
-@use "for";
-@use "mixin";
-@use "func";
-@use "color";
-@use "button";
+@use "./scss/normalize";
+@use "./scss/for";
+@use "./scss/mixin";
+@use "./scss/func";
+@use "./scss/color";
+@use "./scss/button";
 body {
     font-size: 16px;
     font-family: "Arial", sans-serif;

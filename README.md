@@ -11,29 +11,35 @@
    - [ ] HTML: BEM
    - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU?xid=VxhtmBW0
 
-    | shortcut |       mean       | desc  |
-    | :------: | :--------------: | :---: |
-    |    m     |      margin      |   ✓   |
-    |    p     |     padding      |   ✓   |
-    |    w     |      width       |   ✓   |
-    |    h     |      height      |   ✓   |
-    |    nw    |    min-width     |   ✓   |
-    |    nh    |    min-height    |   ✓   |
-    |    mw    |    max-width     |   ✓   |
-    |    mh    |    max-height    |   ✓   |
-    |    t     |       top        |   ✓   |
-    |    r     |      right       |   ✓   |
-    |    b     |      bottom      |   ✓   |
-    |    l     |       left       |   ✓   |
-    |    x     |  left and right  |   ✓   |
-    |    y     |  top and bottom  |   ✓   |
-    |    d-    |     display      |   ✓   |
-    |    p-    |     position     |   ✓   |
-    |    c     |      color       |   ✓   |
-    |   h:?    |   ?:hover{...}   |   ✓   |
-    |   a:?    |  ?:active{...}   |   ✓   |
-    |   f:?    |   ?:focus{...}   |   ✓   |
-    |    ?!    | ?{...!important} |   ✓   |
+    |      shortcut       |       mean       | desc  |
+    | :-----------------: | :--------------: | :---: |
+    |          m          |      margin      |   ✓   |
+    |      m{y}\|{x}      |      margin      |   ✓   |
+    |   m{t}\|{x}\|{b}    |      margin      |   ✓   |
+    | m{t}\|{r}\|{b}\|{l} |      margin      |   ✓   |
+    |          p          |     padding      |   ✓   |
+    |          w          |      width       |   ✓   |
+    |          h          |      height      |   ✓   |
+    |         nw          |    min-width     |   ✓   |
+    |         nh          |    min-height    |   ✓   |
+    |         mw          |    max-width     |   ✓   |
+    |         mh          |    max-height    |   ✓   |
+    |          t          |       top        |   ✓   |
+    |          r          |      right       |   ✓   |
+    |          b          |      bottom      |   ✓   |
+    |          l          |       left       |   ✓   |
+    |          x          |  left and right  |   ✓   |
+    |          y          |  top and bottom  |   ✓   |
+    |         d-          |     display      |   ✓   |
+    |         p-          |     position     |   ✓   |
+    |          c          |      color       |   ✓   |
+    |         h:?         |   ?:hover{...}   |   ✓   |
+    |       h:(? ?)       | ...?:hover{...}  |   ✓   |
+    |         a:?         |  ?:active{...}   |   ✓   |
+    |       a:(? ?)       | ...?:active{...} |   ✓   |
+    |         f:?         |   ?:focus{...}   |   ✓   |
+    |       f:(? ?)       | ...?:focus{...}  |   ✓   |
+    |         ?!          | ?{...!important} |   ✓   |
 2. Reset
    - [x] Normalize.css
 3. Base
@@ -58,55 +64,77 @@
         - [ ] flex
         - [ ] grid
     2. color
-        - [x] color
-        - [x] background-color
-        - [x] border-color
+        - [x] color → c
+        - [x] background-color → bgc
+        - [x] border-color → bc
     3. font/text
         - [ ] font
-        - [ ] font-family
-        - [x] font-style: normal|italic|oblique|inherit
-        - [x] font-size
-        - [x] font-weight
-        - [x] text-align: left|right|center|justify
-        - [x] line-height
-        - [ ] justify-content
-        - [x] letter-spacing
-        - [x] word-spacing
-        - [ ] outline
-        - [ ] white-space
-        - [ ] word-break: normal|break-all|keep-all
-        - [ ] word-wrap: normal|break-word
-        - [ ] text-indent
-        - [ ] text-justify
-        - [ ] text-overflow: clip|ellipsis
+        - [x] font-family → ff-k|h|s|fs
+        - [x] font-style → fs-normal|italic|oblique|initial|inherit
+        - [x] font-size → fs
+        - [x] font-variant → fv-normal|small-caps|initial|inherit
+        - [x] font-weight → fw
+        - [x] direction → dir-ltr|rtl|initial|inherit
+        - [x] unicode-bidi → normal|embed|bidi-override|initial|inherit
+        - [x] line-height → lh
+        - [x] letter-spacing → ls
+        - [x] word-spacing → ws
+        - [x] text-align → ta-left|right|center|justify|inherit
+        - [ ] text-decoration → td-text-decoration-line text-decoration-color text-decoration-style text-decoration-thickness|initial|inherit;
+        - [x] text-indent → ti
+        - [x] text-shadow → ts:
+        - [x] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
+        - [x] white-space → normal|nowrap|pre|pre-line|pre-wrap|initial|inherit
+        - [ ] justify-content → jc-
+        - [x] outline
+        - [x] word-break → wb-normal|break-all|keep-all
+        - [x] word-wrap → ww-normal|break-word
+        - [x] text-justify → tj-auto|inter-word|inter-ideograph|inter-cluster|distribute|kashida|trim
+        - [x] text-overflow → clip|ellipsis|string
+        - [x] writing-mode → wm-horizontal-tb|vertical-rl|vertical-lr
+        - [x] user-select → auto|none|text|all
     4. box
-        - [x] display: none|block|inline|inline-block|inherit
-        - [ ] box-sizing: content-box|border-box
-        - [x] width
-        - [x] height
-        - [x] min-width/height
-        - [x] max-width/height
-        - [x] padding
-        - [ ] border-width
-        - [x] margin
+        - [x] display → d-none|block|inline|inline-block|inherit
+        - [x] box-sizing → bs-content-box|border-box
+        - [x] width → w
+        - [x] height → h
+        - [x] min-width → nw
+        - [x] min-height → nh
+        - [x] max-width → mw
+        - [x] max-height → mh
+        - [x] padding → p
+        - [x] border
+        - [x] border-style → bds-none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit
+        - [x] border-width → bw
+        - [x] margin → m
     5. animate
         - [ ] animate
         - [ ] transition
         - [ ] keyframe
     6. element
-        - [x] position: absolute|fixed|relative|static|sticky
-        - [x] float: left|right|none|inherit
-        - [x] cursor: default|auto|pointer|move|text|wait|help
-        - [ ] background-size: length|cover|contain
-        - [ ] background-position: center
-        - [ ] background-repeat: repeat-y|repeat-x|no-repeat
-        - [ ] list-style-
-        - [x] z-index
-        - [x] overflow: auto|hidden|scroll|visible
-        - [x] opacity
-        - [x] visibility: hidden|visible
-        - [x] vertical-align: baseline|top|text-top|middle|bottom|text-bottom
-        - [x] resize: none|both|horizontal|vertical
+        - [x] position → p-absolute|fixed|relative|static|sticky
+        - [x] float → f-left|right|none|inherit
+        - [x] cursor → c-default|auto|pointer|move|text|wait|help
+        - [ ] background
+        - [x] background-attachment → ba-fixed|local|scroll
+        - [x] background-size → bs-length|cover|contain
+        - [x] background-position → bp-center|top|right|bottom|right
+        - [x] background-repeat → br-repeat-y|repeat-x|no-repeat
+        - [x] background-image → bgi(url)
+        - [x] overflow → o-auto|hidden|scroll|visible
+        - [x] overflow-x → ox-auto|hidden|scroll|visible
+        - [x] overflow-y → oy-auto|hidden|scroll|visible
+        - [x] opacity → o
+        - [x] visibility → v-hidden|visible
+        - [x] vertical-align → va-baseline|top|text-top|middle|bottom|text-bottom
+        - [x] resize → r-none|both|horizontal|vertical
+        - [x] z-index → zi
+    7. list
+        - [ ] list-style
+        - [ ] list-style-image
+        - [ ] list-style-position
+        - [ ] list-style-type
+        - [ ] marker-offset
 
 ## 使用方式
 
@@ -117,5 +145,5 @@
 ## Fonts
 > https://github.com/zenozeng/fonts.css
 ```
-ffh|ffk|ffs|fffs
+ff-h|ff-k|ff-s|ff-fs
 ```
