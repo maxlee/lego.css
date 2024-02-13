@@ -1,48 +1,57 @@
 export const borderRules = [
 
     [
-        /^bd:(\d+)(?:-(\w+))?(?:-(\w{3,6}|\w+))?$/,
-        ([_, width, styleOrColor, color]) => {
-            let style = 'solid'; // 默认样式
-            let finalColor = '#000'; // 默认颜色
+        /^(bd|ol|bdb|bdt|bdl|bdr):(\d+)(?:-(\w+))?(?:-(\w{3,6}|\w+))?$/,
+        ([_, type, width, styleOrColor, color]) => {
             const widthInt = parseInt(width, 10);
-            // 定义有效的边框样式列表
-            const validStyles = ['solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset'];
-
-            // 常见的CSS颜色名词
-            const colorNames = ['red', 'green', 'blue', 'black', 'white', 'gray', 'yellow', 'purple', 'orange'];
-            // 宽度范围限制，例如，1到20像素
             if (isNaN(widthInt) || widthInt < 1 || widthInt > 20) {
-                return { error: 'Invalid width. Width must be between 1 and 20.' };
+                return { error: `Invalid width. Width must be between 1 and 20.` };
             }
 
-            // 判断styleOrColor是样式、颜色代码还是颜色名词
-            if (styleOrColor) {
-                if (validStyles.includes(styleOrColor)) {
-                    // 如果是有效样式，则直接使用
-                    style = styleOrColor;
-                } else if (/^[0-9a-fA-F]{3,6}$/.test(styleOrColor) || colorNames.includes(styleOrColor.toLowerCase())) {
-                    // 如果符合颜色代码格式或是有效的颜色名词，则作为颜色处理
-                    finalColor = colorNames.includes(styleOrColor.toLowerCase()) ? styleOrColor : '#' + styleOrColor;
-                } else {
-                    // 非有效样式、颜色代码也不是颜色名词，返回错误
-                    return { error: 'Invalid style or color.' };
-                }
+            // 映射简写到完整CSS属性
+            const propertyMap = {
+                'bd': 'border',
+                'ol': 'outline',
+                'bdb': 'border-bottom',
+                'bdt': 'border-top',
+                'bdl': 'border-left',
+                'bdr': 'border-right'
+            };
+            const property = propertyMap[type];
+
+            // 样式的缩写映射
+            const styleShortcuts = {
+                's': 'solid',
+                'ds': 'dashed',
+                'dt': 'dotted',
+                'db': 'double',
+                'g': 'groove',
+                'r': 'ridge',
+                'i': 'inset',
+                'o': 'outset'
+            };
+            const validStyles = Object.values(styleShortcuts).concat(Object.keys(styleShortcuts));
+
+            // 尝试将输入转换为完整样式
+            let style = styleShortcuts[styleOrColor] || styleOrColor;
+            if (!validStyles.includes(style)) {
+                // 如果styleOrColor不是有效的样式，则尝试将其视为颜色
+                style = 'solid'; // 重置为默认样式，仅当后续颜色验证失败时返回错误
             }
 
-            // 如果指定了颜色参数，并且它是有效的颜色代码或颜色名词
-            if (color && (/^[0-9a-fA-F]{3,6}$/.test(color) || colorNames.includes(color.toLowerCase()))) {
-                finalColor = colorNames.includes(color.toLowerCase()) ? color : '#' + color;
-            } else if (color) {
-                // 颜色参数存在但不是有效颜色代码也不是颜色名词
-                return { error: 'Invalid color code or name.' };
+            // 处理颜色
+            const colorNames = ['red', 'green', 'blue', 'black', 'white', 'gray', 'yellow', 'purple', 'orange'];
+            let finalColor = '#000'; // 默认颜色
+            let potentialColor = color || styleOrColor;
+            if (colorNames.includes(potentialColor.toLowerCase()) || /^[0-9a-fA-F]{3,6}$/.test(potentialColor)) {
+                finalColor = colorNames.includes(potentialColor.toLowerCase()) ? potentialColor : '#' + potentialColor;
+            } else if (potentialColor && potentialColor !== 'solid') {
+                // 如果非默认样式且不是有效颜色，则返回错误
+                return { error: `Invalid style or color: '${potentialColor}'.` };
             }
 
-            // 返回CSS规则
-            return { 'border': `${width}px ${style} ${finalColor}` };
+            return { [property]: `${width}px ${style} ${finalColor}`.trim() };
         }
     ],
-
-
 
 ]

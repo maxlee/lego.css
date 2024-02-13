@@ -5,28 +5,35 @@ export default function transformerVariantGroup(options = {}) {
         name: 'transformerVariantGroup',
         enforce: 'pre',
         transform(s) {
-            // 预处理类名
-            s = s.replace(/h:\((.*?)\)/g, (match, group) => {
-                return group.split(' ').map(item => 'h:' + item).join(' ')
-            })
+            s = s.replace(/(h|a|f):\((.*?)\)/g, (match, prefix, group) => {
+                // 匹配方括号内的内容以及前面可能存在的类名
+                const parts = group.match(/([^ \[]+\[[^\]]+\])|([^ ]+!?)/g) || [];
+                return parts.map(part => {
+                    // 如果部分匹配到类名和方括号内的内容
+                    if (/\[.*\]/.test(part)) {
+                        // 分离类名和方括号内的内容
+                        const [fullMatch, className, bracketContent] = part.match(/([^ \[]+)(\[[^\]]+\])/);
+                        // 去除方括号，并将方括号内的空格替换为破折号
+                        const contentWithoutBrackets = bracketContent.slice(1, -1).replace(/\s+/g, '-');
+                        return `${prefix}:${className}:${contentWithoutBrackets}`;
+                    }
+                    // 对于非方括号内的内容，直接添加前缀
+                    return `${prefix}:${part}`;
+                }).join(' ');
+            });
 
-            // 增加支持 a: 和 f:
-            s = s.replace(/a:\((.*?)\)/g, (match, group) => {
-                return group.split(' ').map(item => 'a:' + item).join(' ')
-            })
-
-            s = s.replace(/f:\((.*?)\)/g, (match, group) => {
-                return group.split(' ').map(item => 'f:' + item).join(' ')
-            })
-
-            const result = parseVariantGroup(s, options.separators)
+            const result = parseVariantGroup ? parseVariantGroup(s, options.separators) : null;
 
             return {
                 get highlightAnnotations() {
-                    return [...result.groupsByOffset.values()].flatMap(group => group.items)
+                    return result ? [...result.groupsByOffset.values()].flatMap(group => group.items) : [];
                 },
-            }
+            };
         },
-    }
+    };
 }
+
+
+
+
 // CSS 伪类https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes

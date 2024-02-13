@@ -22,7 +22,8 @@ export const backgroundRules = [
     ['bgs-y', { 'background-size':'auto 100%'}],
     ['bgs-xy', { 'background-size':'100% 100%'}],
 
-    [/^bgi-(.+)$/, ([_, url]) => ({ 'background-image': `url('${url}')` })], 
-    
+    // 实现一个规则，当用户可以输入`bgi(image.jpg)` 来设置 background-image 的值为`url('image.jpg')`
+    [/^bgi\((.*?)\)$/, ([_, url]) => ({ 'background-image': `url('${url}')` })],
+
     [/^bgc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'background-color': `#${color} ${i ? '!important' : ''}` })],
 ]

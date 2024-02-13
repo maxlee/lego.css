@@ -81,12 +81,12 @@
         - [x] word-spacing → ws
         - [x] text-align → ta-left|right|center|justify|inherit
         - [ ] text-decoration → td-text-decoration-line text-decoration-color text-decoration-style text-decoration-thickness|initial|inherit;
-        - [ ] text-indent → ti
-        - [ ] text-shadow → ts
+        - [x] text-indent → ti
+        - [x] text-shadow → ts:
         - [x] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
         - [x] white-space → normal|nowrap|pre|pre-line|pre-wrap|initial|inherit
         - [ ] justify-content → jc-
-        - [ ] outline
+        - [x] outline
         - [x] word-break → wb-normal|break-all|keep-all
         - [x] word-wrap → ww-normal|break-word
         - [x] text-justify → tj-auto|inter-word|inter-ideograph|inter-cluster|distribute|kashida|trim
@@ -116,11 +116,11 @@
         - [x] float → f-left|right|none|inherit
         - [x] cursor → c-default|auto|pointer|move|text|wait|help
         - [ ] background
-        - [ ] background-attachment → ba-fixed|local|scroll
-        - [ ] background-size → bs-length|cover|contain
-        - [ ] background-position → bp-center|top|right|bottom|right
-        - [ ] background-repeat → br-repeat-y|repeat-x|no-repeat
-        - [ ] background-image → bi[url]
+        - [x] background-attachment → ba-fixed|local|scroll
+        - [x] background-size → bs-length|cover|contain
+        - [x] background-position → bp-center|top|right|bottom|right
+        - [x] background-repeat → br-repeat-y|repeat-x|no-repeat
+        - [x] background-image → bgi(url)
         - [x] overflow → o-auto|hidden|scroll|visible
         - [x] overflow-x → ox-auto|hidden|scroll|visible
         - [x] overflow-y → oy-auto|hidden|scroll|visible

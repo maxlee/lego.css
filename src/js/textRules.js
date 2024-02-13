@@ -111,4 +111,7 @@ export const textRules = [
     ['us-t', {'user-select': 'text'}],
     ['us-all', {'user-select': 'all'}],
 
+    // 实现一个规则，当用户可以输入`ts:5-2-4-000` 来设置text-shadow的值为`5px 2px 4px #000`，其中如果第三个值为空，则默认为0, 如果第四个颜色值为空，则默认为 #000
+    [/^ts:(-?[0-9]+)-(-?[0-9]+)(?:-([0-9]+))?(?:-([0-9a-fA-F]{3,6}))?$/, ([_, x, y, blur, color]) => ({ 'text-shadow': `${x}px ${y}px ${blur ? blur + 'px' : '0'} ${color ? '#' + color : '#000'}` })],  
+
 ]
