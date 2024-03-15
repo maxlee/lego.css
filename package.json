@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@esbuild/darwin-x64": "^0.20.0",
-    "sass": "^1.70.0",
-    "unocss": "^0.58.5",
-    "vite": "^5.1.1"
+    "@esbuild/darwin-arm64": "^0.20.0",
+    "sass": "^1.72.0",
+    "unocss": "^0.58.6",
+    "vite": "^5.1.6"
   }
 }

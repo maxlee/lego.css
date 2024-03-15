@@ -9,7 +9,7 @@
 
 1. Naming
    - [ ] HTML: BEM
-   - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU?xid=VxhtmBW0
+   - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU
 
     |      shortcut       |       mean       | desc  |
     | :-----------------: | :--------------: | :---: |
@@ -20,6 +20,7 @@
     |          p          |     padding      |   ✓   |
     |          w          |      width       |   ✓   |
     |          h          |      height      |   ✓   |
+    |          s          |   width&height   |   ✓   |
     |         nw          |    min-width     |   ✓   |
     |         nh          |    min-height    |   ✓   |
     |         mw          |    max-width     |   ✓   |
@@ -60,14 +61,23 @@
    - [ ] tab
    - [ ] dialog
 5. Atomic
-   1. layout
-        - [ ] flex
-        - [ ] grid
-    2. color
+    1. flex
+        - [ ] flex-direction → fd-row|row-reverse|column|column-reverse
+        - [ ] flex-wrap → fw-nowrap|wrap|wrap-reverse
+        - [ ] flex-flow → ff[flex-direction flex-wrap]
+        - [ ] justify-content → jc-flex-start|flex-end|center|space-around|space-between|space-evenly
+        - [ ] align-items → ai-stretch|flex-start|flex-end|center|baseline
+        - [ ] align-content → ac-stretch|flex-start|flex-end|center|space-around|space-between
+        - [ ] order → o
+        - [ ] flex → flex[flex-grow flex-shrink flex-basis]
+        - [ ] align-self → as-auto|flex-start|flex-end|center|baseline|stretch
+    2. grid
+        - [ ] 
+    3. color
         - [x] color → c
         - [x] background-color → bgc
         - [x] border-color → bc
-    3. font/text
+    4. font/text
         - [ ] font
         - [x] font-family → ff-k|h|s|fs
         - [x] font-style → fs-normal|italic|oblique|initial|inherit
@@ -86,14 +96,13 @@
         - [x] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
         - [x] white-space → normal|nowrap|pre|pre-line|pre-wrap|initial|inherit
         - [ ] justify-content → jc-
-        - [x] outline
         - [x] word-break → wb-normal|break-all|keep-all
         - [x] word-wrap → ww-normal|break-word
         - [x] text-justify → tj-auto|inter-word|inter-ideograph|inter-cluster|distribute|kashida|trim
         - [x] text-overflow → clip|ellipsis|string
         - [x] writing-mode → wm-horizontal-tb|vertical-rl|vertical-lr
         - [x] user-select → auto|none|text|all
-    4. box
+    5. box
         - [x] display → d-none|block|inline|inline-block|inherit
         - [x] box-sizing → bs-content-box|border-box
         - [x] width → w
@@ -103,15 +112,20 @@
         - [x] max-width → mw
         - [x] max-height → mh
         - [x] padding → p
-        - [x] border
+        - [x] margin → m
+        - [x] border → bd:
+        - [x] border-top → bdt:
+        - [x] border-right → bdr:
+        - [x] border-bottom → bdb:
+        - [x] border-left → bdl:
         - [x] border-style → bds-none|hidden|dotted|dashed|solid|double|groove|ridge|inset|outset|initial|inherit
         - [x] border-width → bw
-        - [x] margin → m
-    5. animate
+        - [x] outline → ol:
+    6. animate
         - [ ] animate
         - [ ] transition
         - [ ] keyframe
-    6. element
+    7. element
         - [x] position → p-absolute|fixed|relative|static|sticky
         - [x] float → f-left|right|none|inherit
         - [x] cursor → c-default|auto|pointer|move|text|wait|help
@@ -129,11 +143,11 @@
         - [x] vertical-align → va-baseline|top|text-top|middle|bottom|text-bottom
         - [x] resize → r-none|both|horizontal|vertical
         - [x] z-index → zi
-    7. list
-        - [ ] list-style
-        - [ ] list-style-image
-        - [ ] list-style-position
-        - [ ] list-style-type
+    8. list
+        - [ ] list-style → ls
+        - [ ] list-style-image → lsi()
+        - [ ] list-style-position → lsp-inside|outside
+        - [ ] list-style-type → lst-none|disc|circle|square
         - [ ] marker-offset
 
 ## 使用方式

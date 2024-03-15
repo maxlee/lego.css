@@ -13,17 +13,20 @@ import { textDecorationRules } from './src/js/textDecorationRules.js'
  * @returns {Object} CSS属性值对象
  */
 function parseBoxModelValues(values, defaultUnit, property) {
-    const parts = values.split('|').map(part => {
+    // 使用正则表达式直接匹配数字及其后跟的可选单位，同时支持"|"和"-"作为分隔符
+    const parts = values.split(/[\|-]/).map(part => {
         const match = part.match(/(\d+)(px|em|rem|vh|vw|%)?/);
+        // 如果匹配成功，则使用捕获的数字和单位（如果未指定单位，则使用默认单位）
         if (match) {
-            const num = match[1];
-            const unit = match[2] || defaultUnit;
+            const [, num, unit = defaultUnit] = match; // 使用解构赋值简化变量赋值
             return `${num}${unit}`;
         }
         return '';
-    }).join(' ');
+    }).filter(Boolean).join(' '); // 使用filter(Boolean)移除空字符串，然后用空格连接各部分
+
     return { [property]: parts };
 }
+
 // 定义一个函数来生成基于属性映射的规则
 /**
  * @param {Object} map 属性映射
@@ -32,60 +35,47 @@ function parseBoxModelValues(values, defaultUnit, property) {
  */
 function getRules(map, defaultUnit = 'px') {
     const rules = [];
-    const propsRegexPart = Object.keys(map).join('|');
-    // 定义不添加默认单位的关键字列表
-    const noDefaultUnitKeys = ['lh', 'zi', 'fw', 'op'];
+    const noDefaultUnitKeys = ['lh', 'zi', 'fw', 'op']; // 不添加默认单位的关键字列表
 
     Object.keys(map).forEach(key => {
-
         const property = map[key];
-        // 更新正则表达式以同时匹配单位和!important标志
-        const regex = new RegExp(`^(${key})([\\.\\d]+)(vw|vh|px|em|rem|%)?(!?)$`);
-
         if (key === 'm' || key === 'p') {
-            // 使用新的正则表达式匹配 margin 或 padding 的值
-            const boxModelRegex = new RegExp(`^(${key})((?:\\|?\\d+(?:px|em|rem|vh|vw|%)?)+)(!?)$`);
+            // 对于 margin 和 padding 的特殊处理
+            const boxModelRegex = new RegExp(`^(${key})((?:[\\|\\-]?\\d+(?:px|em|rem|vh|vw|%)?)+)(!?)$`);
             rules.push([boxModelRegex, match => {
-                const values = match[2];
+                const values = match[2].replace(/\-/g, '|'); // 统一处理为 "|" 分隔符
                 const important = match[3] === '!' ? ' !important' : '';
                 const cssProperty = key === 'm' ? 'margin' : 'padding';
                 const boxModelValue = parseBoxModelValues(values, defaultUnit, cssProperty);
                 return { [cssProperty]: `${boxModelValue[cssProperty]}${important}` };
             }]);
         } else {
-
+            // 对于其他 CSS 属性的处理
+            const regex = new RegExp(`^(${key})([\\.\\d]+)(vw|vh|px|em|rem|%)?(!?)$`);
             const rule = [regex, ([_, prop, num, unit, important]) => {
-                // 如果num为0，或者属性在不添加默认单位的关键字列表中且没有指定单位，则不添加任何单位
-
                 if (num === '0' || (noDefaultUnitKeys.includes(prop) && !unit)) {
-                    unit = ''; // 不使用默认单位
+                    unit = ''; // 对于0或指定关键字属性，不添加单位
                 } else {
-                    unit = unit || defaultUnit; // 使用捕获的单位或默认单位
+                    unit = unit || defaultUnit; // 使用指定或默认单位
                 }
-                important = important === '!' ? ' !important' : ''; // 确定是否需要!important标志
-
+                important = important === '!' ? ' !important' : ''; // 处理 !important 标志
                 if (Array.isArray(property)) {
-                    // 处理属性数组，生成多个CSS属性规则
-
+                    // 如果属性是数组，为每个属性生成规则
                     return property.reduce((acc, current) => {
                         acc[current] = `${num}${unit}${important}`;
                         return acc;
                     }, {});
                 } else {
-                    // 处理单个属性
+                    // 单个属性
                     return { [property]: `${num}${unit}${important}` };
                 }
             }];
-
             rules.push(rule);
-
         }
-
     });
 
     return rules;
 }
-
 
 export const legocss = {
     name: 'legocss',
@@ -95,9 +85,6 @@ export const legocss = {
         ...otherRules,
         ...borderRules,
         ...textDecorationRules,
-
- 
-
 
     ],
     variants: [
