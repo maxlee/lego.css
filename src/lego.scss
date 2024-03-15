@@ -80,7 +80,7 @@ ins {
 %border-style {
     border: 1px solid #000;
 }
-%clearfix {
+%clearfix, .clearfix {
     &::after {
         content: "";
         display: block;

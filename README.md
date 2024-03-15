@@ -9,7 +9,7 @@
 
 1. Naming
    - [ ] HTML: BEM
-   - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU?xid=VxhtmBW0
+   - [x] Atomic: https://xmind.ai/share/fZ0Oh0KU
 
     |      shortcut       |       mean       | desc  |
     | :-----------------: | :--------------: | :---: |
@@ -20,6 +20,7 @@
     |          p          |     padding      |   ✓   |
     |          w          |      width       |   ✓   |
     |          h          |      height      |   ✓   |
+    |          s          |   width&height   |   ✓   |
     |         nw          |    min-width     |   ✓   |
     |         nh          |    min-height    |   ✓   |
     |         mw          |    max-width     |   ✓   |

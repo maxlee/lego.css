@@ -36,5 +36,14 @@ export const otherRules = [
     ['f-l',{'float': 'left'}],
     ['f-r',{'float': 'right'}],
     ['f-n',{'float': 'none'}],
+    ['f:l',{'float': 'left'}],
+    ['f:r',{'float': 'right'}],
+    ['f:n',{'float': 'none'}],
 
+    ['c-b',{'clear': 'both'}],
+    ['c-l',{'clear': 'left'}],
+    ['c-r',{'clear': 'right'}],
+    ['c:b',{'clear': 'both'}],
+    ['c:l',{'clear': 'left'}],
+    ['c:r',{'clear': 'right'}],
 ];

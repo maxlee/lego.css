@@ -31,4 +31,7 @@ export const boxRules = [
     ['bd-n', {'border':'0 none'}],
 
     [/^bc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'border-color': `#${color} ${i ? '!important' : ''}` })],
+    // 如果是 s100 则输出 width: 100px 和 height: 100px，如果后面有 ! 则输出 !important
+    [/^s(\d+)(!?)$/, ([_, size, i]) => ({ 'width': `${size}px ${i ? '!important' : ''}`, 'height': `${size}px ${i ? '!important' : ''}` })],
+    
 ]
