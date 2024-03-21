@@ -25,5 +25,12 @@ export const backgroundRules = [
     // 实现一个规则，当用户可以输入`bgi(image.jpg)` 来设置 background-image 的值为`url('image.jpg')`
     [/^bgi\((.*?)\)$/, ([_, url]) => ({ 'background-image': `url('${url}')` })],
 
-    [/^bgc([0-9a-fA-F]{3,6})(!?)$/, ([_, color, i]) => ({ 'background-color': `#${color} ${i ? '!important' : ''}` })],
+    [
+        /^bgc((?:[0-9a-fA-F]{3,6})|(?:red|green|blue|yellow|purple|orange|black|white|gray))(!?)$/,
+        ([_, color, important]) => ({
+            'background-color': `${/^[0-9a-fA-F]{3,6}$/.test(color) ? '#' : ''}${color}${important ? ' !important' : ''}`
+        })
+    ]
+    
+    
 ]

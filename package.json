@@ -1,7 +1,7 @@
 {
-  "name": "lego.css",
+  "name": "legocss",
   "private": true,
-  "version": "0.210.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,6 @@
     "@esbuild/darwin-arm64": "^0.20.0",
     "sass": "^1.72.0",
     "unocss": "^0.58.6",
-    "vite": "^5.1.6"
+    "vite": "^5.2.2"
   }
 }
