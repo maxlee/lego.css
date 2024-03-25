@@ -1,9 +1,8 @@
 // lego.unocss.js
-import { Preset } from 'unocss'
-import { propertyMap } from './src/js/propertyMap.js'
-import { otherRules } from './src/js/otherRules.js'
-import { borderRules } from './src/js/borderRules.js'
-import { textDecorationRules } from './src/js/textDecorationRules.js'
+import { propertyMap } from './src/rules/propertyMap.js'
+import { otherRules } from './src/rules/otherRules.js'
+import { borderRules } from './src/rules/borderRules.js'
+import { textDecorationRules } from './src/rules/textDecorationRules.js'
 
 // 单独处理margin/padding属性值的函数
 /**
@@ -140,5 +139,42 @@ export const legocss = {
 
     ],
     shortcuts: [
+        // 正方形
+        [/^s(\d+)(px|em|rem|vh|vw|%)?$/, ([, size, unit = '']) => {
+            // 使用默认参数为单位赋予空字符串，以便在未指定单位时不添加单位
+            return `w${size}${unit} h${size}${unit}`;
+        }],
+        
+        // 垂直水平居中
+        ['center', 'flex justify-center items-center'],
+        {
+            'myclass': 'm0 p0 bgc000',
+            'myclass2': 'm0 p0 bgcblue',
+        },
+        [/^btn-(.*)$/, ([, c]) => `py-2 px-4 rounded-lg`],
+        // flex
+        [
+            /^f-((c|s|e)(-(c|s|e|b|a))*)$/,
+            ([, , g1, , g2]) => {
+                let style = ``;
+                const temps = [
+                    { k: "c", v: "center" },
+                    { k: "s", v: "start" },
+                    { k: "e", v: "end" },
+                    { k: "b", v: "between" },
+                    { k: "a", v: "around" }
+                ];
+
+                const r1 = temps.find(i => i.k == g1);
+                style = `flex items-${r1?.v || "center"} content-${r1?.v || "center"}`;
+
+                if (g2) {
+                    const r2 = temps.find(i => i.k == g2);
+                    style += ` justify-${r2?.v || "center"}`;
+                }
+
+                return style;
+            }
+        ]
     ]
 }
