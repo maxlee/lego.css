@@ -4,6 +4,8 @@ import { otherRules } from './src/rules/otherRules.js'
 import { borderRules } from './src/rules/borderRules.js'
 import { textDecorationRules } from './src/rules/textDecorationRules.js'
 
+const unitRegexPart = "px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb";
+
 // 单独处理margin/padding属性值的函数
 /**
  * @param {String} values 属性值
@@ -107,6 +109,24 @@ export const legocss = {
                 selector: s => `${s}:focus`,
             }
         },
+        (matcher) => {
+            if (!matcher.startsWith('fl::'))
+                return matcher
+            return {
+                // slice `focus:` prefix and passed to the next variants and rules
+                matcher: matcher.slice(4),
+                selector: s => `${s}::first-letter`,
+            }
+        },
+        (matcher) => {
+            if (!matcher.startsWith('a::'))
+                return matcher
+            return {
+                // slice `focus:` prefix and passed to the next variants and rules
+                matcher: matcher.slice(3),
+                selector: s => `${s}::after`,
+            }
+        },
         // active:
         (matcher) => {
             if (!matcher.startsWith('a:'))
@@ -140,10 +160,18 @@ export const legocss = {
     ],
     shortcuts: [
         // 正方形
-        [/^s(\d+)(px|em|rem|vh|vw|%)?$/, ([, size, unit = '']) => {
-            // 使用默认参数为单位赋予空字符串，以便在未指定单位时不添加单位
-            return `w${size}${unit} h${size}${unit}`;
-        }],
+        [
+            new RegExp(`^s(\\d+)(${unitRegexPart})?(?:-(\\d+)(${unitRegexPart})?)?$`),
+            ([, width, widthUnit = '', height, heightUnit = '']) => {
+                // 设置宽度单位的默认值为空字符串，以便在未指定单位时不添加单位
+                // 如果只有宽度值，那么高度值将复用宽度的数值和单位
+                height = height || width;
+                widthUnit = widthUnit || '';
+                heightUnit = heightUnit || '';
+        
+                return `w${width}${widthUnit} h${height}${heightUnit}`;
+            }
+        ],
         
         // 垂直水平居中
         ['center', 'flex justify-center items-center'],
