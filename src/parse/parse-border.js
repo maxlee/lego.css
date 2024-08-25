@@ -1,4 +1,4 @@
-export default function parseBorder() {
+export function parseBorder() {
     return {
         name: 'parse-border',
         enforce: 'pre',

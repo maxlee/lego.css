@@ -1,4 +1,4 @@
-@import "../src/mixin";
+@import "../src/scss/_mixin";
 
 * {
     margin: 0;
@@ -90,9 +90,9 @@ aside {
     grid-area: a;
 }
 footer {
-    grid-column: span 12;
+    // grid-column: span 12;
 
-    // grid-area: f;
+    grid-area: f;
     padding: 10px;
     p {
         text-align: center;

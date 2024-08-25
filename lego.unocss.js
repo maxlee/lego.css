@@ -4,6 +4,10 @@ import { otherRules } from './src/rules/otherRules.js'
 import { borderRules } from './src/rules/borderRules.js'
 import { textDecorationRules } from './src/rules/textDecorationRules.js'
 
+import { parseBorder } from './src/parse/parse-border.js'
+import { parseTextShadow } from './src/parse/parse-text-shadow.js'
+import { transformerVariantGroup } from './src/parse/transformer-variant-group.js'
+
 const unitRegexPart = "px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb";
 
 // 单独处理margin/padding属性值的函数
@@ -204,5 +208,11 @@ export const legocss = {
                 return style;
             }
         ]
-    ]
-}
+    ],
+    transformers: [
+        parseBorder(),
+        parseTextShadow(),
+        transformerVariantGroup(),
+    ],  
+};
+export default legocss;

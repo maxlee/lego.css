@@ -14,8 +14,8 @@ export const boxRules = [
     ['d-ib', { 'display': 'inline-block' }],
     ['d-n', { 'display': 'none' }],
 
-    ['bs-b', {'box-sizing': 'border-box'}],
-    ['bs-c', {'box-sizing': 'content-box'}],
+    ['bs-bb', {'box-sizing': 'border-box'}],
+    ['bs-cb', {'box-sizing': 'content-box'}],
 
     ['bds-n', {'border-style':'none'}],
     ['bds-h', {'border-style':'hidden'}],
