@@ -1,8 +1,5 @@
 import { defineConfig, presetAttributify, presetUno, presetMini} from 'unocss'
-import {legocss} from './lego.unocss'
-import transformerVariantGroup from './src/parse/transformer-variant-group'
-import parseTextShadow from './src/parse/parse-text-shadow'
-import parseBorder from './src/parse/parse-border'
+import legocss from './lego.unocss'
 
 export default defineConfig({
   // ...UnoCSS options
@@ -13,9 +10,7 @@ export default defineConfig({
         legocss,
     ],
     transformers: [
-      transformerVariantGroup(),
-      parseTextShadow(),
-      parseBorder(),
+        ...legocss.transformers
     ],
     plugins: [
       

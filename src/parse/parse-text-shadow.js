@@ -1,4 +1,4 @@
-export default function parseTextShadow() {
+export function parseTextShadow() {
     return {
         name: 'parse-text-shadow',
         enforce: 'pre',

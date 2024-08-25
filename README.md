@@ -95,7 +95,7 @@
         - [x] text-shadow → ts:
         - [x] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
         - [x] white-space → normal|nowrap|pre|pre-line|pre-wrap|initial|inherit
-        - [ ] justify-content → jc-
+        - [x] justify-content → jc-
         - [x] word-break → wb-normal|break-all|keep-all
         - [x] word-wrap → ww-normal|break-word
         - [x] text-justify → tj-auto|inter-word|inter-ideograph|inter-cluster|distribute|kashida|trim
@@ -144,10 +144,10 @@
         - [x] resize → r-none|both|horizontal|vertical
         - [x] z-index → zi
     8. list
-        - [ ] list-style → ls
-        - [ ] list-style-image → lsi()
-        - [ ] list-style-position → lsp-inside|outside
-        - [ ] list-style-type → lst-none|disc|circle|square
+        - [x] list-style → ls
+        - [x] list-style-image → lsi()
+        - [x] list-style-position → lsp-inside|outside
+        - [x] list-style-type → lst-none|disc|circle|square
         - [ ] marker-offset
 
 ## 使用方式
