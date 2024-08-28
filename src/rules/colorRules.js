@@ -1,23 +1,34 @@
 export const colorRules = [
     [
-        /^c([0-9a-fA-F]{3}|[0-9a-fA-F]{6})(!?)$/,
-        ([_, color, i]) => ({ color: `#${color} ${i ? "!important" : ""}` }),
-    ],
-    [
-        /^bgc((?:[0-9a-fA-F]{3,6})|(?:red|green|blue|yellow|purple|orange|black|white|gray))(!?)$/,
-        ([_, color, important]) => ({
-            "background-color": `${
-                /^[0-9a-fA-F]{3,6}$/.test(color) ? "#" : ""
-            }${color}${important ? " !important" : ""}`,
-        }),
-    ],
-    [
-        /^tdc(?:([0-9a-fA-F]{3,6})|([a-zA-Z]+))(!?)$/,
-        ([_, hexColor, colorName, i]) => {
-            const color = hexColor ? `#${hexColor}` : colorName;
-            return {
-                "text-decoration-color": `${color}${i ? " !important" : ""}`,
-            };
+        /^(bgc|tdc|bdc|c)(#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})|[a-zA-Z]+)(!?)$/,
+        ([_, prefix, color, i]) => {
+            const isHexColor = color.startsWith('#');
+            const isValidHex = isHexColor && (color.length === 4 || color.length === 7);
+            const isValidColorName = !isHexColor && /^[a-zA-Z]+$/.test(color);
+            
+            if (!isValidHex && !isValidColorName) {
+                throw new Error('Invalid color format');
+            }
+    
+            let property;
+            switch (prefix) {
+                case 'bgc':
+                    property = 'background-color';
+                    break;
+                case 'tdc':
+                    property = 'text-decoration-color';
+                    break;
+                case 'bdc':
+                    property = 'border-color';
+                    break;
+                case 'c':
+                    property = 'color';
+                    break;
+                default:
+                    throw new Error('Invalid prefix');
+            }
+    
+            return { [property]: `${color}${i ? " !important" : ""}` };
         },
-    ],
+    ]
 ];
