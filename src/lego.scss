@@ -1,9 +1,17 @@
+@use "sass:meta";
 @use "./scss/normalize";
 @use "./scss/for";
 @use "./scss/mixin";
 @use "./scss/func";
 @use "./scss/color";
-@use "./scss/button";
+// @use "./scss/button";
+
+@layer components {
+    @include meta.load-css("./scss/_button.scss")
+}
+:any-link {
+    color: red;
+}
 body {
     font-size: 16px;
     font-family: "Arial", sans-serif;
@@ -95,3 +103,15 @@ ins {
 
 
 
+// @layer
+// https://www.zhangxinxu.com/wordpress/2022/05/css-layer-rule/
+// :any-link
+// https://css-tricks.com/css-cascade-layers/
+// flex vs grid
+// https://css-tricks.com/smart-layouts-with-container-queries/
+// https://bulma.io/
+// clamp() 限制范围
+// fit-content() 自适应
+// https://www.zhangxinxu.com/wordpress/2020/04/css-min-max-clamp/
+
+// https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active

@@ -1,6 +1,6 @@
 export const colorRules = [
     [
-        /^(bgc|tdc|bdc|c)(#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})|[a-zA-Z]+)(!?)$/,
+        /^(c|bdc|bdtc|bdrc|bdbc|bdlc|bgc|tdc|olc)(#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})|[a-zA-Z]+)(!?)$/,
         ([_, prefix, color, i]) => {
             const isHexColor = color.startsWith('#');
             const isValidHex = isHexColor && (color.length === 4 || color.length === 7);
@@ -20,6 +20,21 @@ export const colorRules = [
                     break;
                 case 'bdc':
                     property = 'border-color';
+                    break;
+                case 'bdtc':
+                    property = 'border-top-color';
+                    break;
+                case 'bdrc':
+                    property = 'border-right-color';
+                    break;
+                case 'bdbc':
+                    property = 'border-bottom-color';
+                    break;
+                case 'bdlc':
+                    property = 'border-left-color';
+                    break;
+                case 'olc':
+                    property = 'outline-color';
                     break;
                 case 'c':
                     property = 'color';
