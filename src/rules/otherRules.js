@@ -3,6 +3,7 @@ import {textRules} from './textRules';
 import {backgroundRules} from './backgroundRules';
 import {fontRules} from './fontRules';
 import {colorRules} from './colorRules';
+import {flexRules} from './flexRules';
 
 export const otherRules = [
     ...boxRules,
@@ -10,7 +11,8 @@ export const otherRules = [
     ...backgroundRules,
     ...fontRules,
     ...colorRules,
-
+    ...flexRules,
+    
     ['o-h', { overflow: 'hidden' }],
     ['o-v', { overflow: 'visible' }],
     ['ox-h', { 'overflow-x': 'hidden' }],

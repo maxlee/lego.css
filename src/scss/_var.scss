@@ -1,0 +1,21 @@
+// CSS 运行时解析变量
+:root {
+
+    --color-red: #e6252a;
+    --color-green: #97c430;
+    --color-blue: #4fadce;
+    --color-yellow: #fae32f;
+    --color-orange: #fe6915;
+    --color-purple: #e4599c;
+
+    --color-text: rgb(64, 70, 84);
+    --color-link: rgb(66, 88, 255);
+    --color-primary: rgb(0, 209, 178);
+    --color-info: rgb(102, 209, 255);
+    --color-success: rgb(72, 199, 142);
+    --color-warning: rgb(255, 183, 15);
+    --color-danger: rgb(255, 102, 133);
+}
+
+// SCSS 编译时解析变量
+$design-width: 1200px;
