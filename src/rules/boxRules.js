@@ -1,11 +1,11 @@
 export const boxRules = [
 
-    ['wa', { width: 'auto' }],
-    ['ha', { height: 'auto' }],
-    ['w%', { width: '100%' }],
-    ['h%', { height: '100%' }],
-    ['ma', { margin: 'auto' }],
-    ['pa', { padding: 'auto' }],
+    ['wa', { 'width'    : 'auto' }],
+    ['ha', { 'height'   : 'auto' }],
+    ['w%', { 'width'    : '100%' }],
+    ['h%', { 'height'   : '100%' }],
+    ['ma', { 'margin'   : 'auto' }],
+    ['pa', { 'padding'  : 'auto' }],
 
     ['d-b', { 'display': 'block' }],
     ['d-i', { 'display': 'inline' }],

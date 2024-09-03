@@ -44,13 +44,13 @@ function getRules(map, defaultUnit = 'px') {
 
     Object.keys(map).forEach(key => {
         const property = map[key];
-        if (key === 'm' || key === 'p') {
-            // 对于 margin 和 padding 的特殊处理
+        if (key === 'm' || key === 'p' || key === 'gap') {
+            // 对于 margin、padding 和 gap 的特殊处理
             const boxModelRegex = new RegExp(`^(${key})((?:[\\|\\-]?\\d+(?:px|em|rem|vh|vw|%)?)+)(!?)$`);
             rules.push([boxModelRegex, match => {
                 const values = match[2].replace(/\-/g, '|'); // 统一处理为 "|" 分隔符
                 const important = match[3] === '!' ? ' !important' : '';
-                const cssProperty = key === 'm' ? 'margin' : 'padding';
+                const cssProperty = key === 'm' ? 'margin' : (key === 'p' ? 'padding' : 'gap');
                 const boxModelValue = parseBoxModelValues(values, defaultUnit, cssProperty);
                 return { [cssProperty]: `${boxModelValue[cssProperty]}${important}` };
             }]);

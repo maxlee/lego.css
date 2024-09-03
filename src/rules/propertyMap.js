@@ -40,4 +40,5 @@ export const propertyMap = {
     'op': 'opacity',
     'fw': 'font-weight',
     'ti': 'text-indent',
+    'gap': 'gap',
 };

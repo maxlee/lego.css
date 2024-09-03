@@ -28,4 +28,5 @@ export const flexRules = [
     ['ai-r', {'align-items': 'right'}],
     ['ai-b', {'align-items': 'baseline'}],
     ['ai-s', {'align-items': 'stretch'}],
-]  
+
+]
