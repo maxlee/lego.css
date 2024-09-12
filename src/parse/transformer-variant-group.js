@@ -1,3 +1,4 @@
+import { parseVariantGroup } from '@unocss/core'
 /**
  * 创建一个变换器，用于处理变体组的文本转换
  * 

@@ -1,4 +1,5 @@
 import { defineConfig, presetAttributify, presetUno, presetMini} from 'unocss'
+import transformerCompileClass from '@unocss/transformer-compile-class'
 import legocss from './lego.unocss'
 
 export default defineConfig({
@@ -6,13 +7,11 @@ export default defineConfig({
     presets: [
         presetUno(),
         presetMini(),
-        presetAttributify(),
+        // presetAttributify(),
         legocss,
     ],
     transformers: [
+        transformerCompileClass(),
         ...legocss.transformers
-    ],
-    plugins: [
-      
     ],
 })

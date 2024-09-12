@@ -149,6 +149,18 @@
         - [x] list-style-position → lsp-inside|outside
         - [x] list-style-type → lst-none|disc|circle|square
         - [ ] marker-offset
+    9. 伪类
+        - [ ] :active
+        - [ ] :any-link
+        - [ ] :checked
+    10. 伪元素
+        - [ ] ::after
+        - [ ] ::before
+        - [ ] ::first-letter
+        - [ ] ::first-line
+        - [ ] ::marker
+        - [ ] ::placeholder
+        - [ ] ::selection
 
 ## 使用方式
 

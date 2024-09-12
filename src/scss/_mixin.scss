@@ -1,3 +1,4 @@
+@import "./var";
 // 混合器 @mixin 一次声明，@include 随处使用
 // unit($number) 获取单位
 @mixin border-radius($radius:50%) {
@@ -27,23 +28,34 @@ ins {
     @include border-radius(-10);
     // @extend %clearfix;
 }
+
+// 定义 width 变量
+/*
+在 SCSS 中,我们不能直接使用这种语法来获取 CSS 变量的值
+SCSS 在编译时处理,而 CSS 变量在运行时解析
+:root {
+    --design-width: 1200px;
+}
+$width: var(--design-width); // 这样是获取不到的
+*/
+
 @mixin phone {
     @media screen and (max-width: 768px) {
         @content;
     }
 }
 @mixin pad {
-    @media screen and (min-width: 769px) and (max-width: 1023px) {
+    @media screen and (min-width: 769px) and (max-width: $design-width) {
         @content;
     }
 }
 @mixin desktop {
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $design-width) {
         @content;
     }
 }
 @mixin full {
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: $design-width) {
         @content;
     }
 }

@@ -1,5 +1,18 @@
 import { defineConfig } from "vite";
-import UnoCSS from 'unocss/vite'
+import UnoCSS from "unocss/vite";
+
+function restartOnJSChange() {
+    return {
+        name: "restart-on-js-change",
+        handleHotUpdate({ file, server }) {
+            if (file.endsWith(".js")) {
+                console.log("JS file changed, restarting server...");
+                server.restart();
+                return [];
+            }
+        },
+    };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -7,10 +20,11 @@ export default defineConfig({
         UnoCSS({
             configFile: "./uno.config.js",
         }),
+        restartOnJSChange(),
     ],
     base: "./",
     build: {
-       target: "modules",
+        target: "modules",
         outDir: "dist",
         emptyOutDir: true,
         rollupOptions: {

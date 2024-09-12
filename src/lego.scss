@@ -1,9 +1,18 @@
+@use "sass:meta";
 @use "./scss/normalize";
 @use "./scss/for";
 @use "./scss/mixin";
 @use "./scss/func";
 @use "./scss/color";
-@use "./scss/button";
+// @use "./scss/button";
+
+@layer components {
+    // https://www.answeroverflow.com/m/1141663903596687422
+    @include meta.load-css("./scss/_button.scss")
+}
+:any-link {
+    color: red;
+}
 body {
     font-size: 16px;
     font-family: "Arial", sans-serif;
@@ -95,3 +104,34 @@ ins {
 
 
 
+// @layer
+// https://www.zhangxinxu.com/wordpress/2022/05/css-layer-rule/
+// https://css-tricks.com/css-cascade-layers/
+// :any-link
+// https://css-tricks.com/css-cascade-layers/
+// flex vs grid
+// https://css-tricks.com/smart-layouts-with-container-queries/
+// https://bulma.io/
+// clamp() 限制范围
+// fit-content() 自适应
+// https://www.zhangxinxu.com/wordpress/2020/04/css-min-max-clamp/
+
+// https://developer.mozilla.org/zh-CN/docs/Web/CSS/:active
+// https://github.com/chokcoco/iCSS/issues/171
+
+/*
+inherit 这个关键字是继承的意思
+initial 是初始值关键字。可以把当前的CSS属性的计算值还原成CSS语法中的规定初始值
+unset 是不固定值关键字，特性如下：
+    如果当前使用的CSS属性具有继承特性，等同于 inherit关键字
+    如果当前使用的CSS属性没有继承特性，等同于 initial关键字
+revert 关键字可以让当前元素的样式还原成浏览器内置的样式
+*/
+
+/*
+:is() 和 :where() 伪类选择器, 参数是一个选择器列表，支持逗号分隔，支持嵌套
+:where() 的优先级总是为 0，而:is() 的优先级是由它的选择器列表中优先级最高的选择器决定的
+从语法上，:is 和 :where 是一模一样的。它们的核心区别点在于 优先级
+:not、:is、:where 这几个伪类不像其它伪类，它不会增加选择器的优先级。它的优先级即为它参数选择器的优先级
+:has() 选择的不是 :has() 内包裹的选择器选中的元素，而是使用 :has() 伪类的宿主元素
+*/

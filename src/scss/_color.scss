@@ -1,22 +1,17 @@
-$color-red: #e6252a;
-$color-green: #97c430;
-$color-blue: #4fadce;
-$color-yellow: #fae32f;
-$color-orange: #fe6915;
-$color-purple: #e4599c;
+@import "./_var.scss";
 
 .is-danger {
-    background-color: $color-red !important;
+    background-color: var(--color-red);
 }
 .is-success {
-    background-color: $color-green !important;
+    background-color: var(--color-green);
 }
 .is-info {
-    background-color: $color-blue !important;
+    background-color: var(--color-blue);
 }
 .is-warning {
-    background-color: $color-yellow !important;
+    background-color: var(--color-yellow);
 }
 .is-primary {
-    background-color: $color-orange !important;
+    background-color: var(--color-orange);
 }
