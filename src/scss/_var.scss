@@ -17,5 +17,13 @@
     --color-danger: rgb(255, 102, 133);
 }
 
+// https://www.cnblogs.com/coco1s/p/14661268.html
+// https://ryanmulligan.dev/blog/css-property-new-style/
+@property --color-system {
+    syntax: '*';
+    inherits: false;
+    initial-value: #000;
+}
+
 // SCSS 编译时解析变量
 $design-width: 1200px;
