@@ -3,10 +3,11 @@ import { propertyMap } from './src/rules/propertyMap.js'
 import { otherRules } from './src/rules/otherRules.js'
 import { borderRules } from './src/rules/borderRules.js'
 import { textDecorationRules } from './src/rules/textDecorationRules.js'
-
 import { parseBorder } from './src/parse/parse-border.js'
 import { parseTextShadow } from './src/parse/parse-text-shadow.js'
 import { transformerVariantGroup } from './src/parse/transformer-variant-group.js'
+import { pseudoElementRules } from './src/rules/pseudoElement.js'
+import { pseudoClassRules } from './src/rules/pseudoClass.js'
 
 const unitRegexPart = "px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb";
 
@@ -93,54 +94,8 @@ export const legocss = {
 
     ],
     variants: [
-        // hover:
-        (matcher) => {
-            if (!matcher.startsWith('h:'))
-                return matcher
-            return {
-                // slice `hover:` prefix and passed to the next variants and rules
-                matcher: matcher.slice(2),
-                selector: s => `${s}:hover`,
-            }
-        },
-        // focus:
-        (matcher) => {
-            if (!matcher.startsWith('f:'))
-                return matcher
-            return {
-                // slice `focus:` prefix and passed to the next variants and rules
-                matcher: matcher.slice(2),
-                selector: s => `${s}:focus`,
-            }
-        },
-        (matcher) => {
-            if (!matcher.startsWith('fl::'))
-                return matcher
-            return {
-                // slice `focus:` prefix and passed to the next variants and rules
-                matcher: matcher.slice(4),
-                selector: s => `${s}::first-letter`,
-            }
-        },
-        (matcher) => {
-            if (!matcher.startsWith('a::'))
-                return matcher
-            return {
-                // slice `focus:` prefix and passed to the next variants and rules
-                matcher: matcher.slice(3),
-                selector: s => `${s}::after`,
-            }
-        },
-        // active:
-        (matcher) => {
-            if (!matcher.startsWith('a:'))
-                return matcher
-            return {
-                // slice `active:` prefix and passed to the next variants and rules
-                matcher: matcher.slice(2),
-                selector: s => `${s}:active`,
-            }
-        },
+        ...pseudoElementRules,
+        ...pseudoClassRules,
         // important:
         (matcher) => {
             const flag = matcher.endsWith('!')
