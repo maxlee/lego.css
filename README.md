@@ -90,7 +90,7 @@
         - [x] letter-spacing → ls
         - [x] word-spacing → ws
         - [x] text-align → ta-left|right|center|justify|inherit
-        - [ ] text-decoration → td-text-decoration-line text-decoration-color text-decoration-style text-decoration-thickness|initial|inherit;
+        - [x] text-decoration → td-text-decoration-line text-decoration-color text-decoration-style text-decoration-thickness|initial|inherit;
         - [x] text-indent → ti
         - [x] text-shadow → ts:
         - [x] text-transform → tr-none|capitalize|uppercase|lowercase|initial|inherit
