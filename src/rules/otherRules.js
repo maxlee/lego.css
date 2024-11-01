@@ -13,8 +13,8 @@ export const otherRules = [
     ...colorRules,
     ...flexRules,
     
-    ['o-h', { overflow: 'hidden' }],
-    ['o-v', { overflow: 'visible' }],
+    ['o-h', { 'overflow': 'hidden' }],
+    ['o-v', { 'overflow': 'visible' }],
     ['ox-h', { 'overflow-x': 'hidden' }],
     ['ox-v', { 'overflow-x': 'visible' }],
     ['oy-h', { 'overflow-y': 'hidden' }],
