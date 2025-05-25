@@ -1,8 +1,9 @@
+@use "sass:math";
 // 函数 @function
-// unitless($number) 判断是否有单位
+// math.is-unitless($number) 判断是否有单位
 @function to-rem($pixels) {
     $rem-base: 16px;
-    @if unitless($pixels) {
+    @if math.is-unitless($pixels) {
         @return ($pixels / $rem-base) * 1rem;
     } @else {
         @return $pixels;

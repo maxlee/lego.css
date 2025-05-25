@@ -1,3 +1,5 @@
+@use "sass:list";
+
 $maxNum: 3;
 $defaultUnit: 1px;
 
@@ -14,10 +16,10 @@ $property:(
     (pl, padding-left),
 );
 
-@for $i from 1 through length($property) {
+@for $i from 1 through list.length($property) {
     
-    $name: nth(nth($property, $i), 1);
-    $fullname: nth(nth($property, $i), 2);
+    $name: list.nth(list.nth($property, $i), 1);
+    $fullname: list.nth(list.nth($property, $i), 2);
 
     @for $j from 1 through $maxNum {
         .#{$name}#{$j} {

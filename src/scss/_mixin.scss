@@ -1,23 +1,26 @@
-@import "./var";
+@use "./var";
+@use "sass:math";
+@use "sass:list";
+@use "sass:string";
 // 混合器 @mixin 一次声明，@include 随处使用
-// unit($number) 获取单位
+// math.unit($number) 获取单位
 @mixin border-radius($radius:50%) {
     @if $radius <= 0 {
         border-radius: 0;
-    } @else if (unit($radius) == "%") {
+    } @else if (math.unit($radius) == "%") {
         border-radius: $radius;
-    } @else if (unit($radius) == "px") {
+    } @else if (math.unit($radius) == "px") {
         border-radius: $radius;
     } @else {
         border-radius: $radius + "px";
     }
 }
-// length($list) 获取列表长度
+// list.length($list) 获取列表长度
 @mixin box-shadow($shadow...) {
-    @if length($shadow) == 1 {
+    @if list.length($shadow) == 1 {
         box-shadow: $shadow;
     } @else {
-        box-shadow: join($shadow, ",");
+        box-shadow: string.join($shadow, ",");
     }
 }
 ins {

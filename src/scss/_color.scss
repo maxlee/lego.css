@@ -1,4 +1,4 @@
-@import "./_var.scss";
+@use "./_var.scss";
 
 .is-danger {
     background-color: var(--color-red);
