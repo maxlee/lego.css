@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@unocss/transformer-compile-class": "^0.63.6",
-    "sass": "^1.80.4",
-    "unocss": "^0.63.6",
-    "vite": "^5.4.10"
+    "@unocss/transformer-compile-class": "^66.1.2",
+    "sass": "^1.89.0",
+    "unocss": "^66.1.2",
+    "vite": "^6.3.5"
   }
 }
