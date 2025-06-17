@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://legocss.dev/sitemap.xml
+
+# Allow all crawlers to access main pages
+Allow: /index.html
+Allow: /demo/
+Allow: /src/
+
+# Disallow unnecessary files
+Disallow: /node_modules/
+Disallow: /*.log$
+Disallow: /*.tmp$
+Disallow: /.git/
+Disallow: /.vscode/
+Disallow: /.cursor/
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1 

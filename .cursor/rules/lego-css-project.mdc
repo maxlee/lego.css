@@ -1,0 +1,70 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Lego.css Project Structure Guide
+
+## 项目概述 (Project Overview)
+Lego.css is a modular CSS framework with utility-first approach, similar to Tailwind CSS but with a custom rule system and SCSS integration.
+
+## 核心文件结构 (Core File Structure)
+
+### 主入口文件 (Main Entry Points)
+- [src/lego.scss](mdc:src/lego.scss) - Main SCSS entry point that imports all modules
+- [src/lego.css](mdc:src/lego.css) - Compiled CSS output
+- [lego.unocss.js](mdc:lego.unocss.js) - UnoCSS integration configuration
+- [package.json](mdc:package.json) - Project dependencies and scripts
+
+### 规则系统 (Rule System)
+The CSS rules are modularized in the `src/rules/` directory:
+- [src/rules/propertyMap.js](mdc:src/rules/propertyMap.js) - Core property mappings
+- [src/rules/colorRules.js](mdc:src/rules/colorRules.js) - Color utility rules
+- [src/rules/flexRules.js](mdc:src/rules/flexRules.js) - Flexbox utilities
+- [src/rules/textRules.js](mdc:src/rules/textRules.js) - Typography rules
+- [src/rules/borderRules.js](mdc:src/rules/borderRules.js) - Border utilities
+- [src/rules/backgroundRules.js](mdc:src/rules/backgroundRules.js) - Background utilities
+- [src/rules/boxRules.js](mdc:src/rules/boxRules.js) - Box model utilities
+- [src/rules/fontRules.js](mdc:src/rules/fontRules.js) - Font utilities
+- [src/rules/pseudoClass.js](mdc:src/rules/pseudoClass.js) - Pseudo-class definitions
+- [src/rules/pseudoElement.js](mdc:src/rules/pseudoElement.js) - Pseudo-element definitions
+
+### 解析器 (Parsers)
+Custom parsers for specific CSS properties in `src/parse/`:
+- [src/parse/parse-border.js](mdc:src/parse/parse-border.js) - Border property parser
+- [src/parse/parse-text-shadow.js](mdc:src/parse/parse-text-shadow.js) - Text shadow parser
+- [src/parse/transformer-variant-group.js](mdc:src/parse/transformer-variant-group.js) - Variant group transformer
+
+### SCSS 模块 (SCSS Modules)
+SCSS partials in `src/scss/`:
+- [src/scss/_normalize.scss](mdc:src/scss/_normalize.scss) - CSS reset/normalize
+- [src/scss/_var.scss](mdc:src/scss/_var.scss) - CSS custom properties
+- [src/scss/_color.scss](mdc:src/scss/_color.scss) - Color definitions
+- [src/scss/_mixin.scss](mdc:src/scss/_mixin.scss) - SCSS mixins
+- [src/scss/_func.scss](mdc:src/scss/_func.scss) - SCSS functions
+- [src/scss/_button.scss](mdc:src/scss/_button.scss) - Button components
+- [src/scss/_type.scss](mdc:src/scss/_type.scss) - Typography styles
+- [src/scss/_for.scss](mdc:src/scss/_for.scss) - Loop utilities
+
+### 构建配置 (Build Configuration)
+- [vite.config.js](mdc:vite.config.js) - Vite build configuration
+- [uno.config.js](mdc:uno.config.js) - UnoCSS configuration
+
+### 演示和测试 (Demo & Testing)
+- [demo/index.html](mdc:demo/index.html) - Demo page
+- [demo/demo.scss](mdc:demo/demo.scss) - Demo styles
+- [test.html](mdc:test.html) - Test page
+
+## 开发工作流 (Development Workflow)
+
+1. **修改规则**: 编辑 `src/rules/` 中的对应文件
+2. **更新样式**: 修改 `src/scss/` 中的 SCSS 文件
+3. **构建**: 运行构建命令生成最终的 CSS
+4. **测试**: 使用 `demo/` 或 `test.html` 验证更改
+
+## 关键概念 (Key Concepts)
+
+- **模块化规则系统**: 每个 CSS 属性类别都有独立的规则文件
+- **SCSS 集成**: 使用 SCSS 的强大功能如变量、混合器和函数
+- **UnoCSS 兼容**: 提供 UnoCSS 集成以获得更好的开发体验
+- **自定义解析器**: 针对复杂 CSS 属性的专用解析逻辑

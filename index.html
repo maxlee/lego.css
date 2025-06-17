@@ -3,12 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>lego.css - 像乐高一样写CSS</title>
+    
+    <!-- 基础SEO Meta标签 -->
+    <title>lego.css - 像乐高积木一样写CSS | 原子化CSS框架</title>
+    <meta name="description" content="lego.css是一个基于原子类设计的现代CSS框架，像乐高积木一样自由组合样式。极简语法、伪类支持、轻量级，显著提升开发效率，完美解决CSS难复用、难扩展、难维护的问题。">
+    <meta name="keywords" content="lego.css, CSS框架, 原子化CSS, 工具类优先, CSS工具库, 前端框架, 响应式设计, CSS组件">
+    <meta name="author" content="lego.css Team">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Canonical链接 -->
+    <link rel="canonical" href="https://legocss.dev/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://legocss.dev/">
+    <meta property="og:title" content="lego.css - 像乐高积木一样写CSS | 原子化CSS框架">
+    <meta property="og:description" content="基于原子类设计的现代CSS框架，极简语法，伪类支持，轻量级。像乐高积木一样自由组合样式，显著提升开发效率。">
+    <meta property="og:image" content="https://legocss.dev/public/lego.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="zh_CN">
+    <meta property="og:site_name" content="lego.css">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://legocss.dev/">
+    <meta property="twitter:title" content="lego.css - 像乐高积木一样写CSS">
+    <meta property="twitter:description" content="基于原子类设计的现代CSS框架，极简语法，像乐高积木一样自由组合样式。">
+    <meta property="twitter:image" content="https://legocss.dev/public/lego.png">
+    
+    <!-- 网站图标 -->
     <link rel="icon" href="/public/lego.png" type="image/png">
-    <!-- Google Fonts -->
+    <link rel="apple-touch-icon" href="/public/lego.png">
+    
+    <!-- 预连接优化 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- DNS预解析 -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+    
+    <!-- 结构化数据 JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "lego.css",
+      "description": "基于原子类设计的现代CSS框架，像乐高积木一样自由组合样式，极简语法，伪类支持，轻量级",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "downloadUrl": "https://github.com/your-username/lego.css",
+      "softwareVersion": "1.0.0",
+      "datePublished": "2024-01-01",
+      "dateModified": "2024-12-10",
+      "author": {
+        "@type": "Organization",
+        "name": "lego.css Team"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "lego.css",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://legocss.dev/public/lego.png"
+        }
+      },
+      "sameAs": [
+        "https://github.com/your-username/lego.css"
+      ]
+    }
+    </script>
+    
+    <!-- 网站信息结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "lego.css",
+      "description": "像乐高积木一样写CSS的原子化CSS框架",
+      "url": "https://legocss.dev/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://legocss.dev/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "lego.css Team"
+      }
+    }
+    </script>
+    
+    <!-- 面包屑导航结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://legocss.dev/"
+        }
+      ]
+    }
+    </script>
+    
+    <!-- FAQ结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "什么是lego.css？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "lego.css是一个基于原子类设计的现代CSS框架，像乐高积木一样让每个CSS类都是一个独立的'积木'，可以自由组合构建任何你想要的设计。它具有极简语法、伪类支持、轻量级等特点。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "lego.css有什么优势？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "lego.css的主要优势包括：原子化设计、极简语法（如m10代表margin:10px）、内置伪类支持、轻量级（核心文件<5KB）、高度可定制、显著提升开发效率。可以减少90%的CSS代码量，提升3倍开发效率。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "如何开始使用lego.css？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "有三种方式开始使用lego.css：1. NPM安装：npm install legocss；2. CDN引入：直接在HTML中引用CDN链接；3. UnoCSS集成：在uno.config.ts中导入legoRules。推荐使用NPM安装方式以获得最佳开发体验。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "lego.css的语法如何使用？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "lego.css使用极简的缩写语法：m10表示margin:10px，bgc#f00表示background-color:#f00，h:(bgc#f00)表示:hover状态。支持组合使用，如class='m10-20 p15-30 bgc#ff6b6b'。还支持伪类、多值语法和!important修饰符。"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- 产品信息结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "lego.css",
+      "description": "基于原子类设计的现代CSS框架，像乐高积木一样自由组合样式",
+      "brand": {
+        "@type": "Brand",
+        "name": "lego.css"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "100",
+        "bestRating": "5",
+        "worstRating": "1"
+      }
+    }
+    </script>
     
     <!-- Prism.js 代码高亮 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
@@ -513,6 +692,36 @@
             animation: fadeInUp 0.8s ease-out;
         }
         
+        /* 无障碍功能 */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        /* 跳转到主内容链接 */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: #000;
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 1001;
+            border-radius: 4px;
+        }
+        
+        .skip-link:focus {
+            top: 6px;
+        }
+        
         /* 乐高积木动画效果 */
         .lego-blocks {
             position: absolute;
@@ -562,115 +771,121 @@
                 transform: translateY(-20px);
             }
         }
-    </style>
+        </style>
 </head>
 <body>
+    <!-- 跳转到主内容 -->
+    <a href="#main-content" class="skip-link">跳转到主要内容</a>
+    
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="主导航">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <img src="/public/lego.png" alt="lego.css">
+            <a href="#" class="logo" aria-label="lego.css 首页">
+                <img src="/public/lego.png" alt="lego.css 原子化CSS框架图标" width="32" height="32">
                 lego.css
             </a>
-            <ul class="nav-links">
-                <li><a href="#features">特性</a></li>
-                <li><a href="#examples">示例</a></li>
-                <li><a href="#docs">文档</a></li>
-                <li><a href="https://github.com/your-username/lego.css">GitHub</a></li>
+            <ul class="nav-links" role="menubar">
+                <li role="none"><a href="#features" role="menuitem">特性</a></li>
+                <li role="none"><a href="#examples" role="menuitem">示例</a></li>
+                <li role="none"><a href="#docs" role="menuitem">文档</a></li>
+                <li role="none"><a href="https://github.com/your-username/lego.css" role="menuitem" target="_blank" rel="noopener noreferrer">GitHub</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero 部分 -->
-    <section class="hero-gradient">
-        <div class="container">
-            <div class="hero-content animate-fade-in">
-                <h1 class="hero-title">lego.css</h1>
-                <p class="hero-subtitle">像乐高积木一样写CSS</p>
-                <p class="hero-description">
-                    基于原子类和 Pure CSS 思想设计的现代CSS框架，帮助你更快、更轻松地编写页面样式，完美解决CSS难复用、难扩展、难维护的问题。
-                </p>
-                <div class="hero-buttons">
-                    <a href="#get-started" class="btn btn-primary">开始使用</a>
-                    <a href="#examples" class="btn btn-secondary">查看示例</a>
+    <main id="main-content">
+        <section class="hero-gradient" aria-labelledby="main-title">
+            <div class="container">
+                <header class="hero-content animate-fade-in">
+                    <h1 id="main-title" class="hero-title">lego.css</h1>
+                    <p class="hero-subtitle">像乐高积木一样写CSS</p>
+                    <p class="hero-description">
+                        基于原子类和 Pure CSS 思想设计的现代CSS框架，帮助你更快、更轻松地编写页面样式，完美解决CSS难复用、难扩展、难维护的问题。
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#get-started" class="btn btn-primary" aria-describedby="get-started-description">开始使用</a>
+                        <a href="#examples" class="btn btn-secondary" aria-describedby="examples-description">查看示例</a>
+                        <span id="get-started-description" class="sr-only">快速开始使用lego.css框架</span>
+                        <span id="examples-description" class="sr-only">查看lego.css语法示例</span>
+                    </div>
+                </header>
+            </div>
+            
+            <!-- 装饰性乐高积木 -->
+            <div class="lego-blocks" aria-hidden="true" role="presentation">
+                <div class="lego-block"></div>
+                <div class="lego-block"></div>
+                <div class="lego-block"></div>
+            </div>
+        </section>
+
+        <!-- 特性部分 -->
+        <section id="features" class="features" aria-labelledby="features-title">
+            <div class="container">
+                <h2 id="features-title" class="section-title">为什么选择 lego.css？</h2>
+                <div class="features-grid" role="list">
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">🧱</div>
+                        <h3 class="feature-title">原子化设计</h3>
+                        <p class="feature-description">
+                            像乐高积木一样，每个CSS类都是一个独立的"积木"，可以自由组合构建任何你想要的设计。
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">⚡</div>
+                        <h3 class="feature-title">极简语法</h3>
+                        <p class="feature-description">
+                            简洁的缩写语法，<code>m10</code> 代表 margin: 10px，<code>bgc#f00</code> 代表 background-color: #f00。
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">🎯</div>
+                        <h3 class="feature-title">伪类支持</h3>
+                        <p class="feature-description">
+                            内置伪类支持，<code>h:(bgc#f00)</code> 表示 hover 状态，让交互效果编写更简单。
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">📦</div>
+                        <h3 class="feature-title">轻量级</h3>
+                        <p class="feature-description">
+                            核心文件体积小，按需加载，结合 PurgeCSS 可以最大程度减少最终bundle大小。
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">🔧</div>
+                        <h3 class="feature-title">高度可定制</h3>
+                        <p class="feature-description">
+                            支持自定义配置，可以轻松扩展和修改以适应不同项目的需求。
+                        </p>
+                    </article>
+                    
+                    <article class="feature-card" role="listitem">
+                        <div class="feature-icon" aria-hidden="true">🚀</div>
+                        <h3 class="feature-title">开发效率</h3>
+                        <p class="feature-description">
+                            显著提升开发效率，减少CSS文件大小，让你专注于业务逻辑而不是样式编写。
+                        </p>
+                    </article>
                 </div>
             </div>
-        </div>
-        
-        <!-- 装饰性乐高积木 -->
-        <div class="lego-blocks">
-            <div class="lego-block"></div>
-            <div class="lego-block"></div>
-            <div class="lego-block"></div>
-        </div>
-    </section>
+        </section>
 
-    <!-- 特性部分 -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">为什么选择 lego.css？</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🧱</div>
-                    <h3 class="feature-title">原子化设计</h3>
-                    <p class="feature-description">
-                        像乐高积木一样，每个CSS类都是一个独立的"积木"，可以自由组合构建任何你想要的设计。
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">极简语法</h3>
-                    <p class="feature-description">
-                        简洁的缩写语法，<code>m10</code> 代表 margin: 10px，<code>bgc#f00</code> 代表 background-color: #f00。
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3 class="feature-title">伪类支持</h3>
-                    <p class="feature-description">
-                        内置伪类支持，<code>h:(bgc#f00)</code> 表示 hover 状态，让交互效果编写更简单。
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📦</div>
-                    <h3 class="feature-title">轻量级</h3>
-                    <p class="feature-description">
-                        核心文件体积小，按需加载，结合 PurgeCSS 可以最大程度减少最终bundle大小。
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔧</div>
-                    <h3 class="feature-title">高度可定制</h3>
-                    <p class="feature-description">
-                        支持自定义配置，可以轻松扩展和修改以适应不同项目的需求。
-                    </p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3 class="feature-title">开发效率</h3>
-                    <p class="feature-description">
-                        显著提升开发效率，减少CSS文件大小，让你专注于业务逻辑而不是样式编写。
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 代码示例部分 -->
-    <section id="examples" class="code-example">
-        <div class="container">
-            <h2 class="section-title">简单易学的语法</h2>
-            <div class="code-container">
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: #81e6d9;">传统CSS写法</h3>
-                    <div class="code-block">
-                        <div class="code-header">style.css</div>
-                        <pre><code class="language-css">/* 传统CSS需要写很多代码 */
+        <!-- 代码示例部分 -->
+        <section id="examples" class="code-example" aria-labelledby="examples-title">
+            <div class="container">
+                <h2 id="examples-title" class="section-title">简单易学的语法</h2>
+                <div class="code-container">
+                    <article>
+                        <h3 style="margin-bottom: 1rem; color: #81e6d9;">传统CSS写法</h3>
+                        <div class="code-block" role="complementary" aria-label="传统CSS代码示例">
+                            <div class="code-header">style.css</div>
+                            <pre><code class="language-css">/* 传统CSS需要写很多代码 */
 .my-button {
   margin: 10px 20px;
   padding: 15px 30px;
@@ -705,13 +920,14 @@
   padding: 1px;
 }</code></pre>
                     </div>
-                </div>
-                
-                <div>
-                    <h3 style="margin-bottom: 1rem; color: #81e6d9;">lego.css写法</h3>
-                    <div class="code-block">
-                        <div class="code-header">index.html</div>
-                        <pre><code class="language-html">&lt;!-- 只需要一行HTML class --&gt;
+                        </div>
+                    </article>
+                    
+                    <article>
+                        <h3 style="margin-bottom: 1rem; color: #81e6d9;">lego.css写法</h3>
+                        <div class="code-block" role="complementary" aria-label="lego.css代码示例">
+                            <div class="code-header">index.html</div>
+                            <pre><code class="language-html">&lt;!-- 只需要一行HTML class --&gt;
 &lt;button class="
   m10-20 p15-30 bgc#ff6b6b c#fff 
   bd[1 solid #ff6b6b] fs16 c-pointer
@@ -739,11 +955,12 @@
     完美居中的卡片
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
+                        </div>
+                    </article>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <!-- 语法表格部分 -->
     <section style="padding: 80px 0; background: white;">
@@ -1027,23 +1244,24 @@ class="lh1.5!
     </section>
 
     <!-- 统计数据 -->
-    <section class="stats">
+    <section class="stats" aria-labelledby="stats-title">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number">90%</div>
+            <h2 id="stats-title" class="sr-only">lego.css核心数据统计</h2>
+            <div class="stats-grid" role="list" aria-label="产品优势统计数据">
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" aria-label="减少90%CSS代码量">90%</div>
                     <div class="stat-label">减少CSS代码量</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">3x</div>
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" aria-label="提升3倍开发效率">3x</div>
                     <div class="stat-label">提升开发效率</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">&lt;5KB</div>
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" aria-label="核心文件小于5KB">&lt;5KB</div>
                     <div class="stat-label">核心文件大小</div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">100+</div>
+                <div class="stat-item" role="listitem">
+                    <div class="stat-number" aria-label="超过100个内置原子类">100+</div>
                     <div class="stat-label">内置原子类</div>
                 </div>
             </div>

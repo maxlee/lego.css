@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- 主页 -->
+    <url>
+        <loc>https://legocss.dev/</loc>
+        <lastmod>2024-12-10</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://legocss.dev/public/lego.png</image:loc>
+            <image:caption>lego.css 原子化CSS框架图标</image:caption>
+            <image:title>lego.css Logo</image:title>
+        </image:image>
+    </url>
+    
+    <!-- 演示页面 -->
+    <url>
+        <loc>https://legocss.dev/demo/</loc>
+        <lastmod>2024-12-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- 演示主页 -->
+    <url>
+        <loc>https://legocss.dev/demo/index.html</loc>
+        <lastmod>2024-12-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- 测试页面 -->
+    <url>
+        <loc>https://legocss.dev/test.html</loc>
+        <lastmod>2024-12-10</lastmod>
+        <changefreq>rarely</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+</urlset> 
