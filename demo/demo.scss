@@ -1,4 +1,4 @@
-@import "../src/scss/_mixin";
+@use "../src/scss/_mixin" as *;
 
 @layer {
     * {

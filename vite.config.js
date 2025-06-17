@@ -30,7 +30,7 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 index: "./index.html",
-                layout: "layout/index.html",
+                layout: "demo/index.html",
             },
         },
     },
