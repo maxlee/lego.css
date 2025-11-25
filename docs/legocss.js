@@ -151,6 +151,7 @@
     imr: { properties: ["image-rendering"] },
     scc: { properties: ["scrollbar-color"] },
     scw: { properties: ["scrollbar-width"] },
+    ct: { properties: ["content"] },
   };
 
   // 动态注册的缩写（自动命名算法用）
@@ -187,8 +188,7 @@
   // 2. 伪类 / 伪元素 前缀映射
   // -----------------------------
 
-  var PSEUDO_MAP = {
-    // 伪类
+  var PSEUDO_CLASS_MAP = {
     h: ":hover",
     a: ":active",
     f: ":focus",
@@ -196,18 +196,37 @@
     fw: ":focus-within",
     ch: ":checked",
     ds: ":disabled",
+    en: ":enabled",
+    rq: ":required",
+    op: ":optional",
+    ir: ":in-range",
+    vr: ":out-of-range",
+    iv: ":invalid",
+    vv: ":valid",
     em: ":empty",
     fc: ":first-child",
     lc: ":last-child",
-    // 伪元素（e-* 前缀）
-    "e-af": "::after",
-    "e-bf": "::before",
-    "e-ph": "::placeholder",
-    "e-sel": "::selection",
-    "e-mr": "::marker",
-    "e-fl": "::first-letter",
-    "e-f1": "::first-line",
-    "e-fsb": "::file-selector-button",
+    oc: ":only-child",
+    ft: ":first-of-type",
+    lt: ":last-of-type",
+    ot: ":only-of-type",
+    rt: ":root",
+    pl: ":placeholder-shown",
+    lk: ":link",
+    vs: ":visited",
+    tg: ":target",
+    tw: ":target-within",
+  };
+
+  var PSEUDO_ELEMENT_MAP = {
+    af: "::after",
+    bf: "::before",
+    ph: "::placeholder",
+    sel: "::selection",
+    mr: "::marker",
+    fl: "::first-letter",
+    f1: "::first-line",
+    fsb: "::file-selector-button",
   };
 
   // 断点前缀：最常用的最小宽度媒体查询
@@ -217,6 +236,21 @@
     lg: "(min-width: 1024px)",
     xl: "(min-width: 1280px)",
     "2xl": "(min-width: 1536px)",
+  };
+
+  // 无单位 number 更自然的属性（无单位时不补 px）
+  var NUMBER_PREFER_BARE = {
+    "line-height": true,
+  };
+
+  // 需要参数的伪类
+  var PARAMETRIC_PSEUDO_BUILDERS = {
+    nt: function (expr) { return ":nth-child(" + expr + ")"; },
+    ntt: function (expr) { return ":nth-of-type(" + expr + ")"; },
+    no: function (expr) { return ":not(" + expr + ")"; },
+    is: function (expr) { return ":is(" + expr + ")"; },
+    wh: function (expr) { return ":where(" + expr + ")"; },
+    hs: function (expr) { return ":has(" + expr + ")"; },
   };
 
   // -----------------------------
@@ -390,20 +424,58 @@
       important = true;
       raw = raw.slice(0, -1);
     }
-    var segments = raw.split(":");
-    if (segments.length === 1) {
-      return { core: raw, variants: [], important: important };
-    }
-    var core = segments[segments.length - 1];
-    var prefixSegments = segments.slice(0, -1);
-    var variants = prefixSegments.map(function (seg) {
-      if (BREAKPOINT_MAP[seg]) {
-        return { type: "breakpoint", value: BREAKPOINT_MAP[seg] };
+    var variants = [];
+    var remain = raw;
+    while (true) {
+      var doubleMatch = remain.match(/^([a-z0-9\-\[\]]+)::/i);
+      if (doubleMatch) {
+        var name = doubleMatch[1];
+        var pseudoEl = PSEUDO_ELEMENT_MAP[name];
+        variants.push(
+          pseudoEl
+            ? { type: "pseudo", value: pseudoEl }
+            : { type: "unknown", value: name + "::" }
+        );
+        remain = remain.slice(doubleMatch[0].length);
+        continue;
       }
-      var pseudo = PSEUDO_MAP[seg];
-      if (pseudo) return { type: "pseudo", value: pseudo };
-      return { type: "unknown", value: seg };
-    });
+
+      var singleMatch = remain.match(/^([a-z0-9\-\[\]]+):/i);
+      if (singleMatch) {
+        var name2 = singleMatch[1];
+        remain = remain.slice(singleMatch[0].length);
+
+        if (BREAKPOINT_MAP[name2]) {
+          variants.push({ type: "breakpoint", value: BREAKPOINT_MAP[name2] });
+          continue;
+        }
+
+        var paramMatch = name2.match(/^([a-z0-9]+)\[(.+)\]$/);
+        if (paramMatch) {
+          var pname = paramMatch[1];
+          var expr = paramMatch[2];
+          var builder = PARAMETRIC_PSEUDO_BUILDERS[pname];
+          variants.push(
+            builder
+              ? { type: "pseudo", value: builder(expr) }
+              : { type: "unknown", value: name2 }
+          );
+          continue;
+        }
+
+        var pseudoClass = PSEUDO_CLASS_MAP[name2];
+        var pseudoElement = PSEUDO_ELEMENT_MAP[name2];
+        if (pseudoClass || pseudoElement) {
+          variants.push({ type: "pseudo", value: pseudoClass || pseudoElement });
+        } else {
+          variants.push({ type: "unknown", value: name2 });
+        }
+        continue;
+      }
+      break;
+    }
+
+    var core = remain;
     return { core: core, variants: variants, important: important };
   }
 
@@ -416,7 +488,8 @@
     }
     var prefix = token.slice(0, firstParen); // e.g. "h:"
     var inner = token.slice(firstParen + 1, lastParen);
-    if (!prefix.endsWith(":")) return [token];
+    var isPseudoOrVariantPrefix = prefix.endsWith(":") || prefix.endsWith("::");
+    if (!isPseudoOrVariantPrefix) return [token];
 
     var innerTokens = tokenizeClassString(inner);
     if (!innerTokens.length) return [];
@@ -424,6 +497,14 @@
     return innerTokens.map(function (innerToken) {
       return prefix + innerToken;
     });
+  }
+
+  function isGroupToken(token) {
+    var firstParen = token.indexOf("(");
+    var lastParen = token.lastIndexOf(")");
+    var prefixEndsWithVariant =
+      token.indexOf(":(") !== -1 || token.indexOf("::(") !== -1;
+    return firstParen !== -1 && lastParen === token.length - 1 && prefixEndsWithVariant;
   }
 
   // 从 letters 中往前截，找到已知 abbr，剩余是方向后缀
@@ -504,7 +585,14 @@
       }
       case "numberOrLength": {
         var raw = node.numeric.trim();
-        var value5 = /[a-z%]/i.test(raw) ? raw : raw;
+        var hasUnit = /[a-z%]/i.test(raw);
+        var value5 = raw;
+        if (!hasUnit) {
+          var propName = props[0];
+          if (!NUMBER_PREFER_BARE[propName]) {
+            value5 = raw + "px";
+          }
+        }
         for (var m = 0; m < props.length; m++) {
           decls.push([props[m], value5]);
         }
@@ -528,6 +616,18 @@
         throw new Error('Unknown abbreviation "' + abbr + '" in "' + core + '"');
       }
       return { abbr: abbr, dir: "", kind: "raw", raw: rawVal };
+    }
+
+    // 1.5) 引号直接值：ct'' / ct"..." → 直接透传 content 等属性
+    var quoteMatch = core.match(/^([a-z]+)(['"])(.*)\2$/);
+    if (quoteMatch) {
+      var abbrQ = quoteMatch[1];
+      var quote = quoteMatch[2];
+      var body = quoteMatch[3];
+      if (!getAbbrMeta(abbrQ)) {
+        throw new Error('Unknown abbreviation "' + abbrQ + '" in "' + core + '"');
+      }
+      return { abbr: abbrQ, dir: "", kind: "raw", raw: quote + body + quote };
     }
 
     // 2) 颜色 / 其它字面量：abbr#...
@@ -673,39 +773,37 @@
       tokens = tokenizeClassString(String(classList || ""));
     }
 
-    // 展开 group token：h:(bgc#f00 c#fff p10)
-    var flattened = [];
-    for (var j = 0; j < tokens.length; j++) {
-      var t = tokens[j];
-      if (!t) continue;
-      var expanded = expandGroupToken(t);
-      flattened.push.apply(flattened, expanded);
-    }
-
     var seen = new Set();
     var rules = [];
     var currentVersion = cacheVersion;
     var cacheKeyPrefix = selectorStrategy + "::";
 
-    for (var k = 0; k < flattened.length; k++) {
-      var token = flattened[k];
+    for (var k = 0; k < tokens.length; k++) {
+      var token = tokens[k];
       if (!token) continue;
-      if (seen.has(token)) continue;
-      seen.add(token);
-      var cacheKey = cacheKeyPrefix + token;
-      var cached = tokenCache[cacheKey];
-      if (cached && cached.version === currentVersion) {
-        rules.push(cached.css);
-        continue;
-      }
-      try {
-        var ast = parseToken(token);
-        var css = renderRule(ast, renderOptions);
-        tokenCache[cacheKey] = { css: css, version: currentVersion };
-        rules.push(css);
-      } catch (err) {
-        if (renderOptions.debug && typeof console !== "undefined" && console.warn) {
-          console.warn('[lego] skip invalid token "' + token + '": ' + (err && err.message));
+
+      var expandedTokens = expandGroupToken(token);
+      for (var e = 0; e < expandedTokens.length; e++) {
+        var actualToken = expandedTokens[e];
+        if (!actualToken) continue;
+        if (seen.has(actualToken)) continue;
+        seen.add(actualToken);
+
+        var cacheKey = cacheKeyPrefix + actualToken;
+        var cached = tokenCache[cacheKey];
+        if (cached && cached.version === currentVersion) {
+          rules.push(cached.css);
+          continue;
+        }
+        try {
+          var ast = parseToken(actualToken);
+          var css = renderRule(ast, renderOptions);
+          tokenCache[cacheKey] = { css: css, version: currentVersion };
+          rules.push(css);
+        } catch (err) {
+          if (renderOptions.debug && typeof console !== "undefined" && console.warn) {
+            console.warn('[lego] skip invalid token "' + actualToken + '": ' + (err && err.message));
+          }
         }
       }
     }
@@ -806,7 +904,7 @@
   }
 
   var CACHE_PREFIX = "lego-css-cache::";
-  var CACHE_VERSION = "v1";
+  var CACHE_VERSION = "v3";
 
   function safeLocalStorage() {
     try {
@@ -882,8 +980,7 @@
     for (var i = 0; i < classTokens.length; i++) {
       var t = classTokens[i];
       if (!t) continue;
-      var expanded = expandGroupToken(t);
-      flattened.push.apply(flattened, expanded);
+      flattened.push(t);
     }
     return flattened;
   }
@@ -956,9 +1053,36 @@
       var el = nodes[i];
       var classAttr = String(el.className || "");
       var toks = tokenizeClassString(classAttr);
+      var toRemove = [];
       for (var j = 0; j < toks.length; j++) {
         var c = toks[j];
-        if (c) classes.add(c);
+        if (!c) continue;
+        var expanded = expandGroupToken(c);
+        var useExpanded = expanded.length > 1;
+        var targets = useExpanded ? expanded : [c];
+        for (var tIdx = 0; tIdx < targets.length; tIdx++) {
+          var tToken = targets[tIdx];
+          if (!tToken) continue;
+          classes.add(tToken);
+          if (useExpanded && el.classList && !el.classList.contains(tToken)) {
+            el.classList.add(tToken);
+          }
+        }
+        if (useExpanded && el.classList) {
+          toRemove.push(c);
+        }
+      }
+      if (toRemove.length) {
+        var removeSet = new Set(toRemove);
+        var currentTokens = tokenizeClassString(String(el.className || ""));
+        var kept = [];
+        for (var r = 0; r < currentTokens.length; r++) {
+          var tok = currentTokens[r];
+          if (!tok) continue;
+          if (removeSet.has(tok)) continue;
+          kept.push(tok);
+        }
+        el.className = kept.join(" ");
       }
     }
 
