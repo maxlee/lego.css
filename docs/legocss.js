@@ -194,8 +194,10 @@
     f: ":focus",
     fv: ":focus-visible",
     fw: ":focus-within",
+    al: ":any-link",
     ch: ":checked",
     ds: ":disabled",
+    id: ":indeterminate",
     en: ":enabled",
     rq: ":required",
     op: ":optional",
@@ -203,6 +205,8 @@
     vr: ":out-of-range",
     iv: ":invalid",
     vv: ":valid",
+    ro: ":read-only",
+    rw: ":read-write",
     em: ":empty",
     fc: ":first-child",
     lc: ":last-child",
@@ -226,6 +230,10 @@
     mr: "::marker",
     fl: "::first-letter",
     f1: "::first-line",
+    bdp: "::backdrop",
+    cue: "::cue",
+    gme: "::grammar-error",
+    spe: "::spelling-error",
     fsb: "::file-selector-button",
   };
 
@@ -247,10 +255,19 @@
   var PARAMETRIC_PSEUDO_BUILDERS = {
     nt: function (expr) { return ":nth-child(" + expr + ")"; },
     ntt: function (expr) { return ":nth-of-type(" + expr + ")"; },
+    ntl: function (expr) { return ":nth-last-child(" + expr + ")"; },
+    ntlt: function (expr) { return ":nth-last-of-type(" + expr + ")"; },
+    lg: function (expr) { return ":lang(" + expr + ")"; },
+    dr: function (expr) { return ":dir(" + expr + ")"; },
     no: function (expr) { return ":not(" + expr + ")"; },
     is: function (expr) { return ":is(" + expr + ")"; },
     wh: function (expr) { return ":where(" + expr + ")"; },
     hs: function (expr) { return ":has(" + expr + ")"; },
+  };
+
+  var PARAMETRIC_PSEUDO_ELEMENT_BUILDERS = {
+    slt: function (expr) { return "::slotted(" + expr + ")"; },
+    cue: function (expr) { return "::cue(" + expr + ")"; },
   };
 
   // -----------------------------
@@ -430,12 +447,24 @@
       var doubleMatch = remain.match(/^([a-z0-9\-\[\]]+)::/i);
       if (doubleMatch) {
         var name = doubleMatch[1];
-        var pseudoEl = PSEUDO_ELEMENT_MAP[name];
-        variants.push(
-          pseudoEl
-            ? { type: "pseudo", value: pseudoEl }
-            : { type: "unknown", value: name + "::" }
-        );
+        var paramMatchEl = name.match(/^([a-z0-9]+)\[(.+)\]$/);
+        if (paramMatchEl) {
+          var elName = paramMatchEl[1];
+          var elExpr = paramMatchEl[2];
+          var elBuilder = PARAMETRIC_PSEUDO_ELEMENT_BUILDERS[elName];
+          variants.push(
+            elBuilder
+              ? { type: "pseudo", value: elBuilder(elExpr) }
+              : { type: "unknown", value: name + "::" }
+          );
+        } else {
+          var pseudoEl = PSEUDO_ELEMENT_MAP[name];
+          variants.push(
+            pseudoEl
+              ? { type: "pseudo", value: pseudoEl }
+              : { type: "unknown", value: name + "::" }
+          );
+        }
         remain = remain.slice(doubleMatch[0].length);
         continue;
       }
@@ -698,6 +727,17 @@
     return { token: token, variants: variants, important: important, declarations: declarations };
   }
 
+  function warnUnknownVariants(variants, token, options) {
+    if (!variants || !variants.length) return;
+    var debug = options && options.debug;
+    if (!debug || typeof console === "undefined" || !console.warn) return;
+    for (var i = 0; i < variants.length; i++) {
+      if (variants[i] && variants[i].type === "unknown") {
+        console.warn('[lego] unknown pseudo prefix in "' + token + '": ' + variants[i].value);
+      }
+    }
+  }
+
   function escapeCssString(str) {
     return str.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
   }
@@ -797,6 +837,7 @@
         }
         try {
           var ast = parseToken(actualToken);
+          warnUnknownVariants(ast.variants, actualToken, renderOptions);
           var css = renderRule(ast, renderOptions);
           tokenCache[cacheKey] = { css: css, version: currentVersion };
           rules.push(css);
