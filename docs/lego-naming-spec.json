@@ -1,0 +1,422 @@
+
+
+{
+  "name": "lego.css naming spec",
+  "version": "0.1.0",
+  "sources": {
+    "cssProperties": "MDN CSS Reference",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/Reference"
+  },
+  "globals": {
+    "numericUnits": {
+      "default": "px",
+      "examples": [
+        "m10 -> margin: 10px",
+        "fs16 -> font-size: 16px"
+      ]
+    },
+    "units": ["px", "%", "vh", "vw", "em", "rem"],
+    "directions": {
+      "t": "top",
+      "r": "right",
+      "b": "bottom",
+      "l": "left",
+      "x": "inline-axis",
+      "y": "block-axis"
+    },
+    "variants": {
+      "h": ":hover",
+      "a": ":active",
+      "f": ":focus",
+      "fv": ":focus-visible"
+    },
+    "importantSuffix": "!",
+    "groupSyntax": {
+      "example": "h:(bgc#ff5252 c#fff)",
+      "description": "prefix + colon + parentheses with multiple atomic tokens"
+    }
+  },
+  "props": {
+    "margin": {
+      "abbr": "m",
+      "type": "shorthand-or-4-side",
+      "valueType": "length-1-4",
+      "directions": {
+        "mt": "margin-top",
+        "mr": "margin-right",
+        "mb": "margin-bottom",
+        "ml": "margin-left",
+        "mx": "margin-left/right",
+        "my": "margin-top/bottom"
+      },
+      "examples": [
+        { "class": "m10", "css": "margin: 10px" },
+        { "class": "m10-20", "css": "margin: 10px 20px" },
+        { "class": "mt10", "css": "margin-top: 10px" }
+      ]
+    },
+    "padding": {
+      "abbr": "p",
+      "type": "shorthand-or-4-side",
+      "valueType": "length-1-4",
+      "directions": {
+        "pt": "padding-top",
+        "pr": "padding-right",
+        "pb": "padding-bottom",
+        "pl": "padding-left",
+        "px": "padding-left/right",
+        "py": "padding-top/bottom"
+      },
+      "examples": [
+        { "class": "p15", "css": "padding: 15px" },
+        { "class": "p15-30", "css": "padding: 15px 30px" }
+      ]
+    },
+    "width": {
+      "abbr": "w",
+      "valueType": "length-or-percentage",
+      "examples": [
+        { "class": "w200", "css": "width: 200px" },
+        { "class": "w50%", "css": "width: 50%" }
+      ]
+    },
+    "height": {
+      "abbr": "h",
+      "valueType": "length-or-percentage",
+      "examples": [
+        { "class": "h40", "css": "height: 40px" },
+        { "class": "h50vh", "css": "height: 50vh" }
+      ]
+    },
+    "size": {
+      "abbr": "s",
+      "mapsTo": ["width", "height"],
+      "valueType": "length",
+      "examples": [
+        { "class": "s200", "css": "width: 200px; height: 200px" }
+      ]
+    },
+    "min-width": {
+      "abbr": "nw",
+      "valueType": "length"
+    },
+    "min-height": {
+      "abbr": "nh",
+      "valueType": "length"
+    },
+    "max-width": {
+      "abbr": "mw",
+      "valueType": "length"
+    },
+    "max-height": {
+      "abbr": "mh",
+      "valueType": "length"
+    },
+    "box-sizing": {
+      "abbr": "bs",
+      "valueType": "keyword",
+      "keywords": {
+        "border-box": "bs-border-box",
+        "content-box": "bs-content-box"
+      }
+    },
+    "display": {
+      "abbr": "d",
+      "valueType": "keyword",
+      "keywords": {
+        "block": "d-block",
+        "inline": "d-inline",
+        "inline-block": "d-inline-block",
+        "flex": "d-flex",
+        "inline-flex": "d-inline-flex",
+        "grid": "d-grid",
+        "none": "d-none"
+      }
+    },
+    "position": {
+      "abbr": "p",
+      "valueType": "keyword",
+      "keywords": {
+        "static": "p-static",
+        "relative": "p-relative",
+        "absolute": "p-absolute",
+        "fixed": "p-fixed",
+        "sticky": "p-sticky"
+      }
+    },
+    "top": { "abbr": "t", "valueType": "length" },
+    "right": { "abbr": "r", "valueType": "length" },
+    "bottom": { "abbr": "b", "valueType": "length" },
+    "left": { "abbr": "l", "valueType": "length" },
+    "z-index": {
+      "abbr": "zi",
+      "valueType": "integer",
+      "examples": [
+        { "class": "zi100", "css": "z-index: 100" }
+      ]
+    },
+    "overflow": {
+      "abbr": "o",
+      "valueType": "keyword",
+      "keywords": {
+        "hidden": "o-hidden",
+        "auto": "o-auto",
+        "scroll": "o-scroll",
+        "visible": "o-visible"
+      }
+    },
+    "overflow-x": {
+      "abbr": "ox",
+      "valueType": "keyword"
+    },
+    "overflow-y": {
+      "abbr": "oy",
+      "valueType": "keyword"
+    },
+    "visibility": {
+      "abbr": "v",
+      "valueType": "keyword",
+      "keywords": {
+        "hidden": "v-hidden",
+        "visible": "v-visible",
+        "collapse": "v-collapse"
+      }
+    },
+    "cursor": {
+      "abbr": "c",
+      "valueType": "keyword",
+      "keywords": {
+        "pointer": "c-pointer",
+        "default": "c-default",
+        "move": "c-move",
+        "text": "c-text",
+        "not-allowed": "c-not-allowed"
+      }
+    },
+    "color": {
+      "abbr": "c",
+      "valueType": "color",
+      "examples": [
+        { "class": "c#333", "css": "color: #333" },
+        { "class": "cred", "css": "color: red" }
+      ]
+    },
+    "background-color": {
+      "abbr": "bgc",
+      "valueType": "color",
+      "examples": [
+        { "class": "bgc#f00", "css": "background-color: #f00" }
+      ]
+    },
+    "border-color": {
+      "abbr": "bc",
+      "valueType": "color"
+    },
+    "border": {
+      "abbr": "bd",
+      "valueType": "raw-block",
+      "examples": [
+        { "class": "bd[1 solid #000]", "css": "border: 1px solid #000" }
+      ]
+    },
+    "border-top": {
+      "abbr": "bdt",
+      "valueType": "raw-block"
+    },
+    "border-right": {
+      "abbr": "bdr",
+      "valueType": "raw-block"
+    },
+    "border-bottom": {
+      "abbr": "bdb",
+      "valueType": "raw-block"
+    },
+    "border-left": {
+      "abbr": "bdl",
+      "valueType": "raw-block"
+    },
+    "border-width": {
+      "abbr": "bw",
+      "valueType": "length"
+    },
+    "border-style": {
+      "abbr": "bds",
+      "valueType": "keyword"
+    },
+    "border-radius": {
+      "abbr": "bdrs",
+      "valueType": "length",
+      "examples": [
+        { "class": "bdrs8", "css": "border-radius: 8px" }
+      ]
+    },
+    "outline": {
+      "abbr": "ol",
+      "valueType": "raw-block"
+    },
+    "font-size": {
+      "abbr": "fs",
+      "valueType": "length-or-number",
+      "examples": [
+        { "class": "fs16", "css": "font-size: 16px" }
+      ]
+    },
+    "font-weight": {
+      "abbr": "fw",
+      "valueType": "keyword-or-number",
+      "keywords": {
+        "bold": "fw-bold",
+        "normal": "fw-normal"
+      }
+    },
+    "font-style": {
+      "abbr": "fs-",
+      "valueType": "keyword",
+      "keywords": {
+        "italic": "fs-italic",
+        "normal": "fs-normal",
+        "oblique": "fs-oblique"
+      }
+    },
+    "font-family": {
+      "abbr": "ff",
+      "valueType": "token",
+      "tokens": {
+        "k": "ff-k",
+        "h": "ff-h",
+        "s": "ff-s",
+        "fs": "ff-fs"
+      }
+    },
+    "line-height": {
+      "abbr": "lh",
+      "valueType": "number-or-length",
+      "examples": [
+        { "class": "lh1.5", "css": "line-height: 1.5" }
+      ]
+    },
+    "letter-spacing": {
+      "abbr": "ls",
+      "valueType": "length",
+      "examples": [
+        { "class": "ls2", "css": "letter-spacing: 2px" }
+      ]
+    },
+    "text-align": {
+      "abbr": "ta",
+      "valueType": "keyword",
+      "keywords": {
+        "left": "ta-left",
+        "center": "ta-center",
+        "right": "ta-right",
+        "justify": "ta-justify"
+      }
+    },
+    "text-shadow": {
+      "abbr": "ts",
+      "valueType": "raw-block",
+      "examples": [
+        { "class": "ts[1 2 3 #000]", "css": "text-shadow: 1px 2px 3px #000" }
+      ]
+    },
+    "justify-content": {
+      "abbr": "jc",
+      "valueType": "keyword",
+      "keywords": {
+        "center": "jc-center",
+        "flex-start": "jc-flex-start",
+        "flex-end": "jc-flex-end",
+        "space-between": "jc-space-between",
+        "space-around": "jc-space-around",
+        "space-evenly": "jc-space-evenly"
+      }
+    },
+    "align-items": {
+      "abbr": "ai",
+      "valueType": "keyword"
+    },
+    "flex-wrap": {
+      "abbr": "fw",
+      "valueType": "keyword"
+    },
+    "transform": {
+      "abbr": "t",
+      "valueType": "raw-block",
+      "examples": [
+        {
+          "class": "t[translateY(-2px)]",
+          "css": "transform: translateY(-2px)"
+        }
+      ]
+    },
+    "transition": {
+      "abbr": "tr",
+      "valueType": "raw-block"
+    },
+    "opacity": {
+      "abbr": "o",
+      "valueType": "number",
+      "examples": [
+        { "class": "o0.5", "css": "opacity: 0.5" }
+      ]
+    },
+    "overflow-wrap": {
+      "abbr": "ow",
+      "valueType": "keyword"
+    },
+    "word-break": {
+      "abbr": "wb",
+      "valueType": "keyword"
+    },
+    "white-space": {
+      "abbr": "ws-",
+      "valueType": "keyword"
+    }
+  },
+  "autoNaming": {
+    "description": "Fallback naming algorithm for properties not listed in `props`.",
+    "steps": [
+      "1. Remove vendor prefix (-webkit-, -moz-, etc) from the CSS property name.",
+      "2. Split the property name by '-' into words.",
+      "3. Take first 2 letters of the first word, then first letter of each subsequent word.",
+      "4. Concatenate and trim to at most 4 characters.",
+      "5. If the result conflicts with an existing `props[...].abbr`, append an extra letter (e.g. third letter of first word or 'x')."
+    ],
+    "examples": [
+      {
+        "property": "scroll-behavior",
+        "abbr": "sbh",
+        "classes": ["sbh-auto", "sbh-smooth"]
+      },
+      {
+        "property": "content-visibility",
+        "abbr": "cv",
+        "classes": ["cv-visible", "cv-hidden", "cv-auto"]
+      },
+      {
+        "property": "contain-intrinsic-size",
+        "abbr": "cis",
+        "classes": ["cis[10px 20px]"]
+      }
+    ]
+  },
+  "examples": [
+    {
+      "description": "Button with hover and focus-visible styles",
+      "classes": "p8-16 bgc#3b82f6 c#fff bdrs4 bd[1 solid #3b82f6] c-pointer h:(bgc#2563eb bd[1 solid #2563eb] t[translateY(-2px)]) fv:ol[2 solid #3b82f6]",
+      "notes": [
+        "Padding, background, text color and border use core abbreviations.",
+        "Hover state uses grouped variant syntax with prefix 'h:'.",
+        "Focus-visible uses 'fv:' prefix plus outline shorthand."
+      ]
+    },
+    {
+      "description": "Full-screen flexbox centered layout",
+      "classes": "d-flex ai-center jc-center h100vh bgc#f0f0f0",
+      "notes": [
+        "Display flex + align-items center + justify-content center.",
+        "Height uses vh unit, background color uses raw hex."
+      ]
+    }
+  ]
+}
