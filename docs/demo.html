@@ -15,9 +15,9 @@
   </style>
   <script src="./legocss.js"></script>
 </head>
-<body class="fw900">
+<body class="fw900 fs400!">
   <!-- 容器 -->
-  <div class="m40 bgc#333">
+  <div class="m40 bgc#333 m1-2px-3em-4vh p2-3-4">
     <h1 class="fs24 lh1.4 fw700 m0 c#e5e7eb">
       lego.css / @lego/core Demo
     </h1>
@@ -76,6 +76,28 @@
       <p class="fs14 lh1.8 m0 mt8 c#9ca3af ws-nowrap to-ellipsis w240">
         文本溢出示例：这是一段很长的文案，用于展示 white-space 与 text-overflow: ellipsis 的组合效果。
       </p>
+    </div>
+
+    <!-- 响应式断点示例 -->
+    <div class="mt32 p16 bgc#1f2937 bdrs12">
+      <h2 class="fs18 fw600 m0 mb8">响应式断点前缀</h2>
+      <p class="fs14 lh1.7 m0 mb12 c#9ca3af">
+        下面的卡片在小屏幕下堆叠，达到 <code>md</code>（&gt;=768px）后使用 <code>md:</code> 前缀切换为横向布局并调整宽度。
+      </p>
+      <div class="d-block md:d-flex md:gp12">
+        <div class="bgc#111827 bdrs10 p12 mb12 md:mb0 md:fx[1 1 0] md:w50%">
+          <h3 class="fs16 fw600 m0 mb6 c#e5e7eb">基础版</h3>
+          <p class="fs14 lh1.6 m0 c#9ca3af">
+            默认块级排列；在 <code>md:</code> 及以上变为横向布局，宽度 50%。
+          </p>
+        </div>
+        <div class="bgc#0f172a bdrs10 p12 md:fx[1 1 0] md:w50%">
+          <h3 class="fs16 fw600 m0 mb6 c#e5e7eb">进阶版</h3>
+          <p class="fs14 lh1.6 m0 c#9ca3af">
+            同样使用 <code>md:</code> 前缀控制布局，你可以继续叠加伪类前缀如 <code>md:h:</code> 组合。
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 

@@ -5,6 +5,11 @@
 <h4 align="center">Write CSS like LEGO</h4>
 <p>`lego.css` 基于原子类和 `Pure CSS` 两者的思想设计，可以帮助更快更轻松的编写页面 CSS 样式，平滑解决项目中 CSS 难复用、难扩展、难维护的问题。</p>
 
+## 响应式断点前缀
+
+- 内置 `sm / md / lg / xl / 2xl`，分别对应 `@media (min-width: 640/768/1024/1280/1536px)`。
+- 可与伪类和分组组合使用，例如 `md:h:bgc#f00` 或 `md:(d-flex gp16)`。
+
 ## 架构
 
 1. Naming

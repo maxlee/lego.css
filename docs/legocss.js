@@ -210,6 +210,15 @@
     "e-fsb": "::file-selector-button",
   };
 
+  // 断点前缀：最常用的最小宽度媒体查询
+  var BREAKPOINT_MAP = {
+    sm: "(min-width: 640px)",
+    md: "(min-width: 768px)",
+    lg: "(min-width: 1024px)",
+    xl: "(min-width: 1280px)",
+    "2xl": "(min-width: 1536px)",
+  };
+
   // -----------------------------
   // 3. 自动命名算法（property -> abbr）
   // -----------------------------
@@ -220,6 +229,12 @@
 
   function canonicalizePropertyName(prop) {
     return stripVendorPrefix(String(prop).trim().toLowerCase());
+  }
+
+  function camelToKebab(prop) {
+    return String(prop).replace(/[A-Z]/g, function (m) {
+      return "-" + m.toLowerCase();
+    });
   }
 
   // 首词取2字母 + 后续词首字母，最长4位
@@ -382,6 +397,9 @@
     var core = segments[segments.length - 1];
     var prefixSegments = segments.slice(0, -1);
     var variants = prefixSegments.map(function (seg) {
+      if (BREAKPOINT_MAP[seg]) {
+        return { type: "breakpoint", value: BREAKPOINT_MAP[seg] };
+      }
       var pseudo = PSEUDO_MAP[seg];
       if (pseudo) return { type: "pseudo", value: pseudo };
       return { type: "unknown", value: seg };
@@ -602,6 +620,9 @@
       .join("");
 
     var selector = baseSelector + pseudoSuffix;
+    var breakpoints = ast.variants
+      .filter(function (v) { return v.type === "breakpoint"; })
+      .map(function (v) { return v.value; });
     var body = ast.declarations
       .map(function (_a) {
         var prop = _a[0], value = _a[1];
@@ -615,7 +636,15 @@
       })
       .join("");
 
-    return selector + "{" + body + "}";
+    var rule = selector + "{" + body + "}";
+
+    if (!breakpoints.length) return rule;
+
+    // 多个断点时按前缀顺序嵌套媒体查询
+    for (var i = breakpoints.length - 1; i >= 0; i--) {
+      rule = "@media " + breakpoints[i] + "{" + rule + "}";
+    }
+    return rule;
   }
 
   function compileClassList(classList, options) {
@@ -698,6 +727,7 @@
   var compiledCss = "";
   var cacheHydrated = false;
   var lastSelectorStrategy = null;
+  var autoAbbrBootstrapped = false;
 
   function resetCompiledState() {
     compiledClasses = new Set();
@@ -710,6 +740,35 @@
     cacheVersion++;
     tokenCache = Object.create(null);
     resetCompiledState();
+  }
+
+  function bootstrapAutoAbbrFromStyle() {
+    if (autoAbbrBootstrapped) return;
+    if (typeof document === "undefined") return;
+    var style = document.createElement("div").style;
+    if (!style) return;
+    autoAbbrBootstrapped = true;
+    var seen = new Set();
+    var proto = style;
+    for (var prop in proto) {
+      if (!prop) continue;
+      if (!isNaN(prop)) continue;
+      var v = proto[prop];
+      if (typeof v === "function") continue;
+      if (prop === "length" || prop === "parentRule" || prop === "cssText") continue;
+      var kebab = camelToKebab(prop);
+      if (/^webkit/i.test(prop)) {
+        kebab = "-" + kebab;
+      }
+      var canonical = canonicalizePropertyName(kebab);
+      if (!canonical || seen.has(canonical)) continue;
+      seen.add(canonical);
+      try {
+        autoAbbr(canonical, { numericType: "numberOrLength" });
+      } catch (_e) {
+        // ignore properties that cannot be registered
+      }
+    }
   }
 
   function ensureStyleElement(id) {
@@ -881,6 +940,8 @@
       root = document.documentElement;
     }
     if (!root || typeof document === "undefined") return;
+
+    bootstrapAutoAbbrFromStyle();
 
     var cfg = getConfig();
     if (lastSelectorStrategy && lastSelectorStrategy !== cfg.selectorStrategy) {
