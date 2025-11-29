@@ -7,6 +7,7 @@
 - 🐛 Fix: 去除缩写级无单位白名单，统一按属性名判定无单位（`line-height`/`z-index`/`font-weight`/`opacity`），并在 demo 增加示例覆盖 `fw600` 等裸数输出。
 - ✨ New: 核心缩写表补充 text-indent/direction/unicode-bidi/text-justify/vertical-align/word-spacing/word-wrap、背景附件/位置/重复/尺寸以及 list-style* 映射，和 demo 示例对应。
 - 🐛 Fix: `abbr[...]` 透传时自动修正 `calc()` 运算符缺空格（如 `w[calc(100%-20px)]` → `calc(100% - 20px)`），避免无效声明；demo 补充示例。
+- ✨ Change: 按属性类型区分单位种类（length/angle/time/resolution/frequency），`transition-duration` 等缺单位默认补 `ms`，避免将时间误判为长度；demo 增加时间单位示例。
 
 ## 2025-11-26
 - 📁 Docs: 更新 `docs/appendix-auto-abbr.md` 至 v0.2，补充 MDN 高频属性的核心/推荐缩写与避冲突策略。

@@ -15,6 +15,7 @@
 - 默认长度单位为 `px`，但数值 `0` 以及缩写 `lh/zi/fw/op` 不会自动追加单位（保持裸数更贴近原生语义）。
 - 支持的显式单位：`px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb`；提供这些单位时不会再追加默认单位。
 - 若传入 `calc(...)` 等原生值或使用 `abbr[...]` 透传，runtime 会原样输出，便于处理特殊场景。
+- 时间等非长度单位会按属性类型选择默认单位：如 `transition-duration` 缺单位时补 `ms`，显式 `s/ms` 将被保留；后续可按需扩展 angle/resolution/frequency。
 
 ## 核心缩写扩展（示例）
 

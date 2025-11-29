@@ -265,6 +265,19 @@
   var DEFAULT_LENGTH_UNIT = "px";
   var LENGTH_UNIT_PATTERN = "px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb";
   var LENGTH_UNIT_RE = new RegExp("^(?:" + LENGTH_UNIT_PATTERN + ")$", "i");
+  var UNIT_KIND_META = {
+    length: { pattern: LENGTH_UNIT_PATTERN, defaultUnit: DEFAULT_LENGTH_UNIT },
+    angle: { pattern: "deg|grad|rad|turn", defaultUnit: "deg" },
+    time: { pattern: "ms|s", defaultUnit: "ms" },
+    resolution: { pattern: "dpi|dpcm|dppx|x", defaultUnit: "dpi" },
+    frequency: { pattern: "hz|khz", defaultUnit: "hz" },
+  };
+  var UNIT_KIND_BY_PROP = {
+    "transition-duration": "time",
+    "transition-delay": "time",
+    "animation-duration": "time",
+    "animation-delay": "time",
+  };
 
   // 无单位 number 更自然的属性（无单位时不补 px）
   var NUMBER_PREFER_BARE = {
@@ -299,6 +312,12 @@
 
   function stripVendorPrefix(prop) {
     return prop.replace(/^-(webkit|moz|ms|o)-/i, "");
+  }
+
+  function getUnitKindFor(abbr, propName) {
+    if (!propName) return "length";
+    var canonical = canonicalizePropertyName(propName);
+    return UNIT_KIND_BY_PROP[canonical] || "length";
   }
 
   function canonicalizePropertyName(prop) {
@@ -585,22 +604,24 @@
     return meta.properties || [];
   }
 
-  // 将 "10" / "10px" / "50%" / "1.5rem" → 合法 CSS 长度（默认 px）
+  // 将 "10" / "10px" / "50%" / "1.5rem" → 合法 CSS 数值（按 unitKind 追加默认单位）
   function toLength(part, options) {
     var opts = options || {};
     var propName = opts.propName || "";
+    var unitKind = opts.unitKind || "length";
     var raw = String(part || "").trim();
     var m = raw.match(/^(-?\d*\.?\d+)([a-z%]+)?$/i);
     if (!m) return raw; // 比如 "auto" / "calc(...)"
     var num = m[1];
     var unit = m[2];
+    var unitMeta = UNIT_KIND_META[unitKind] || UNIT_KIND_META.length;
+    var unitRe = new RegExp("^(?:" + unitMeta.pattern + ")$", "i");
     if (unit) {
-      // 未识别的单位原样透传，识别的单位直接返回
-      return LENGTH_UNIT_RE.test(unit) ? num + unit : num + unit;
+      return unitRe.test(unit) ? num + unit : num + unit;
     }
     var preferBare = NUMBER_PREFER_BARE[propName] || Number(num) === 0;
     if (preferBare) return num;
-    return num + DEFAULT_LENGTH_UNIT;
+    return num + unitMeta.defaultUnit;
   }
 
   function buildNumericDeclarations(node) {
@@ -615,9 +636,10 @@
           .split("-")
           .map(function (p) { return p.trim(); })
           .filter(Boolean);
+        var unitKind = getUnitKindFor(node.abbr, props[0]);
         var value = parts
           .map(function (p) {
-            return toLength(p, { abbr: node.abbr, propName: props[0] });
+            return toLength(p, { abbr: node.abbr, propName: props[0], unitKind: unitKind });
           })
           .join(" ");
         for (var i = 0; i < props.length; i++) {
@@ -626,7 +648,8 @@
         break;
       }
       case "length": {
-        var value2 = toLength(node.numeric, { abbr: node.abbr, propName: props[0] });
+        var unitKind2 = getUnitKindFor(node.abbr, props[0]);
+        var value2 = toLength(node.numeric, { abbr: node.abbr, propName: props[0], unitKind: unitKind2 });
         for (var j = 0; j < props.length; j++) {
           decls.push([props[j], value2]);
         }
@@ -648,7 +671,8 @@
       }
       case "numberOrLength": {
         var raw = node.numeric.trim();
-        var value5 = toLength(raw, { abbr: node.abbr, propName: props[0] });
+        var unitKind3 = getUnitKindFor(node.abbr, props[0]);
+        var value5 = toLength(raw, { abbr: node.abbr, propName: props[0], unitKind: unitKind3 });
         for (var m = 0; m < props.length; m++) {
           decls.push([props[m], value5]);
         }
