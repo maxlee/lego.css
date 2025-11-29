@@ -1,6 +1,6 @@
 # lego.css 命名规范（lego-naming-spec）
 
-Version: 0.1  
+Version: 0.2  
 Status: Draft
 
 本规范定义 lego.css 原子类的 **命名规则与缩写约定**，目标是：
@@ -205,6 +205,16 @@ Status: Draft
 * `bs-border-box` → `box-sizing: border-box`
 * `bs-content-box` → `box-sizing: content-box`
 
+#### 3.1.5 aspect-ratio
+
+* `ar[<width>/<height>]` → `aspect-ratio`
+  * 示例：`ar[16/9]`
+
+#### 3.1.6 逻辑尺寸（inline / block 尺寸）
+
+* 自动缩写：`inline-size` → `ins`，`block-size` → `bls`（保留自动算法，但在此列出便于查找）。
+  * 示例：`ins100%` → `inline-size: 100%`
+
 ---
 
 ### 3.2 布局与显示（Layout & Display）
@@ -249,6 +259,25 @@ Status: Draft
 
 * `v-hidden|visible|collapse`
 * `c-pointer|default|move|not-allowed|text|wait`
+
+#### 3.2.7 交互/可用性（pointer/touch/外观）
+
+* `poe-none|auto` → `pointer-events`
+* `uss-none|auto|text|all` → `user-select`
+* `tac-none|auto|pan-x|pan-y|manipulation` → `touch-action`（避免与 `ta`=text-align 混淆）
+* `apr-none|auto` → `appearance`（常用于重置表单样式）
+
+#### 3.2.8 滚动 / overscroll / 容器查询
+
+* `scb-auto|smooth` → `scroll-behavior`
+* `scst-x|y|block|inline|both`（可选 `-mandatory`/`-proximity`）→ `scroll-snap-type`
+* `ovb-auto|contain|none` / `ovbx-*` / `ovby-*` → `overscroll-behavior(-x/-y)`
+* `scc[<thumb> <track>]` → `scrollbar-color`；`scw-auto|thin|none` → `scrollbar-width`
+* `cov-auto|hidden|visible` → `content-visibility`
+* `con-none|strict|content|size|layout|style|paint` → `contain`
+* `cois[...]` → `contain-intrinsic-size`
+* `cot-size|inline-size|normal` → `container-type`
+* `conm-<name>` → `container-name`
 
 ---
 
@@ -316,7 +345,7 @@ Status: Draft
 
 * `outline-color` → `olc<颜色>`
 * `caret-color` → `cac<颜色>`
-* `accent-color` → `aclc<颜色>`
+* `accent-color` → `acc<颜色>`
 
 ---
 
@@ -330,6 +359,9 @@ Status: Draft
 * `bp-center|top|right|bottom|left` → `background-position`
 * `bs-cover|contain|auto` 或 `bs<number>` → `background-size`
 * `ba-fixed|local|scroll` → `background-attachment`
+* `bac-padding-box|border-box|content-box` → `background-clip`
+* `bao-padding-box|border-box|content-box` → `background-origin`
+* `mibm-normal|multiply|screen|overlay|darken|lighten|color-dodge|color-burn|difference|exclusion|hue|saturation|color|luminosity` → `mix-blend-mode`
 * `bg[...]` → `background` 复合写法
 
 ---
@@ -354,6 +386,7 @@ Status: Draft
 
   * `ts[1 2 3 #000]`
 * `bsh[...]` → `box-shadow`（建议）
+* `olo<number>` → `outline-offset`
 
 ---
 
@@ -399,6 +432,26 @@ Status: Draft
 * `text-transform`：
 
   * `tt-none|capitalize|uppercase|lowercase`
+
+* `text-indent`：
+
+  * `ti<number|unit>` → `text-indent`
+
+* `text-overflow`：
+
+  * `to-clip|ellipsis` 等 → `text-overflow`
+
+* `text-wrap`（新属性，注意兼容性）：
+
+  * `twp-wrap|nowrap|balance|pretty` → `text-wrap`（`twp` 避开伪类缩写 `tw:`）
+
+* `tab-size`：
+
+  * `tbs<number>` → `tab-size`（避开 `ts`=text-shadow 冲突）
+
+* `hyphens`：
+
+  * `hy-none|manual|auto` → `hyphens`
 
 * `text-decoration-*`：
 
@@ -453,6 +506,22 @@ Status: Draft
 * `backdrop-filter`：
 
   * `bf[...]` → `backdrop-filter`
+
+* `transform-origin`：
+
+  * `tro[...]` → `transform-origin`
+
+* `transform-box`：
+
+  * `trb-border-box|fill-box|view-box` → `transform-box`
+
+* `backface-visibility`：
+
+  * `bav-visible|hidden` → `backface-visibility`
+
+* `will-change`（慎用，提醒性能成本）：
+
+  * `wc-<property>` → `will-change`
 
 ---
 
@@ -557,10 +626,10 @@ Status: Draft
 
 ## 6. 版本与兼容性策略
 
-* **v0.1**：
+* **v0.2**：
 
-  * 当前文档版本。
-  * 以 lego.css 官网语法为基础，做系统化整理并补充自动命名算法。
+  * 同步 `appendix-auto-abbr` v0.2 补充的核心/推荐缩写，覆盖 aspect-ratio、pointer/user-select/touch-action/appearance、滚动与容器查询、背景 clip/origin/mix-blend、文本缩写避冲突（`twp`/`tbs`）、3D/动画补全（`tro`/`trb`/`wc` 等）。
+  * 调整 `accent-color` 缩写为 `acc`，与 runtime/附录保持一致。
 
 * **未来版本变更原则**：
 

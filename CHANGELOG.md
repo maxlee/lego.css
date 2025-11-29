@@ -1,5 +1,9 @@
 # Changelog
 
+## 2025-11-26
+- 📁 Docs: 更新 `docs/appendix-auto-abbr.md` 至 v0.2，补充 MDN 高频属性的核心/推荐缩写与避冲突策略。
+- 📁 Docs: 同步 `docs/lego-naming-spec.md` 与附录，晋升新缩写（如 `ar`、`uss/poe/tac`、`scb/scst/ovb*`、`twp/tbs`、`tro/trb/wc` 等），并统一 `accent-color` 缩写为 `acc`。
+
 ## 2025-11-25
 - ✨ New: Runtime 支持断点前缀 `sm/md/lg/xl/2xl`，将对应样式包裹到 `@media (min-width: ... )` 中。
 - ✨ New: 在 `docs/demo.html` 增加响应式示例，展示断点前缀与核心缩写的组合。

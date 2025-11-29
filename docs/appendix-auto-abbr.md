@@ -1,9 +1,15 @@
 # Appendix: Auto-generated Abbreviations (lego.css)
 
-Version: 0.1  
+Version: 0.2  
 Status: Draft
 
 本附录用于说明 **lego.css 自动生成缩写的算法与示例**，并展示如何在该算法之上，为常用属性保留更短的「核心缩写」。
+
+本版新增（v0.2）：
+
+- 依据 MDN CSS Reference 补充了一批现代高频属性的「推荐/晋升核心」缩写（如 `ar`、`uss`、`poe`、`scb`、`scst`、`ovb*`、`cov`、`apr`、`tac` 等）。
+- 补充文字排版与交互相关的避冲突缩写（如 `twp` 避开伪类 `tw:`，`tbs` 避开 `ts`）。
+- 标注滚动/容器、背景混合、3D/动画等常见属性的友好别名，方便对照自动缩写算法使用。
 
 核心原则：
 
@@ -250,6 +256,37 @@ Status: Draft
 
 ---
 
+### 3.8 v0.2 补充的核心 / 推荐缩写（基于 MDN 高频）
+
+| 分类 | MDN 属性 | lego 缩写 | 示例类名 | 备注 / 冲突说明 |
+| ---- | -------- | --------- | -------- | ---------------- |
+| 布局与尺寸 | `aspect-ratio` | `ar` | `ar[16/9]` | 高频且直观，短于自动 `asr`；晋升核心 |
+| 布局与尺寸 | `inline-size` / `block-size` | （自动：`ins` / `bls`） | `ins100%` | 保留自动缩写即可，文档列出便于查找 |
+| 交互 | `user-select` | `uss` | `uss-none` | 晋升核心，文本不可选常用 |
+| 交互 | `pointer-events` | `poe` | `poe-none` | 晋升核心，禁用点击常用 |
+| 交互 | `touch-action` | `tac` | `tac-none` | 避免与 `ta`(text-align) 混淆，手写别名 |
+| 交互 | `appearance` | `apr` | `apr-none` | 表单重置常用，避免与 `:active` 记忆混淆 |
+| 背景与混合 | `background-clip` / `background-origin` | `bac` / `bao` | `bac-padding-box` | 推荐写入核心示例，直观于自动缩写 |
+| 背景与混合 | `mix-blend-mode` | `mibm` | `mibm-screen` | 保持 Appendix 缩写，标注在核心表中 |
+| 字体与文本 | `text-indent` | `ti` | `ti2em` | 晋升核心，排版常用 |
+| 字体与文本 | `text-overflow` | `to` | `to-ellipsis` | 晋升核心，溢出省略常用 |
+| 字体与文本 | `text-wrap` | `twp` | `twp-balance` | 避开伪类缩写 `tw:`(`:target-within`)；新属性需注明兼容性 |
+| 字体与文本 | `tab-size` | `tbs` | `tbs4` | 避开 `ts`(text-shadow) 冲突 |
+| 字体与文本 | `hyphens` | `hy` | `hy-auto` | 断词控制常用，短于自动 `hy`（一致但在此晋升） |
+| 滚动与容器 | `scroll-behavior` | `scb` | `scb-smooth` | 晋升核心，页面平滑滚动常用 |
+| 滚动与容器 | `scroll-snap-type` | `scst` | `scst-y-mandatory` | 晋升核心，吸附滚动常用 |
+| 滚动与容器 | `overscroll-behavior` (`-x`/`-y`) | `ovb` / `ovbx` / `ovby` | `ovb-contain` | 推荐显式列出，避免忘记自动缩写 |
+| 滚动与容器 | `scrollbar-color` / `scrollbar-width` | `scc` / `scw` | `scc[#fff #888]` | 晋升核心，注意浏览器兼容性 |
+| 滚动与容器 | `content-visibility` | `cov` | `cov-auto` | 晋升核心，性能优化常用 |
+| 滚动与容器 | `contain` / `contain-intrinsic-size` | `con` / `cois` | `con-layout` / `cois[auto 500px]` | 现代布局常用，`cois` 保持自动缩写 |
+| 滚动与容器 | `container-type` / `container-name` | `cot` / `conm` | `cot-inline-size` | 容器查询常用，写入核心示例 |
+| 3D / 动画 | `transform-origin` / `transform-box` | `tro` / `trb` | `tro[center center]` | 强调常用，建议视为核心别名 |
+| 3D / 动画 | `backface-visibility` | `bav` | `bav-hidden` | 在 3D 翻转中常用，晋升核心 |
+| 3D / 动画 | `will-change` | `wc` | `wc-transform` | 手写别名，提醒慎用、避免性能风险 |
+| 轮廓 | `outline-offset` | `olo` | `olo2px` | 配合 `ol[...]` 常用，避免忘记自动缩写 |
+
+---
+
 ## 4. 使用建议
 
 1. **永远优先使用核心缩写**
@@ -270,4 +307,3 @@ Status: Draft
 * 高频属性有极简缩写，键盘 & token 成本低；
 * 低频长尾属性仍然有统一、可推导的命名方式；
 * 不需要为每个 CSS 属性手写一行映射表，维护成本可控。
-
