@@ -5,6 +5,7 @@
 - ✨ Change: 支持 `px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb` 长度单位，防止新视口单位被误判为需要追加默认单位。
 - 📁 Docs: README 补充默认单位/无单位属性说明，便于对齐 DSL 约定。
 - 🐛 Fix: 去除缩写级无单位白名单，统一按属性名判定无单位（`line-height`/`z-index`/`font-weight`/`opacity`），并在 demo 增加示例覆盖 `fw600` 等裸数输出。
+- ✨ New: 核心缩写表补充 text-indent/direction/unicode-bidi/text-justify/vertical-align/word-spacing/word-wrap、背景附件/位置/重复/尺寸以及 list-style* 映射，和 demo 示例对应。
 
 ## 2025-11-26
 - 📁 Docs: 更新 `docs/appendix-auto-abbr.md` 至 v0.2，补充 MDN 高频属性的核心/推荐缩写与避冲突策略。

@@ -75,6 +75,10 @@
     bgi: { properties: ["background-image"] },
     cac: { properties: ["caret-color"] },
     acc: { properties: ["accent-color"] },
+    bga: { properties: ["background-attachment"] },
+    bgp: { properties: ["background-position"] },
+    bgr: { properties: ["background-repeat"] },
+    bgs: { properties: ["background-size"] },
 
     // ---- Border / outline / shadow ----
     bd: {
@@ -107,8 +111,15 @@
     tdl: { properties: ["text-decoration-line"] },
     tds: { properties: ["text-decoration-style"] },
     tdc: { properties: ["text-decoration-color"] },
+    ti: { numericType: "length", properties: ["text-indent"] },
+    tj: { properties: ["text-justify"] },
+    dir: { properties: ["direction"] },
+    ub: { properties: ["unicode-bidi"] },
+    va: { properties: ["vertical-align"] },
     ws: { properties: ["white-space"] },
+    wsp: { numericType: "length", properties: ["word-spacing"] },
     wb: { properties: ["word-break"] },
+    ww: { properties: ["word-wrap"] },
     ow: { properties: ["overflow-wrap"] },
     wm: { properties: ["writing-mode"] },
     to: { properties: ["text-overflow"] },
@@ -152,6 +163,10 @@
     scc: { properties: ["scrollbar-color"] },
     scw: { properties: ["scrollbar-width"] },
     ct: { properties: ["content"] },
+    lsp: { properties: ["list-style-position"] },
+    lsi: { properties: ["list-style-image"] },
+    lst: { properties: ["list-style-type"] },
+    lsy: { properties: ["list-style"] },
   };
 
   // 动态注册的缩写（自动命名算法用）

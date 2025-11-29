@@ -16,6 +16,12 @@
 - 支持的显式单位：`px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb`；提供这些单位时不会再追加默认单位。
 - 若传入 `calc(...)` 等原生值或使用 `abbr[...]` 透传，runtime 会原样输出，便于处理特殊场景。
 
+## 核心缩写扩展（示例）
+
+- 文本与方向：`ti` (text-indent)、`dir` (direction)、`ub` (unicode-bidi)、`tj` (text-justify)、`va` (vertical-align)、`wsp` (word-spacing)、`ww` (word-wrap)。
+- 背景：`bga` (background-attachment)、`bgp` (background-position)、`bgr` (background-repeat)、`bgs` (background-size)。
+- 列表：`lst` (list-style-type)、`lsp` (list-style-position)、`lsi` (list-style-image)、`lsy` (list-style)。
+
 ## 架构
 
 1. Naming
