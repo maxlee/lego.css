@@ -10,6 +10,12 @@
 - 内置 `sm / md / lg / xl / 2xl`，分别对应 `@media (min-width: 640/768/1024/1280/1536px)`。
 - 可与伪类和分组组合使用，例如 `md:h:bgc#f00` 或 `md:(d-flex gp16)`。
 
+## 数值与单位约定
+
+- 默认长度单位为 `px`，但数值 `0` 以及缩写 `lh/zi/fw/op` 不会自动追加单位（保持裸数更贴近原生语义）。
+- 支持的显式单位：`px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb`；提供这些单位时不会再追加默认单位。
+- 若传入 `calc(...)` 等原生值或使用 `abbr[...]` 透传，runtime 会原样输出，便于处理特殊场景。
+
 ## 架构
 
 1. Naming

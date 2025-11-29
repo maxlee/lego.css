@@ -246,9 +246,17 @@
     "2xl": "(min-width: 1536px)",
   };
 
+  // 长度单位支持列表 & 默认单位
+  var DEFAULT_LENGTH_UNIT = "px";
+  var LENGTH_UNIT_PATTERN = "px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb";
+  var LENGTH_UNIT_RE = new RegExp("^(?:" + LENGTH_UNIT_PATTERN + ")$", "i");
+
   // 无单位 number 更自然的属性（无单位时不补 px）
   var NUMBER_PREFER_BARE = {
     "line-height": true,
+    "z-index": true,
+    "font-weight": true,
+    opacity: true,
   };
 
   // 需要参数的伪类
@@ -563,14 +571,21 @@
   }
 
   // 将 "10" / "10px" / "50%" / "1.5rem" → 合法 CSS 长度（默认 px）
-  function toLength(part) {
-    var raw = part.trim();
+  function toLength(part, options) {
+    var opts = options || {};
+    var propName = opts.propName || "";
+    var raw = String(part || "").trim();
     var m = raw.match(/^(-?\d*\.?\d+)([a-z%]+)?$/i);
     if (!m) return raw; // 比如 "auto" / "calc(...)"
     var num = m[1];
     var unit = m[2];
-    if (!unit) return num + "px";
-    return num + unit;
+    if (unit) {
+      // 未识别的单位原样透传，识别的单位直接返回
+      return LENGTH_UNIT_RE.test(unit) ? num + unit : num + unit;
+    }
+    var preferBare = NUMBER_PREFER_BARE[propName] || Number(num) === 0;
+    if (preferBare) return num;
+    return num + DEFAULT_LENGTH_UNIT;
   }
 
   function buildNumericDeclarations(node) {
@@ -585,14 +600,18 @@
           .split("-")
           .map(function (p) { return p.trim(); })
           .filter(Boolean);
-        var value = parts.map(toLength).join(" ");
+        var value = parts
+          .map(function (p) {
+            return toLength(p, { abbr: node.abbr, propName: props[0] });
+          })
+          .join(" ");
         for (var i = 0; i < props.length; i++) {
           decls.push([props[i], value]);
         }
         break;
       }
       case "length": {
-        var value2 = toLength(node.numeric);
+        var value2 = toLength(node.numeric, { abbr: node.abbr, propName: props[0] });
         for (var j = 0; j < props.length; j++) {
           decls.push([props[j], value2]);
         }
@@ -614,14 +633,7 @@
       }
       case "numberOrLength": {
         var raw = node.numeric.trim();
-        var hasUnit = /[a-z%]/i.test(raw);
-        var value5 = raw;
-        if (!hasUnit) {
-          var propName = props[0];
-          if (!NUMBER_PREFER_BARE[propName]) {
-            value5 = raw + "px";
-          }
-        }
+        var value5 = toLength(raw, { abbr: node.abbr, propName: props[0] });
         for (var m = 0; m < props.length; m++) {
           decls.push([props[m], value5]);
         }

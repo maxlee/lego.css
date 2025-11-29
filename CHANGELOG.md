@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025-11-29
+- ✨ Change: runtime 数值解析新增无默认单位缩写白名单（`lh/zi/fw/op`），数值 0 不再自动补 `px`，与 Uno 规则保持一致。
+- ✨ Change: 支持 `px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb` 长度单位，防止新视口单位被误判为需要追加默认单位。
+- 📁 Docs: README 补充默认单位/无单位属性说明，便于对齐 DSL 约定。
+- 🐛 Fix: 去除缩写级无单位白名单，统一按属性名判定无单位（`line-height`/`z-index`/`font-weight`/`opacity`），并在 demo 增加示例覆盖 `fw600` 等裸数输出。
+
 ## 2025-11-26
 - 📁 Docs: 更新 `docs/appendix-auto-abbr.md` 至 v0.2，补充 MDN 高频属性的核心/推荐缩写与避冲突策略。
 - 📁 Docs: 同步 `docs/lego-naming-spec.md` 与附录，晋升新缩写（如 `ar`、`uss/poe/tac`、`scb/scst/ovb*`、`twp/tbs`、`tro/trb/wc` 等），并统一 `accent-color` 缩写为 `acc`。
