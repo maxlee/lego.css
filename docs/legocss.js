@@ -667,7 +667,7 @@
     var bracketMatch = core.match(/^([a-z]+)\[(.+)\]$/);
     if (bracketMatch) {
       var abbr = bracketMatch[1];
-      var rawVal = bracketMatch[2];
+      var rawVal = normalizeCalcSpacing(bracketMatch[2]);
       if (!getAbbrMeta(abbr)) {
         throw new Error('Unknown abbreviation "' + abbr + '" in "' + core + '"');
       }
@@ -679,7 +679,7 @@
     if (quoteMatch) {
       var abbrQ = quoteMatch[1];
       var quote = quoteMatch[2];
-      var body = quoteMatch[3];
+      var body = normalizeCalcSpacing(quoteMatch[3]);
       if (!getAbbrMeta(abbrQ)) {
         throw new Error('Unknown abbreviation "' + abbrQ + '" in "' + core + '"');
       }
@@ -690,7 +690,7 @@
     var hexMatch = core.match(/^([a-z]+)(#.+)$/);
     if (hexMatch) {
       var abbr2 = hexMatch[1];
-      var raw2 = hexMatch[2];
+      var raw2 = normalizeCalcSpacing(hexMatch[2]);
       if (!getAbbrMeta(abbr2)) {
         throw new Error('Unknown abbreviation "' + abbr2 + '" in "' + core + '"');
       }
@@ -718,7 +718,7 @@
     var kwMatch = core.match(/^([a-z]+)-(.*)$/);
     if (kwMatch) {
       var abbr3 = kwMatch[1];
-      var keyword = kwMatch[2];
+      var keyword = normalizeCalcSpacing(kwMatch[2]);
       if (!getAbbrMeta(abbr3)) {
         throw new Error('Unknown abbreviation "' + abbr3 + '" in "' + core + '"');
       }
@@ -752,6 +752,19 @@
     var coreNode = parseCoreToken(core);
     var declarations = buildDeclarations(coreNode);
     return { token: token, variants: variants, important: important, declarations: declarations };
+  }
+
+  // 规范化 calc 表达式中的运算符空格，避免缺空格导致 CSS 无效
+  function normalizeCalcSpacing(raw) {
+    if (!raw || raw.indexOf("calc(") === -1) return raw;
+    return raw.replace(/calc\(([^)]*)\)/gi, function (_m, expr) {
+      var normalized = expr.replace(
+        /([0-9a-z%_)])([+\-*/])([0-9a-z(])/gi,
+        "$1 $2 $3"
+      );
+      normalized = normalized.replace(/\s{2,}/g, " ").trim();
+      return "calc(" + normalized + ")";
+    });
   }
 
   function warnUnknownVariants(variants, token, options) {

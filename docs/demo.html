@@ -20,7 +20,7 @@
 </head>
 <body class="fw900">
   <!-- 容器 -->
-  <div class="m40 bgc#333 m1-2px-3em-4vh p2-3-4">
+  <div class="m40 bgc#333 m1-2px-3em-4vh p2-3-4 w[calc(100%-20px)]">
     <h1 class="fs24 lh1.4 fw700 m0 c#e5e7eb">
       lego.css / @lego/core Demo
     </h1>
@@ -167,6 +167,14 @@
           <span class="fs14 bgc#111827 bdrs6 px8 py6 fw600">font-weight 600</span>
           <span class="fs14 bgc#111827 bdrs6 px8 py6 op0.6">opacity 0.6</span>
         </div>
+        <div class="mt8 p12 bdrs8 bgc#111827">
+          <p class="fs14 lh1.6 m0 c#e5e7eb">
+            <code>w[calc(100%-20px)]</code> 会自动修正为 <code>calc(100% - 20px)</code>，避免缺空格导致无效。
+          </p>
+          <div class="mt8 bgc#2563eb op0.8 c#fff p8 bdrs6 w[calc(100%-40px)]">
+            宽度由 calc 自动补空格后生效（左右留 20px）
+          </div>
+        </div>
       </div>
 
       <div class="mt12 p12 bgc#0b1220 bdrs8">
@@ -188,7 +196,7 @@
         <button id="button-af"
           class="pos-relative px14 py10 bgc#2563eb c#fff bdrs10 fs14 fw700 cur-pointer tr[background-color .2s ease] 
                 h:(bgc#1d4ed8 fs20)
-                af::(ct'' bgc#0ff w10 h10 bdrs9999 pos-absolute t6 r6 d-block)"
+                af::(ct'a' bgc#0ff w10 h10 bdrs9999 pos-absolute t6 r6 d-block) fs10"
         >
           消息
         </button>
