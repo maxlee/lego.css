@@ -167,6 +167,8 @@
     lsi: { properties: ["list-style-image"] },
     lst: { properties: ["list-style-type"] },
     lsy: { properties: ["list-style"] },
+    list: { properties: ["list-style-type"] },
+    bdc: { properties: ["border-color"] },
   };
 
   // 动态注册的缩写（自动命名算法用）
@@ -277,6 +279,37 @@
     "transition-delay": "time",
     "animation-duration": "time",
     "animation-delay": "time",
+  };
+
+  // 已知关键字表（用于 debug 提示）
+  var KNOWN_KEYWORDS = {
+    d: ["block", "inline", "inline-block", "flex", "grid", "none"],
+    pos: ["static", "relative", "absolute", "fixed", "sticky"],
+    o: ["visible", "hidden", "scroll", "auto"],
+    ox: ["visible", "hidden", "scroll", "auto"],
+    oy: ["visible", "hidden", "scroll", "auto"],
+    v: ["visible", "hidden", "collapse"],
+    ta: ["left", "center", "right", "justify", "start", "end"],
+    tt: ["none", "uppercase", "lowercase", "capitalize"],
+    ws: ["normal", "nowrap", "pre", "pre-line", "pre-wrap"],
+    wb: ["normal", "break-all", "keep-all", "break-word"],
+    ww: ["normal", "break-word", "anywhere"],
+    ow: ["normal", "break-word", "anywhere"],
+    wm: ["horizontal-tb", "vertical-rl", "vertical-lr"],
+    to: ["clip", "ellipsis"],
+    bga: ["scroll", "fixed", "local"],
+    bgr: ["repeat", "no-repeat", "repeat-x", "repeat-y", "space", "round"],
+    bgs: ["auto", "cover", "contain"],
+    bgp: ["top", "bottom", "left", "right", "center"],
+    lst: ["none", "disc", "circle", "square", "decimal"],
+    lsp: ["inside", "outside"],
+    va: ["baseline", "middle", "top", "bottom", "text-top", "text-bottom"],
+    dir: ["ltr", "rtl"],
+    ub: ["normal", "embed", "bidi-override"],
+    tj: ["auto", "inter-word", "inter-character", "none"],
+    cur: ["default", "pointer", "move", "text", "wait", "help", "not-allowed", "crosshair"],
+    uss: ["auto", "none", "text", "all"],
+    obf: ["contain", "cover", "fill", "none", "scale-down"],
   };
 
   // 无单位 number 更自然的属性（无单位时不补 px）
@@ -511,7 +544,7 @@
         continue;
       }
 
-      var singleMatch = remain.match(/^([a-z0-9\-\[\]]+):/i);
+      var singleMatch = remain.match(/^([a-z0-9\-\[\]:]+):/i);
       if (singleMatch) {
         var name2 = singleMatch[1];
         remain = remain.slice(singleMatch[0].length);
@@ -609,6 +642,8 @@
     var opts = options || {};
     var propName = opts.propName || "";
     var unitKind = opts.unitKind || "length";
+    var debug = !!opts.debug;
+    var token = opts.token || "";
     var raw = String(part || "").trim();
     var m = raw.match(/^(-?\d*\.?\d+)([a-z%]+)?$/i);
     if (!m) return raw; // 比如 "auto" / "calc(...)"
@@ -617,14 +652,27 @@
     var unitMeta = UNIT_KIND_META[unitKind] || UNIT_KIND_META.length;
     var unitRe = new RegExp("^(?:" + unitMeta.pattern + ")$", "i");
     if (unit) {
-      return unitRe.test(unit) ? num + unit : num + unit;
+      if (!unitRe.test(unit)) {
+        pushWarning(
+          '[lego] unknown unit "' +
+            unit +
+            '" for property "' +
+            propName +
+            '" in token "' +
+            token +
+            '"',
+          debug
+        );
+      }
+      return num + unit;
     }
     var preferBare = NUMBER_PREFER_BARE[propName] || Number(num) === 0;
     if (preferBare) return num;
     return num + unitMeta.defaultUnit;
   }
 
-  function buildNumericDeclarations(node) {
+  function buildNumericDeclarations(node, options) {
+    var opts = options || {};
     var meta = getAbbrMeta(node.abbr);
     if (!meta) throw new Error('Unknown abbreviation "' + node.abbr + '"');
     var props = getPropertiesFor(node.abbr, node.dir);
@@ -639,7 +687,13 @@
         var unitKind = getUnitKindFor(node.abbr, props[0]);
         var value = parts
           .map(function (p) {
-            return toLength(p, { abbr: node.abbr, propName: props[0], unitKind: unitKind });
+            return toLength(p, {
+              abbr: node.abbr,
+              propName: props[0],
+              unitKind: unitKind,
+              debug: opts.debug,
+              token: opts.token,
+            });
           })
           .join(" ");
         for (var i = 0; i < props.length; i++) {
@@ -649,7 +703,13 @@
       }
       case "length": {
         var unitKind2 = getUnitKindFor(node.abbr, props[0]);
-        var value2 = toLength(node.numeric, { abbr: node.abbr, propName: props[0], unitKind: unitKind2 });
+        var value2 = toLength(node.numeric, {
+          abbr: node.abbr,
+          propName: props[0],
+          unitKind: unitKind2,
+          debug: opts.debug,
+          token: opts.token,
+        });
         for (var j = 0; j < props.length; j++) {
           decls.push([props[j], value2]);
         }
@@ -672,7 +732,13 @@
       case "numberOrLength": {
         var raw = node.numeric.trim();
         var unitKind3 = getUnitKindFor(node.abbr, props[0]);
-        var value5 = toLength(raw, { abbr: node.abbr, propName: props[0], unitKind: unitKind3 });
+        var value5 = toLength(raw, {
+          abbr: node.abbr,
+          propName: props[0],
+          unitKind: unitKind3,
+          debug: opts.debug,
+          token: opts.token,
+        });
         for (var m = 0; m < props.length; m++) {
           decls.push([props[m], value5]);
         }
@@ -687,11 +753,18 @@
   }
 
   function parseCoreToken(core) {
+    // 兼容旧写法：将首个 "=" 视为 ":"
+    if (core.indexOf("=") !== -1) {
+      core = core.replace("=", ":");
+    }
     // 1) raw 方括号形式：abbr[...]
     var bracketMatch = core.match(/^([a-z]+)\[(.+)\]$/);
     if (bracketMatch) {
       var abbr = bracketMatch[1];
       var rawVal = normalizeCalcSpacing(bracketMatch[2]);
+      if ((abbr === "bgi" || abbr === "lsi") && /^https?:\/\//i.test(rawVal) && rawVal.indexOf("url(") === -1) {
+        rawVal = "url('" + rawVal + "')";
+      }
       if (!getAbbrMeta(abbr)) {
         throw new Error('Unknown abbreviation "' + abbr + '" in "' + core + '"');
       }
@@ -768,13 +841,42 @@
     throw new Error('Unknown core node kind "' + coreNode.kind + '"');
   }
 
-  function parseToken(token) {
+  function parseToken(token, options) {
+    var opts = options || {};
     var parsed = parsePseudoPrefixesAndImportant(token);
     var core = parsed.core;
     var variants = parsed.variants;
     var important = parsed.important;
     var coreNode = parseCoreToken(core);
-    var declarations = buildDeclarations(coreNode);
+    if (coreNode.kind === "keyword" && opts.debug && typeof console !== "undefined" && console.warn) {
+      var kwList = KNOWN_KEYWORDS[coreNode.abbr];
+      var keywordVal = coreNode.keyword || "";
+      if (!keywordVal || /\s/.test(keywordVal)) {
+        pushWarning(
+          '[lego] keyword may be invalid in token "' +
+            token +
+            '": "' +
+            keywordVal +
+            '". Use abbr[...] for complex values.',
+          opts.debug
+        );
+      } else if (kwList && kwList.indexOf(keywordVal) === -1) {
+        pushWarning(
+          '[lego] unknown keyword "' +
+            keywordVal +
+            '" for abbreviation "' +
+            coreNode.abbr +
+            '" in token "' +
+            token +
+            '"',
+          opts.debug
+        );
+      }
+    }
+    var declarations =
+      coreNode.kind === "numeric"
+        ? buildNumericDeclarations(coreNode, { debug: opts.debug, token: token })
+        : buildDeclarations(coreNode);
     return { token: token, variants: variants, important: important, declarations: declarations };
   }
 
@@ -900,7 +1002,7 @@
           continue;
         }
         try {
-          var ast = parseToken(actualToken);
+          var ast = parseToken(actualToken, renderOptions);
           warnUnknownVariants(ast.variants, actualToken, renderOptions);
           var css = renderRule(ast, renderOptions);
           tokenCache[cacheKey] = { css: css, version: currentVersion };
@@ -1118,6 +1220,18 @@
     if (!window.lego) window.lego = {};
     if (!window.lego.config) window.lego.config = {};
     return window.lego;
+  }
+
+  function pushWarning(msg, debug) {
+    if (!debug) return;
+    var lego = getLegoGlobal();
+    if (lego) {
+      if (!lego.warnings) lego.warnings = [];
+      lego.warnings.push(msg);
+    }
+    if (typeof console !== "undefined" && console.warn) {
+      console.warn(msg);
+    }
   }
 
   function getConfig() {
