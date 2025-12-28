@@ -1,9 +1,9 @@
-import {boxRules} from './boxRules';
-import {textRules} from './textRules';
-import {backgroundRules} from './backgroundRules';
-import {fontRules} from './fontRules';
-import {colorRules} from './colorRules';
-import {flexRules} from './flexRules';
+import { boxRules } from './boxRules.js';
+import { textRules } from './textRules.js';
+import { backgroundRules } from './backgroundRules.js';
+import { fontRules } from './fontRules.js';
+import { colorRules } from './colorRules.js';
+import { flexRules } from './flexRules.js';
 
 export const otherRules = [
     ...boxRules,

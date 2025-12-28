@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025-12-29
+- 📁 Files: 将 UnoCSS 预设重组至 `unocss/`（rules/transformers/utils），导出 `legoPreset` 工厂与重要性变体，便于后续插件发布。
+- ✨ Change: `uno.config.js` 简化为标准 `defineConfig` + `legoPreset()` 组合，预设自带 transformers 并可通过选项控制默认单位与 `!important` 行为。
+- 🧪 Test: 引入 Vitest + jsdom 配置，新增数值解析与重要性变体的单元测试样例。
+- 📁 Docs: README 补充 UnoCSS 预设用法与项目结构，明确可配置项。
+
 ## 2025-11-29
 - ✨ Change: runtime 数值解析新增无默认单位缩写白名单（`lh/zi/fw/op`），数值 0 不再自动补 `px`，与 Uno 规则保持一致。
 - ✨ Change: 支持 `px|em|rem|vh|vw|%|svh|lvh|svw|lvw|dvw|svi|lvi|dvb` 长度单位，防止新视口单位被误判为需要追加默认单位。

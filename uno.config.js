@@ -1,17 +1,17 @@
-import { defineConfig, presetAttributify, presetUno, presetMini} from 'unocss'
 import transformerCompileClass from '@unocss/transformer-compile-class'
-import legocss from './lego.unocss'
+import { defineConfig, presetUno } from 'unocss'
+
+import legoPreset from './lego.unocss.js'
+
+const lego = legoPreset()
 
 export default defineConfig({
-  // ...UnoCSS options
-    presets: [
-        presetUno(),
-        presetMini(),
-        // presetAttributify(),
-        legocss,
-    ],
-    transformers: [
-        transformerCompileClass(),
-        ...legocss.transformers
-    ],
+  presets: [
+    presetUno(),
+    lego,
+  ],
+  transformers: [
+    transformerCompileClass(),
+    ...(lego.transformers || []),
+  ],
 })
