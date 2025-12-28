@@ -8,6 +8,9 @@
 - ✨ New: 核心缩写表补充 text-indent/direction/unicode-bidi/text-justify/vertical-align/word-spacing/word-wrap、背景附件/位置/重复/尺寸以及 list-style* 映射，和 demo 示例对应。
 - 🐛 Fix: `abbr[...]` 透传时自动修正 `calc()` 运算符缺空格（如 `w[calc(100%-20px)]` → `calc(100% - 20px)`），避免无效声明；demo 补充示例。
 - ✨ Change: 按属性类型区分单位种类（length/angle/time/resolution/frequency），`transition-duration` 等缺单位默认补 `ms`，避免将时间误判为长度；demo 增加时间单位示例。
+- 📁 Docs: 新增 `docs/llms.txt` 值类型→命名模板对照表，附示例类名与 CSS 及常见陷阱；README 链接指南。
+- 🐛 Fix: debug 模式下新增未知单位/关键字警告，便于排查无效值；demo 增加触发警告的示例（`w10foo`、`d-flexx`）。
+- 🐛 Fix: 补充核心缩写别名 `bdc`/`list` 以支持 `bdc#...`、`list-*`，伪类解析允许 `:has[...]` 内带 `:`，兼容 `bd:1-solid-...` 旧写法、`bgi[...]` 自动补 url()；demo 中将 `list-*` 调整为 `lst-*` 并修正边框颜色伪类示例。
 
 ## 2025-11-26
 - 📁 Docs: 更新 `docs/appendix-auto-abbr.md` 至 v0.2，补充 MDN 高频属性的核心/推荐缩写与避冲突策略。

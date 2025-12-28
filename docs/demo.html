@@ -16,11 +16,14 @@
       /* content: ''; */
     }
   </style>
+  <script>
+    window.lego = { config: { debug: true, persistCache: false } }; // 启用 debug 并禁用缓存，方便观察警告
+  </script>
   <script src="./legocss.js"></script>
 </head>
 <body class="fw900">
   <!-- 容器 -->
-  <div class="m40 bgc#333 m1-2px-3em-4vh p2-3-4 w[calc(100%-20px)]">
+  <div class="m40 bgc#333 m1-2px-3em-4vh p2-3-4 w[calc(100%-20px)] bgc[rgb(154 234 142)]">
     <h1 class="fs24 lh1.4 fw700 m0 c#e5e7eb">
       lego.css / @lego/core Demo
     </h1>
@@ -136,7 +139,7 @@
           这是 #demo-target 区域，配合上方链接可触发 <code>:target</code> 样式。
         </p>
       </div>
-      <ul class="mt12 m0 p0 list-none d-flex fxw-wrap">
+      <ul class="mt12 m0 p0 lst-none d-flex fxw-wrap">
         <li class="px10 py6 bgc#111827 c#e5e7eb bdrs6 m4 nt[2n]:bgc#162033">
           nth-child 偶数背景
         </li>
@@ -151,7 +154,7 @@
         </li>
       </ul>
       <div class="mt12 d-flex gp8 ai-center">
-        <input class="px10 py8 bdrs8 bgc#0f172a c#e5e7eb bd[1 solid #1f2937] rq:bdc#f87171 iv:bdc#ef4444 vv:bdc#22c55e ph::(c#0f0 fs12 p2em-4 op0.7)"
+        <input class="px10 py8 bdrs8 bgc#0f172a c#e5e7eb bd[1 solid #1f2937] rq:bc#f87171 iv:bc#ef4444 vv:bc#22c55e ph::(c#0f0 fs12 p2em-4 op0.7)"
                type="email" placeholder="必填 / 验证状态示例" required />
         <button class="px12 py8 bgc#2563eb c#fff bdrs9999 fs14 fw600 cur-pointer hs[input:focus]:bgc#1d4ed8">
           使用 :has() 组合
@@ -171,7 +174,7 @@
           <p class="fs14 lh1.6 m0 c#e5e7eb">
             <code>w[calc(100%-20px)]</code> 会自动修正为 <code>calc(100% - 20px)</code>，避免缺空格导致无效。
           </p>
-          <div class="mt8 bgc#2563eb op0.8 c#fff p8 bdrs6 w[calc(100%-40px)]">
+          <div class="mt8 bgc#2563eb op0.8 c#fff p8 bdrs6 w[calc(100%-40px)] bgi[url(https://dummyimage.com/400x200/2563eb/ffffff&text=lego.css)] bgr-no-repeat bgs-cover">
             宽度由 calc 自动补空格后生效（左右留 20px）
           </div>
         </div>
@@ -187,13 +190,23 @@
             hover 时透明度过渡 0.2s
           </button>
         </div>
+
+        <div class="mt8 p12 bdrs8 bgc#111827">
+          <p class="fs14 lh1.6 m0 c#e5e7eb">
+            Debug 警告示例（查看控制台）：未知单位会警告但继续透传，未知关键字会提示可能无效。
+          </p>
+          <div class="mt8 d-flex gp8 fxw-wrap">
+            <span class="bgc#2563eb c#fff px10 py6 bdrs6 w10foo">w10foo（未知单位警告）</span>
+            <span class="bgc#1f2937 c#e5e7eb px10 py6 bdrs6 d-flexx">d-flexx（未知关键字警告）</span>
+          </div>
+        </div>
       </div>
 
       <div class="mt12 p12 bgc#0b1220 bdrs8">
         <p class="fs14 lh1.6 m0 c#9ca3af">
           背景属性扩展示例：background-attachment / position / repeat / size。
         </p>
-        <div class="mt8 p16 bdrs10 bga-fixed bgp-center bgr-no-repeat bgs-cover bgi[https://dummyimage.com/400x200/2563eb/ffffff&text=lego.css]"
+        <div class="mt8 p16 bdrs10 bga-fixed bgp-center bgr-no-repeat bgs-cover bgi[url(https://dummyimage.com/400x200/2563eb/ffffff&text=lego.css)]"
              style="background-image: url('');">
           <p class="m0 fs14 lh1.6 c#e5e7eb">
             bga-fixed + bgp-center + bgr-no-repeat + bgs-cover
@@ -208,7 +221,7 @@
         <button id="button-af"
           class="pos-relative px14 py10 bgc#2563eb c#fff bdrs10 fs14 fw700 cur-pointer tr[background-color .2s ease] 
                 h:(bgc#1d4ed8 fs20)
-                af::(ct'a' bgc#0ff w10 h10 bdrs9999 pos-absolute t6 r6 d-block) fs10"
+                af::(ct['a'] bgc#0ff w10 h10 bdrs9999 pos-absolute t6 r6 d-block) fs10"
         >
           消息
         </button>
@@ -220,10 +233,10 @@
           <a class="px10 py8 bgc#0f172a bdrs8 fs14 fw600 c#38bdf8 al:c#f97316" href="#demo-target">
             :any-link 着色
           </a>
-          <input class="h:(bgc#f00! c#fff) px10 py8 bdrs8 bgc#0f172a c#e5e7eb bd=1-solid-#1f2937 ro:bdc#22c55e rw:bdc#fbbf24"
+          <input class="h:(bgc#f00! c#fff) px10 py8 bdrs8 bgc#0f172a c#e5e7eb bd[1 solid #1f2937] ro:bc#22c55e rw:bc#fbbf24"
                  type="text" value="只读输入框" readonly />
         </div>
-        <ul class="mt8 m0 p0 list-none d-flex fxw-wrap">
+        <ul class="mt8 m0 p0 lst-none d-flex fxw-wrap">
           <li class="px10 py6 bgc#111827 c#e5e7eb bdrs6 m4 ntl[2]:bgc#162033">
             nth-last-child(2)
           </li>

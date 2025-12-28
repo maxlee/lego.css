@@ -23,6 +23,10 @@
 - 背景：`bga` (background-attachment)、`bgp` (background-position)、`bgr` (background-repeat)、`bgs` (background-size)。
 - 列表：`lst` (list-style-type)、`lsp` (list-style-position)、`lsi` (list-style-image)、`lsy` (list-style)。
 
+## LLM 参考
+
+- 快速值类型/命名对照见 `docs/llms.txt`，含示例类名与生成 CSS，便于模型对齐格式。
+
 ## 架构
 
 1. Naming

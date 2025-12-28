@@ -1,0 +1,24 @@
+lego.css – LLM Values & Naming Quick Reference
+
+Values → Templates（附示例）
+| 类别/属性示例 | 值类型 | 类名示例 | 生成 CSS | 备注 |
+| box/size（width/height/padding/margin/gap/inset…） | length/percentage | `p10-20` | `padding:10px 20px;` | 多值用 `-` 分隔转空格，缺单位补 px |
+| typography（fs/lh/ls/wsp/ti…） | numberOrLength | `lh20` | `line-height:20;` | 裸数保留；非裸数补默认单位 |
+| colors（c/bgc/bdc/tdc/olc…） | color | `bgc#0f172a` | `background-color:#0f172a;` | 复杂颜色/函数用 `abbr[...]` |
+| keyword 属性（display/position/align/text-*…） | keyword | `d-flex` | `display:flex;` | 关键字原样透传，建议用已知关键字 |
+| background 拆分（bgi/bgp/bgs/bgr/bga） | url/keyword/length | `bgp-center` | `background-position:center;` | 复杂背景用 `bg[...]` |
+| border/shadow | length+keyword+color | `bd1-solid-#ccc` | `border:1px solid #ccc;` | 阴影函数用 `bsh[...]`、`ts[...]` |
+| flex/grid 混合值 | keyword/list | `fx[1 1 auto]` | `flex:1 1 auto;` | 轨道/区域用 `gtc[...]`/`gta[...]` |
+| 动效/过渡 | time/keyword/list | `trd200` | `transition-duration:200ms;` | time 缺单位补 ms，可写 `trd0.2s` |
+| transform/filter | function | `tf[rotate(45deg)]` | `transform:rotate(45deg);` | 角度需显式单位 |
+| list-style | keyword/url | `lst-circle` | `list-style-type:circle;` | 图标用 `lsi[url(icon.svg)]` |
+| content/string | string | `ct"Hi"` | `content:"Hi";` | 引号/空字符串可用 `ct''` |
+| 通用原生值 | any | `w[calc(100%-20px)]` | `width:calc(100% - 20px);` | `calc` 自动补空格，其他函数原样 |
+
+常见陷阱（避免试错）
+- 缺单位：长度默认补 px，时间补 ms，角度需自己写 `deg/turn`，不要遗漏。
+- calc 空格：写成 `calc(100%-20px)` 会被自动补空格，但其他函数仍建议按规范书写。
+- 关键字拼写：`abbr-keyword` 不校验拼写，拼错会生成无效声明，建议用已知关键字集。
+- angle 默认：未映射的角度属性会被视为长度，务必写单位（如 `rotate(45deg)`）。
+- url 包装：`bgi[...]` 等需要 `url(...)`，裸字符串不会自动加。
+- 多值分隔：长度列表用 `-` 连接（`p10-20`），逗号列表用 `abbr[...]` 原样写。
