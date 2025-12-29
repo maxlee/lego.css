@@ -1,6 +1,8 @@
 # Changelog
 
 ## 2025-12-29
+- ✨ Change: 包名更名为 `@legocssdev/unocss-preset-legocss`，补全 exports/files/publishConfig 与 peer `unocss`，符合 UnoCSS preset 发布规范。
+- 📁 Files: 新增 `.npmignore` 控制发布体积，添加 `LICENSE`（MIT）。
 - 📁 Files: 将 UnoCSS 预设重组至 `unocss/`（rules/transformers/utils），导出 `legoPreset` 工厂与重要性变体，便于后续插件发布。
 - ✨ Change: `uno.config.js` 简化为标准 `defineConfig` + `legoPreset()` 组合，预设自带 transformers 并可通过选项控制默认单位与 `!important` 行为。
 - 🧪 Test: 引入 Vitest + jsdom 配置，新增数值解析与重要性变体的单元测试样例。

@@ -1,13 +1,32 @@
 {
-  "name": "legocss",
-  "private": true,
+  "name": "@legocssdev/unocss-preset-legocss",
   "version": "0.2.0",
+  "description": "UnoCSS preset for lego.css atomic rules, variants, shortcuts, and transformers.",
   "type": "module",
+  "main": "./lego.unocss.js",
+  "exports": {
+    ".": "./lego.unocss.js",
+    "./preset": "./unocss/preset.js",
+    "./rules": "./unocss/rules/index.js",
+    "./transformers": "./unocss/transformers/index.js",
+    "./utils": "./unocss/utils/value-parsers.js"
+  },
+  "files": [
+    "lego.unocss.js",
+    "unocss/",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest"
+  },
+  "peerDependencies": {
+    "unocss": "^0.66.0"
   },
   "devDependencies": {
     "@unocss/transformer-compile-class": "^66.5.11",
@@ -16,5 +35,25 @@
     "unocss": "^66.5.11",
     "vite": "^7.3.0",
     "vitest": "^2.1.4"
+  },
+  "keywords": [
+    "unocss",
+    "preset",
+    "lego.css",
+    "atomic-css",
+    "utilities"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/legocss/lego.css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/legocss/lego.css/issues"
+  },
+  "homepage": "https://github.com/legocss/lego.css#readme",
+  "license": "MIT",
+  "author": "lego.css devs",
+  "publishConfig": {
+    "access": "public"
   }
 }

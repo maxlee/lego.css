@@ -7,12 +7,13 @@
 
 ## 使用 UnoCSS 预设
 
+- 安装：`npm i -D @legocssdev/unocss-preset-legocss`。
 - 在 `uno.config.js` 中直接引入 `legoPreset`：预设已内置规则、variants、transformers（边框/文本阴影解析与 variant group），无需手动重复配置。
 - 可选参数：`defaultUnit`（默认 `px`）、`unitlessKeys`（默认 `['lh','zi','fw','op']`）、`important`（是否默认追加 `!important`）。
 
 ```js
 import { defineConfig, presetUno } from 'unocss'
-import legoPreset from './lego.unocss.js'
+import legoPreset from '@legocssdev/unocss-preset-legocss'
 
 export default defineConfig({
   presets: [
